@@ -41,10 +41,10 @@ export const HeroSection = ({ onBookClick }) => {
           Led by <strong>Dr. Vatsal Khetan</strong> ({clinicInfo.qualification}) — trusted surgical partner for lifelong mobility.
         </div>
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
           <button 
             onClick={onBookClick}
-            className="button button-navy"
+            className="button button-navy w-full sm:w-auto !justify-between sm:!justify-center"
           >
             <span>Book a Consultation</span>
             <ArrowUpRight className="w-4 h-4 text-[#f37021]" />
@@ -52,7 +52,7 @@ export const HeroSection = ({ onBookClick }) => {
 
           <a 
             href={`tel:${clinicInfo.phone.replace(/\s+/g, '')}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#08284d] hover:text-[#f37021] transition-colors py-2 px-3"
+            className="inline-flex items-center justify-center sm:justify-start gap-2 text-xs font-bold text-[#08284d] hover:text-[#f37021] transition-colors py-2 px-3 border border-slate-200/80 rounded-full sm:border-transparent bg-white/60 sm:bg-transparent"
           >
             <Phone className="w-3.5 h-3.5 text-[#f37021]" />
             <span>Priority: {clinicInfo.phone}</span>

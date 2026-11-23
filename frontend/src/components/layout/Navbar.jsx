@@ -72,7 +72,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
           <img 
             src="/logo.webp" 
             alt="Dr. Vatsal Khetan Logo" 
-            className="h-11 sm:h-13 md:h-14 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            className="h-8 sm:h-11 md:h-13 w-auto object-contain transition-transform group-hover:scale-[1.02]"
           />
         </a>
 
@@ -159,10 +159,11 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
           {/* Hostinger Modern Navy Pill Button */}
           <button 
             onClick={onBookClick}
-            className="button-navy"
+            className="button-navy !min-h-[38px] sm:!min-h-[44px] !px-3 sm:!px-5 !py-1.5 sm:!py-2.5 !text-[10px] sm:!text-[11.5px] !gap-1.5 sm:!gap-3"
           >
-            <span>Book Consultation</span>
-            <ArrowUpRight className="w-4 h-4 text-[#f37021]" />
+            <span className="hidden sm:inline">Book Consultation</span>
+            <span className="sm:hidden font-bold">Book Visit</span>
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f37021]" />
           </button>
 
           {/* Mobile Menu Button */}
@@ -178,7 +179,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
 
       {/* 3. Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[90px] bottom-0 bg-white/95 backdrop-blur-xl z-40 overflow-y-auto border-t border-slate-200/80 p-6 animate-in slide-in-from-top duration-200">
+        <div className="lg:hidden fixed inset-x-0 top-[72px] sm:top-[78px] bottom-0 bg-white/98 backdrop-blur-xl z-50 overflow-y-auto border-t border-slate-200/80 p-5 sm:p-6 animate-in slide-in-from-top duration-200 shadow-2xl">
           <div className="space-y-4">
             
             {/* Quick Status Pill */}
