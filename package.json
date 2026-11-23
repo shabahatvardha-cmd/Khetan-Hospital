@@ -1,0 +1,12 @@
+{
+  "name": "khetan-hospital-suite",
+  "version": "1.0.0",
+  "description": "Dr. Vatsal Khetan Knee N Shoulder Clinic & Hospital Management System",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend"
+  }
+}
