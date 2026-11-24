@@ -21,13 +21,6 @@ export const LocationsPage = ({ onBookClick }) => {
               Serving patients across Eastern Uttar Pradesh &amp; Western Bihar
             </p>
           </div>
-
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#00bcd4]">Locations</span>
-          </nav>
         </div>
       </section>
 

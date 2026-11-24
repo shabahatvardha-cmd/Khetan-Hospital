@@ -28,7 +28,7 @@ export const ServiceDetailPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. Oreo Interior Breadcrumb Banner */}
+      {/* 1. Oreo Interior Header Banner */}
       <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -44,15 +44,6 @@ export const ServiceDetailPage = ({ onBookClick }) => {
               </p>
             )}
           </div>
-
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <Link to="/services" className="hover:text-[#00bcd4] transition-colors">Services</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#00bcd4]">{service.title}</span>
-          </nav>
         </div>
       </section>
 

@@ -21,15 +21,6 @@ export const PublishedPapersPage = ({ onBookClick }) => {
               10 peer-reviewed scientific contributions in international orthopaedic journals
             </p>
           </div>
-
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <Link to="/about" className="hover:text-[#00bcd4] transition-colors">About</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#00bcd4]">Research</span>
-          </nav>
         </div>
       </section>
 

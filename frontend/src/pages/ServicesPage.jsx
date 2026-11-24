@@ -21,13 +21,6 @@ export const ServicesPage = ({ onBookClick }) => {
               Comprehensive surgical portfolio &bull; Khetan Hospital, Gorakhpur
             </p>
           </div>
-
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#00bcd4]">Services</span>
-          </nav>
         </div>
       </section>
 
