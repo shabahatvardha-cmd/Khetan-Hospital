@@ -1,250 +1,175 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowUpRight, 
-  Phone, 
-  Calendar, 
-  ShieldCheck, 
-  Award, 
-  Cpu, 
-  Clock, 
-  CheckCircle2,
-  Sparkles,
-  CreditCard
-} from 'lucide-react';
+import { ArrowRight, CheckCircle2, Calendar, Phone, MessageCircle } from 'lucide-react';
 import { clinicInfo } from '../../data/clinicContent';
 
 export const HeroSection = ({ onBookClick }) => {
-  return (
-    <div className="relative bg-gradient-to-b from-slate-50 via-blue-50/30 to-white overflow-hidden">
-      
-      {/* Background Decorative Mesh & Glow */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#00b4d8]/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-40 left-0 -ml-20 w-96 h-96 rounded-full bg-blue-600/5 blur-3xl pointer-events-none" />
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    date: new Date().toISOString().split('T')[0],
+    doctor: 'Dr. Vatsal Khetan (FRCS Edinburgh)',
+    department: 'Robotic Knee Replacement'
+  });
 
-      {/* Main Hero Banner Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-16 lg:pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const msg = `*Appointment Request - Khetan Hospital*%0A` +
+      `👤 *Patient:* ${encodeURIComponent(formData.name)}%0A` +
+      `📞 *Mobile:* ${encodeURIComponent(formData.phone)}%0A` +
+      `📅 *Date:* ${encodeURIComponent(formData.date)}%0A` +
+      `👨‍⚕️ *Doctor:* ${encodeURIComponent(formData.doctor)}%0A` +
+      `🏥 *Department:* ${encodeURIComponent(formData.department)}`;
+
+    window.open(`https://wa.me/919662365917?text=${msg}`, '_blank');
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="relative bg-[#edf1f5] pt-12 pb-20 sm:pb-28 overflow-hidden">
+      
+      {/* Hero Banner Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Column: Clinical Value Proposition */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 text-[#0077b6] text-xs font-bold border border-blue-200/80 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#00b4d8] animate-ping" />
-              <span>KHETAN HOSPITAL &bull; LEADING ORTHOPAEDIC &amp; ROBOTIC CENTRE &bull; GORAKHPUR</span>
+          {/* Left Column: Text & CTA */}
+          <div className="lg:col-span-6 space-y-6 pt-4 lg:pt-0">
+            <div>
+              <span className="text-sm sm:text-base font-normal text-slate-500 block mb-1">
+                Welcome to
+              </span>
+              <h1 className="text-4xl sm:text-6xl font-light text-slate-800 tracking-tight leading-none">
+                Khetan <strong className="font-extrabold text-slate-900">Hospital</strong>
+              </h1>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#08284d] tracking-tight leading-[1.12]">
-              British-Trained Precision.<br />
-              <span className="bg-gradient-to-r from-[#00b4d8] to-[#0077b6] bg-clip-text text-transparent">
-                Pain-Free Mobility
-              </span> At Every Step.
-            </h1>
-
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-              Why travel to Delhi or Lucknow? <strong>Dr. Vatsal Khetan</strong> (FRCS Edinburgh, UK NHS Fellowship) brings world-class sub-millimeter robotic knee replacements, keyhole shoulder arthroscopy, and IOC sports injury care to <strong>Khetan Hospital</strong>, Bettiahata, Gorakhpur.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg">
+              Gorakhpur's premier centre for sub-millimeter robotic knee replacements, hip reconstruction, and sports medicine under the clinical leadership of <strong>Dr. Vatsal Khetan</strong> (FRCS Edinburgh, UK NHS Fellowship).
             </p>
 
-            {/* Quick Check Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs text-[#08284d] font-semibold">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>1,500+ Successful Knee Replacements</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>Same-Day / 24-Hour Assisted Walking</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>100% Cashless TPA &amp; Insurance Support</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>Zero-Infection Modular OT Standards</span>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3">
-              <button 
+            <div className="pt-2 flex items-center gap-4">
+              <button
                 onClick={onBookClick}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white text-xs sm:text-sm font-bold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:brightness-105 active:scale-98 transition-all"
+                className="px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95"
               >
-                <Calendar className="w-4 h-4" />
-                <span>Book OPD Consultation</span>
-                <ArrowUpRight className="w-4 h-4" />
+                View More
               </button>
 
-              <a 
-                href={`tel:${clinicInfo.phone}`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#08284d] text-xs sm:text-sm font-bold border border-slate-200 shadow-xs hover:border-[#00b4d8] hover:text-[#00b4d8] transition-all"
+              <a
+                href="tel:9662365917"
+                className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-[#00bcd4] transition-colors"
               >
-                <Phone className="w-4 h-4 text-[#f37021]" />
-                <span>Call: 9662365917</span>
+                <Phone className="w-4 h-4 text-[#ff5722]" />
+                <span>Emergency: 9662365917</span>
               </a>
             </div>
-
-            <p className="text-[11px] text-slate-500 pt-1 font-mono">
-              SK Pandey Complex, Beside Union Bank, Betiahata, Gorakhpur
-            </p>
           </div>
 
-          {/* Right Column: Hero Visual with Doctor Photo & Oreo Floating Stats Card */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Doctor Hero Image Container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-                <img 
-                  src="/images/dr-vatsal-hero.webp" 
-                  alt="Dr. Vatsal Khetan - Senior Orthopaedic & Joint Replacement Surgeon" 
-                  className="w-full h-auto object-cover object-top hover:scale-102 transition-transform duration-500"
-                  fetchPriority="high"
-                />
-                
-                {/* Subtle Gradient Overlay at bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#08284d]/80 via-[#08284d]/30 to-transparent flex items-end p-5 text-white">
-                  <div>
-                    <h3 className="font-extrabold text-base">Dr. Vatsal Khetan</h3>
-                    <p className="text-[11px] text-[#00b4d8] font-semibold">
-                      MBBS, MS (Ortho), MRCS, FRCS (Edinburgh), M.Ch (UK)
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Oreo Milestone Badge (Top-Left) */}
-              <div className="absolute -top-4 -left-4 sm:-left-6 bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce-slow">
-                <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#f37021] flex items-center justify-center font-bold">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-xs font-mono font-bold text-slate-400 uppercase">EXPERIENCE</span>
-                  <span className="block text-base font-extrabold text-[#08284d]">12+ Years</span>
-                </div>
-              </div>
-
-              {/* Floating Oreo Milestone Badge (Bottom-Right) */}
-              <div className="absolute -bottom-5 -right-4 sm:-right-6 bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#00b4d8] flex items-center justify-center font-bold">
-                  <Cpu className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-xs font-mono font-bold text-slate-400 uppercase">SURGICAL SUCCESS</span>
-                  <span className="block text-base font-extrabold text-[#08284d]">10,000+ Surgeries</span>
-                </div>
-              </div>
-
+          {/* Right Column: Doctor Portrait Photo */}
+          <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
+            <div className="relative max-w-md w-full">
+              <img 
+                src="/images/dr-vatsal-hero.webp" 
+                alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon" 
+                className="w-full h-auto object-cover rounded-3xl drop-shadow-xl"
+                loading="eager"
+              />
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* 4 Floating Oreo Hospital Quick-Action Cards (Overlapping Hero) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-14 relative z-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Floating "Make an Appointment" Form Card (Exact Oreo Overlap) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 relative z-20">
+        <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 sm:p-8">
           
-          {/* Card 1: Emergency Care */}
-          <div className="bg-white rounded-2xl p-5 shadow-lg border border-slate-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-[10px] font-mono font-bold text-red-600 uppercase tracking-wider block">
-                  24/7 HELPLINE
-                </span>
-                <h4 className="text-sm font-bold text-[#08284d]">Emergency &amp; Trauma</h4>
-              </div>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              Rapid response for fractures, dislocations, and severe acute joint injuries.
-            </p>
-            <a 
-              href="tel:9662365917" 
-              className="inline-flex items-center gap-1 text-xs font-bold text-red-600 hover:text-red-700"
-            >
-              <span>Call 9662365917</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
+          <h2 className="text-sm sm:text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#00bcd4]"></span>
+            Make an Appointment
+          </h2>
 
-          {/* Card 2: British Qualifications */}
-          <div className="bg-white rounded-2xl p-5 shadow-lg border border-slate-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0077b6] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Award className="w-5 h-5" />
+          {submitted ? (
+            <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <span>Thank you! Your appointment request has been transmitted via WhatsApp.</span>
               </div>
-              <div>
-                <span className="text-[10px] font-mono font-bold text-[#0077b6] uppercase tracking-wider block">
-                  UK FELLOWSHIP
-                </span>
-                <h4 className="text-sm font-bold text-[#08284d]">FRCS Edinburgh</h4>
-              </div>
+              <button 
+                onClick={() => setSubmitted(false)}
+                className="text-xs underline font-bold"
+              >
+                Book Another
+              </button>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              Trained at Wrightington Hospital UK, the historic birthplace of modern joint surgery.
-            </p>
-            <Link 
-              to="/about" 
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#0077b6] hover:text-[#08284d]"
-            >
-              <span>Meet Dr. Vatsal</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Row 1: 3 Inputs */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <input 
+                  type="text"
+                  required
+                  placeholder="Enter Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                />
 
-          {/* Card 3: Robotic Joint Surgery */}
-          <div className="bg-white rounded-2xl p-5 shadow-lg border border-slate-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="w-10 h-10 rounded-xl bg-cyan-50 text-[#00b4d8] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Cpu className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-[10px] font-mono font-bold text-[#00b4d8] uppercase tracking-wider block">
-                  ZERO-ERROR ALIGNMENT
-                </span>
-                <h4 className="text-sm font-bold text-[#08284d]">Robotic Knee Surgery</h4>
-              </div>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              Sub-millimeter accuracy, minimal bone cut, and walking unassisted within weeks.
-            </p>
-            <Link 
-              to="/services/robotic-knee-surgery" 
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#00b4d8] hover:text-[#0077b6]"
-            >
-              <span>Explore Robotics</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+                <input 
+                  type="tel"
+                  required
+                  placeholder="Enter Mobile"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                />
 
-          {/* Card 4: Cashless Insurance */}
-          <div className="bg-white rounded-2xl p-5 shadow-lg border border-slate-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <CreditCard className="w-5 h-5" />
+                <input 
+                  type="date"
+                  required
+                  min={new Date().toISOString().split('T')[0]}
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                />
               </div>
-              <div>
-                <span className="text-[10px] font-mono font-bold text-emerald-600 uppercase tracking-wider block">
-                  CASHLESS DESK
-                </span>
-                <h4 className="text-sm font-bold text-[#08284d]">Insurance &amp; TPAs</h4>
+
+              {/* Row 2: 2 Dropdowns + Submit Button */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                <select
+                  value={formData.doctor}
+                  onChange={(e) => setFormData({ ...formData, doctor: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                >
+                  <option value="Dr. Vatsal Khetan (FRCS Edinburgh)">Dr. Vatsal Khetan (FRCS Edinburgh)</option>
+                  <option value="Orthopedic Trauma Unit">Orthopedic Trauma &amp; Fracture Unit</option>
+                  <option value="Sports Medicine Specialist">Sports Medicine Specialist Desk</option>
+                </select>
+
+                <select
+                  value={formData.department}
+                  onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                >
+                  <option value="Robotic Knee Replacement">Robotic Knee Replacement</option>
+                  <option value="Total Knee Replacement (TKR)">Total Knee Replacement (TKR)</option>
+                  <option value="Hip Replacement & AVN">Hip Replacement &amp; AVN</option>
+                  <option value="Shoulder Surgery & Arthroscopy">Shoulder Surgery &amp; Arthroscopy</option>
+                  <option value="ACL & Sports Ligament Repair">ACL &amp; Sports Ligament Repair</option>
+                  <option value="General Joint Pain Consultation">General Joint Pain Consultation</option>
+                </select>
+
+                <button
+                  type="submit"
+                  className="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer text-center"
+                >
+                  Submit
+                </button>
               </div>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              Fast-track pre-authorization with all major insurance providers &amp; transparent billing.
-            </p>
-            <button 
-              onClick={onBookClick}
-              className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700"
-            >
-              <span>Book Appointment</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+            </form>
+          )}
 
         </div>
       </div>

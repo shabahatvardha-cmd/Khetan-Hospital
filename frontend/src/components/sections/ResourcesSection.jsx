@@ -1,62 +1,57 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowUpRight, 
-  BookOpen, 
-  Clock, 
-  Calendar, 
-  ChevronRight, 
-  User, 
-  Tag, 
-  CheckCircle2, 
-  X 
-} from 'lucide-react';
+import { Calendar, MessageSquare, ArrowRight, X } from 'lucide-react';
 import blogsData from '../../data/blogsData.json';
 
 export const ResourcesSection = ({ onBookClick }) => {
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [newsletterData, setNewsletterData] = useState({ name: '', email: '' });
+  const [subscribed, setSubscribed] = useState(false);
 
-  // Take 3 premier articles from blogsData
+  // 3 Featured blogs from blogsData
   const featuredBlogs = [
     blogsData.find(b => b.slug.includes('hip-replacement-surgery-at-home')) || blogsData[0],
     blogsData.find(b => b.slug.includes('robotic-surgery-in-orthopedic') || b.slug.includes('benefits-of-robotic')) || blogsData[2],
     blogsData.find(b => b.slug.includes('risks-and-complications-of-acl-surgery')) || blogsData[5]
   ].filter(Boolean);
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    setSubscribed(true);
+  };
+
   return (
-    <section id="resources" className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
+    <section id="blogs" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#f8f9fa] relative">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase bg-amber-100 text-amber-800 mb-3">
-              03 / PATIENT GUIDANCE &amp; MEDICAL BLOGS
-            </span>
-            <h2 id="resources-title" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#08284d]">
-              Recovery Guides &amp;<br />
-              <span className="text-[#00b4d8]">Clinical Health Insights.</span>
+        {/* Oreo Section Header with Cyan Vertical Bar */}
+        <div className="mb-14">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
+              Latest <span className="font-normal text-slate-600">From Blog</span>
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-md font-medium leading-relaxed">
-            Written directly by Dr. Vatsal Khetan to answer common patient questions regarding joint replacement, robotic precision, ligament tears, and safe at-home recovery.
+          <p className="text-xs text-slate-400 mt-1 pl-3.5">
+            Orthopedic health, surgical preparation checklists, and recovery guides
           </p>
         </div>
 
-        {/* 3-Column Blog Cards Grid */}
+        {/* 3 Blog Cards (Exact Oreo Page 3 Grid) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredBlogs.map((blog, idx) => {
-            const cleanExcerpt = blog.excerpt
-              ? blog.excerpt.replace(/<[^>]+>/g, '').slice(0, 150) + '...'
-              : 'Read comprehensive evidence-based medical advice by Dr. Vatsal Khetan on joint recovery, exercise guidelines, and surgical precautions.';
+            const cleanSnippet = blog.excerpt
+              ? blog.excerpt.replace(/<[^>]+>/g, '').slice(0, 140) + '...'
+              : 'Read comprehensive evidence-based clinical guidance written by Dr. Vatsal Khetan regarding joint mobility, surgical precautions, and physiotherapy.';
 
             return (
               <article 
                 key={idx}
-                className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                onClick={() => setSelectedBlog(blog)}
               >
-                {/* Image Header */}
-                <div className="relative h-52 bg-slate-100 overflow-hidden">
+                {/* Photo */}
+                <div className="h-52 bg-slate-100 overflow-hidden relative">
                   <img 
                     src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
                     alt={blog.title}
@@ -67,47 +62,30 @@ export const ResourcesSection = ({ onBookClick }) => {
                       e.target.src = '/images/dr-vatsal-rehab.webp';
                     }}
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider bg-white/95 text-[#08284d] shadow-sm backdrop-blur-xs">
-                      {blog.category || 'PATIENT GUIDE'}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <div className="flex items-center gap-3 text-[11px] text-slate-400 mb-3">
-                      <span className="inline-flex items-center gap-1">
-                        <User className="w-3 h-3 text-[#00b4d8]" />
-                        <span>Dr. Vatsal Khetan</span>
-                      </span>
-                      <span>&bull;</span>
-                      <span className="inline-flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-slate-400" />
-                        <span>5 min read</span>
-                      </span>
-                    </div>
-
-                    <h3 className="text-base font-bold text-[#08284d] group-hover:text-[#00b4d8] transition-colors leading-snug line-clamp-2 mb-3">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors leading-snug line-clamp-2">
                       {blog.title}
                     </h3>
-
-                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-6">
-                      {cleanExcerpt}
+                    <p className="text-xs text-slate-500 leading-relaxed mt-2.5 line-clamp-3">
+                      {cleanSnippet}
                     </p>
                   </div>
 
-                  {/* Read Article Trigger */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <button
-                      onClick={() => setSelectedBlog(blog)}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#08284d] group-hover:text-[#00b4d8] transition-colors cursor-pointer"
-                    >
-                      <span>Read Complete Guide</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#f37021]" />
-                    </button>
-                    <span className="text-[11px] font-mono text-slate-400">0{idx + 1}</span>
+                  {/* Oreo Meta Strip (Orange Calendar & Comment) */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#ff5722]" />
+                      <span>{blog.date || '02 Feb 2026'}</span>
+                    </span>
+
+                    <span className="inline-flex items-center gap-1.5">
+                      <MessageSquare className="w-3.5 h-3.5 text-[#ff5722]" />
+                      <span>Comment ( 25 )</span>
+                    </span>
                   </div>
                 </div>
               </article>
@@ -115,45 +93,59 @@ export const ResourcesSection = ({ onBookClick }) => {
           })}
         </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#08284d] text-white flex items-center justify-center shrink-0">
-              <BookOpen className="w-6 h-6 text-[#00b4d8]" />
+        {/* Floating Newsletter / Consultation Inquiry Strip (Exact Oreo Page 3) */}
+        <div className="mt-16 max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200/80 p-5 sm:p-6 relative z-20">
+          {subscribed ? (
+            <div className="text-center text-xs text-emerald-700 font-bold py-2">
+              ✓ Thank you! You have subscribed to Khetan Hospital health updates.
             </div>
-            <div>
-              <h4 className="text-base font-bold text-[#08284d]">
-                Browse All 61 Medical Publications &amp; Recovery Guides
-              </h4>
-              <p className="text-xs text-slate-500">
-                Search through our archive of orthopedic conditions, surgical preparation checklists, and FAQs.
-              </p>
-            </div>
-          </div>
-
-          <Link 
-            to="/blogs"
-            className="px-6 py-3 rounded-full text-xs font-bold bg-[#08284d] text-white hover:bg-[#00458b] transition-all shadow-md inline-flex items-center gap-1.5 shrink-0"
-          >
-            <span>Explore Knowledge Hub</span>
-            <ChevronRight className="w-4 h-4" />
-          </Link>
+          ) : (
+            <form onSubmit={handleSubscribe} className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+              <div className="sm:col-span-5">
+                <input 
+                  type="text" 
+                  required
+                  placeholder="your name" 
+                  value={newsletterData.name}
+                  onChange={(e) => setNewsletterData({ ...newsletterData, name: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-slate-50 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4]"
+                />
+              </div>
+              <div className="sm:col-span-4">
+                <input 
+                  type="email" 
+                  required
+                  placeholder="your email" 
+                  value={newsletterData.email}
+                  onChange={(e) => setNewsletterData({ ...newsletterData, email: e.target.value })}
+                  className="w-full text-xs px-4 py-2.5 rounded-full bg-slate-50 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4]"
+                />
+              </div>
+              <div className="sm:col-span-3">
+                <button
+                  type="submit"
+                  className="w-full py-2.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-md transition-all cursor-pointer text-center"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          )}
         </div>
 
       </div>
 
-      {/* Interactive Modal Reader for Selected Blog */}
+      {/* Full Article Modal Reader */}
       {selectedBlog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div 
-            className="bg-white rounded-3xl w-full max-w-3xl max-h-[85vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
+            className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="p-5 bg-[#08284d] text-white flex items-center justify-between">
+            <div className="p-5 bg-[#00bcd4] text-white flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-bold text-[#00b4d8] uppercase tracking-wider block mb-0.5">
-                  PATIENT RECOVERY ARTICLE
+                <span className="text-[10px] uppercase font-bold text-white/80 block">
+                  Khetan Hospital Clinical Blog
                 </span>
                 <h3 className="text-base sm:text-lg font-bold text-white line-clamp-1">
                   {selectedBlog.title}
@@ -161,62 +153,46 @@ export const ResourcesSection = ({ onBookClick }) => {
               </div>
               <button 
                 onClick={() => setSelectedBlog(null)}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1 text-slate-700 text-sm leading-relaxed">
+            <div className="p-6 sm:p-8 overflow-y-auto space-y-4 flex-1 text-slate-700 text-xs sm:text-sm leading-relaxed">
               {selectedBlog.featuredImage && (
                 <img 
                   src={selectedBlog.featuredImage} 
                   alt={selectedBlog.title} 
-                  className="w-full max-h-72 object-cover rounded-2xl shadow-sm mb-4"
+                  className="w-full max-h-72 object-cover rounded-xl shadow-xs mb-4"
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
                 />
               )}
 
-              <div className="flex items-center gap-4 text-xs text-slate-400 border-b border-slate-100 pb-4">
-                <span>By <strong>Dr. Vatsal Khetan</strong> (MS, FRCS)</span>
-                <span>&bull;</span>
-                <span>Category: {selectedBlog.category || 'Orthopedics'}</span>
-                <span>&bull;</span>
-                <span>Published: {selectedBlog.date || 'Recent'}</span>
-              </div>
-
-              {/* Render Full Content */}
               <div 
                 className="prose prose-slate max-w-none text-xs sm:text-sm leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: selectedBlog.content || selectedBlog.excerpt }}
               />
             </div>
 
-            {/* Modal Footer */}
-            <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <span className="text-xs text-slate-500">
-                Have questions about this condition? Consult Dr. Vatsal Khetan directly.
-              </span>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    setSelectedBlog(null);
-                    onBookClick();
-                  }}
-                  className="px-5 py-2 rounded-full text-xs font-bold bg-[#08284d] text-white hover:bg-[#00458b] transition-all"
-                >
-                  Book OPD Appointment
-                </button>
-                <button
-                  onClick={() => setSelectedBlog(null)}
-                  className="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 hover:bg-slate-100 text-slate-600 transition-all"
-                >
-                  Close
-                </button>
-              </div>
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+              <button
+                onClick={() => {
+                  setSelectedBlog(null);
+                  onBookClick();
+                }}
+                className="px-5 py-2 rounded-full text-xs font-bold bg-[#ff5722] text-white shadow-xs hover:bg-[#e64a19] transition-all cursor-pointer"
+              >
+                Book OPD Consultation
+              </button>
+              <button
+                onClick={() => setSelectedBlog(null)}
+                className="px-4 py-2 rounded-full text-xs font-bold border border-slate-300 text-slate-600 hover:bg-slate-100 cursor-pointer"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
