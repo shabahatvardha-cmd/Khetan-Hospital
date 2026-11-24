@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  Clock, 
-  MapPin, 
-  Search, 
-  ChevronDown, 
-  Menu, 
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Phone,
+  Mail,
+  Clock,
+  MapPin,
+  Search,
+  Calendar,
+  ChevronDown,
+  Menu,
   X,
+  Activity,
+  Heart,
   Plus
 } from 'lucide-react';
 import { clinicInfo } from '../../data/clinicContent';
@@ -21,7 +24,6 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Scroll listener to pin white bar at the top on scroll
   useEffect(() => {
@@ -49,24 +51,10 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  const handleNavLinkClick = () => {
-    setActiveDropdown(null);
-    setMobileMenuOpen(false);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/blogs?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery('');
-      setMobileMenuOpen(false);
-    }
-  };
-
   const navItems = [
     { title: 'Home', href: '/' },
-    { 
-      title: 'Services', 
+    {
+      title: 'Services',
       href: '/services',
       dropdown: [
         { title: 'Robotic Knee Replacement', href: '/services/robotic-knee-surgery', desc: 'Sub-millimeter robotic precision' },
@@ -77,8 +65,8 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
         { title: 'View All 9 Services', href: '/services', desc: 'Complete orthopaedic surgical portfolio' }
       ]
     },
-    { 
-      title: 'Departments', 
+    {
+      title: 'Departments',
       href: '/services',
       dropdown: [
         { title: 'Robotic Arthroplasty', href: '/services/robotic-knee-surgery', desc: 'State-of-the-art navigation' },
@@ -88,8 +76,8 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
       ]
     },
     { title: 'Doctors', href: '/about' },
-    { 
-      title: 'Blog', 
+    {
+      title: 'Blog',
       href: '/blogs',
       dropdown: [
         { title: 'All Clinical Articles', href: '/blogs', desc: 'Browse complete 6-per-page patient archive' },
@@ -98,8 +86,8 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
         { title: 'ACL & Sports Rehabilitation', href: '/blogs?search=ACL', desc: 'Sports injury recovery protocols' }
       ]
     },
-    { 
-      title: 'Pages', 
+    {
+      title: 'Pages',
       href: '/about',
       dropdown: [
         { title: 'About Dr. Vatsal Khetan', href: '/about', desc: 'FRCS Edinburgh & UK NHS credentials' },
@@ -249,6 +237,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
           <nav className="hidden lg:flex items-center space-x-6 text-xs font-bold text-slate-700">
             {navItems.map((item, idx) => {
               const isActive = location.pathname === item.href;
+              const isHovered = activeDropdown === item.title;
               return (
                 <div
                   key={idx}
@@ -344,7 +333,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden mt-2 max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-100 p-5 space-y-3 animate-in slide-in-from-top-3 duration-200">
-            {/* Mobile Search Input Form */}
+            {/* Mobile Search Form */}
             <form onSubmit={handleSearchSubmit} className="relative mb-3">
               <input
                 type="text"

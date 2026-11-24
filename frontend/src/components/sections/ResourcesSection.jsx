@@ -23,7 +23,7 @@ export const ResourcesSection = ({ onBookClick }) => {
   return (
     <section id="blogs" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#f8f9fa] relative">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Oreo Section Header with Cyan Vertical Bar */}
         <div className="mb-14">
           <div className="flex items-center gap-2">
@@ -45,15 +45,15 @@ export const ResourcesSection = ({ onBookClick }) => {
               : 'Read comprehensive evidence-based clinical guidance written by Dr. Vatsal Khetan regarding joint mobility, surgical precautions, and physiotherapy.';
 
             return (
-              <article 
+              <article
                 key={idx}
                 className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 onClick={() => setSelectedBlog(blog)}
               >
                 {/* Photo */}
                 <div className="h-52 bg-slate-100 overflow-hidden relative">
-                  <img 
-                    src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
+                  <img
+                    src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
                     alt={blog.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
@@ -102,20 +102,20 @@ export const ResourcesSection = ({ onBookClick }) => {
           ) : (
             <form onSubmit={handleSubscribe} className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
               <div className="sm:col-span-5">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
-                  placeholder="your name" 
+                  placeholder="your name"
                   value={newsletterData.name}
                   onChange={(e) => setNewsletterData({ ...newsletterData, name: e.target.value })}
                   className="w-full text-xs px-4 py-2.5 rounded-full bg-slate-50 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4]"
                 />
               </div>
               <div className="sm:col-span-4">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
-                  placeholder="your email" 
+                  placeholder="your email"
                   value={newsletterData.email}
                   onChange={(e) => setNewsletterData({ ...newsletterData, email: e.target.value })}
                   className="w-full text-xs px-4 py-2.5 rounded-full bg-slate-50 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4]"
@@ -138,7 +138,7 @@ export const ResourcesSection = ({ onBookClick }) => {
       {/* Full Article Modal Reader */}
       {selectedBlog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div 
+          <div
             className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
@@ -151,7 +151,7 @@ export const ResourcesSection = ({ onBookClick }) => {
                   {selectedBlog.title}
                 </h3>
               </div>
-              <button 
+              <button
                 onClick={() => setSelectedBlog(null)}
                 className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
@@ -161,9 +161,9 @@ export const ResourcesSection = ({ onBookClick }) => {
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-4 flex-1 text-slate-700 text-xs sm:text-sm leading-relaxed">
               {selectedBlog.featuredImage && (
-                <img 
-                  src={selectedBlog.featuredImage} 
-                  alt={selectedBlog.title} 
+                <img
+                  src={selectedBlog.featuredImage}
+                  alt={selectedBlog.title}
                   className="w-full max-h-72 object-cover rounded-xl shadow-xs mb-4"
                   onError={(e) => {
                     e.target.style.display = 'none';
