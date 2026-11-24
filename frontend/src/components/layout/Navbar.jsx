@@ -157,7 +157,7 @@ export const Navbar = ({ onBookClick }) => {
               <Phone className="w-5 h-5 text-white/80 shrink-0" />
               <div>
                 <span className="block font-bold">Emergency 24/7</span>
-                <span className="text-[11px] text-white/80">Betiahata, Gorakhpur</span>
+                <span className="text-[11px] text-white/80">Bargadawa, Gorakhpur</span>
               </div>
             </div>
           </div>

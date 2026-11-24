@@ -112,7 +112,7 @@ export const QuickSearchModal = ({ isOpen, onClose, onSelectResult }) => {
 
         {/* Modal Footer */}
         <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-          <span>Dr. Vatsal Khetan Knee N Shoulder Clinic &bull; Betiahata, Gorakhpur</span>
+          <span>Dr. Vatsal Khetan Knee N Shoulder Clinic &bull; Bargadawa, Gorakhpur</span>
           <button 
             onClick={onClose} 
             className="text-slate-400 hover:text-slate-700 font-semibold"

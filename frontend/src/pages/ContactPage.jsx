@@ -51,7 +51,7 @@ export const ContactPage = ({ onBookClick }) => {
               </h1>
             </div>
             <p className="text-xs text-slate-500 mt-1 pl-3.5">
-              Priority hospital desk &bull; Betiahata Road, Gorakhpur
+              Priority hospital desk &bull; Vikas Nagar, Bargadawa, Gorakhpur
             </p>
           </div>
         </div>

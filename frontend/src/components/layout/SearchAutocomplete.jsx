@@ -23,7 +23,7 @@ const POPULAR_SEARCHES = [
   'Hip Replacement & AVN',
   'ACL & Sports Ligament',
   'Dr. Vatsal Khetan',
-  'Betiahata OPD Timings'
+  'Bargadawa OPD Timings'
 ];
 
 export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
@@ -115,9 +115,9 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
         icon: User
       });
     }
-    if ('opd timings hours betiahata contact emergency phone appointment'.includes(q)) {
+    if ('opd timings hours bargadawa vikas nagar contact emergency phone appointment'.includes(q)) {
       infoMatches.push({
-        title: 'Betiahata Clinic OPD Timings & Location',
+        title: 'Bargadawa Hospital OPD Timings & Location',
         path: '/contact',
         icon: MapPin
       });

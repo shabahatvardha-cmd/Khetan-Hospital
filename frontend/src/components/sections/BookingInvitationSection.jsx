@@ -59,7 +59,7 @@ export const BookingInvitationSection = () => {
             Make an Appointment at Khetan Hospital
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-2">
-            Schedule your evaluation with Dr. Vatsal Khetan at Betiahata, Gorakhpur. Avoid long queues and receive priority slot confirmation directly on WhatsApp.
+            Schedule your evaluation with Dr. Vatsal Khetan at Bargadawa, Gorakhpur. Avoid long queues and receive priority slot confirmation directly on WhatsApp.
           </p>
         </div>
 
@@ -155,9 +155,9 @@ export const BookingInvitationSection = () => {
                       Hospital Location
                     </span>
                     <span className="text-xs font-bold text-white">
-                      SK Pandey Complex, Beside Union Bank
+                      Vikas Nagar, Bargadawa
                     </span>
-                    <p className="text-[10px] text-slate-300">Betiahata Road, Gorakhpur, UP 273001</p>
+                    <p className="text-[10px] text-slate-300">Gorakhpur, Uttar Pradesh, 273015</p>
                   </div>
                 </div>
               </div>
@@ -356,7 +356,7 @@ export const BookingInvitationSection = () => {
                 </button>
 
                 <p className="text-[11px] text-slate-400 text-center">
-                  * No advance payment required for OPD slot booking. Pay directly at Betiahata clinic counter.
+                  * No advance payment required for OPD slot booking. Pay directly at Bargadawa clinic counter.
                 </p>
               </form>
             )}

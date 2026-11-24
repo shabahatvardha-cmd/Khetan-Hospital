@@ -4,7 +4,7 @@ export const clinicInfo = {
   clinicName: "Khetan Hospital",
   hospitalName: "Khetan Hospital",
   subtitle: "Orthopedic, Joint Replacement & Arthroscopy Surgeon",
-  location: "SK Pandey Complex, Betiahata Rd, Beside Union Bank, Betiahata, Gorakhpur, UP 273001",
+  location: "Vikas Nagar Bargadawa Gorakhpur, Gorakhpur, Uttar Pradesh, 273015",
   phone: "+91 96623 65917",
   email: "drvatsalkhetan@gmail.com",
   timings: "Mon - Sat: 10:30 AM - 02:00 PM | 05:30 PM - 08:30 PM",
@@ -73,7 +73,7 @@ export const navMenu = [
     title: "Service Locations",
     href: "/locations",
     dropdown: [
-      { city: "Gorakhpur", note: "Primary Clinic - Betiahata Chowk", isMain: true },
+      { city: "Gorakhpur", note: "Primary Hospital - Vikas Nagar, Bargadawa", isMain: true },
       { city: "Deoria", note: "Regular Consultation Outreach" },
       { city: "Basti", note: "Patient Consultation Centre" },
       { city: "Kushinagar", note: "Patient Consultation Outreach" },

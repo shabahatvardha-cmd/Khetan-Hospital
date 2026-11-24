@@ -27,7 +27,7 @@ export const TopUtilityBar = ({ onOpenAdmin, isAdminView }) => {
 
           <div className="flex items-center space-x-1.5 text-slate-300">
             <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="truncate max-w-xs">{clinicInfo.location.split(',')[0]}, Betiahata, Gorakhpur</span>
+            <span className="truncate max-w-xs">{clinicInfo.location.split(',')[0]}, Bargadawa, Gorakhpur</span>
           </div>
         </div>
 

@@ -186,7 +186,7 @@ export const AboutPage = ({ onBookClick }) => {
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <h4 className="text-base font-bold text-slate-900">Consult Dr. Vatsal Khetan</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Khetan Hospital, Betiahata, Gorakhpur &bull; Helpline: 9662365917</p>
+                <p className="text-xs text-slate-500 mt-0.5">Khetan Hospital, Bargadawa, Gorakhpur &bull; Helpline: 9662365917</p>
               </div>
               <button 
                 onClick={onBookClick}

@@ -10,7 +10,7 @@ export const clinicInfo = {
   phone: "9662365917",
   phoneFormatted: "+91 96623 65917",
   email: "drvatsalkhetan@gmail.com",
-  address: "SK Pandey Complex, Betiahata Rd, beside Union Bank, Betiahata, Gorakhpur, Uttar Pradesh 273001",
+  address: "Vikas Nagar Bargadawa Gorakhpur, Gorakhpur, Uttar Pradesh, 273015",
   stats: {
     experienceYears: "12+",
     kneeReplacements: "1,500+",
@@ -310,7 +310,7 @@ export const allServices = [
     slug: "knee-replacement",
     aliases: ["knee-replacement-surgery-in-gorakhpur"],
     title: "Knee Replacement Surgery",
-    tagline: "Your Trusted Knee Replacement Surgeon in Gorakhpur — Bettiahata Clinic",
+    tagline: "Your Trusted Knee Replacement Surgeon in Gorakhpur — Bargadawa Clinic",
     tag: "High Longevity",
     category: "Knee",
     summary: "Total and partial knee arthroplasty utilizing high-durability implants to relieve chronic arthritic pain and restore natural joint movement. Performed using advanced tissue-sparing techniques, patients experience significantly reduced post-operative swelling and are encouraged to stand and walk within 24 hours. Why travel to Delhi or Lucknow when world-class British-trained surgical care is available right here in Gorakhpur?",
@@ -391,10 +391,10 @@ export const allServices = [
     slug: "robotic-knee-surgery",
     aliases: ["robotic-surgery-in-gorakhpur", "robotic-knee-surgery-in-gorakhpur"],
     title: "Robotic Knee Surgery",
-    tagline: "Your Trusted Robotic Knee Surgeon in Gorakhpur — Bettiahata Clinic",
+    tagline: "Your Trusted Robotic Knee Surgeon in Gorakhpur — Bargadawa Clinic",
     tag: "Zero-Error Precision",
     category: "Knee",
-    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery. By preserving healthy cruciate ligaments and surrounding soft tissue, this cutting-edge approach ensures a natural-feeling joint with minimal blood loss and swift rehabilitation. Why travel to Delhi or Lucknow when world-class robotic surgery is available at Bettiahata, Gorakhpur?",
+    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery. By preserving healthy cruciate ligaments and surrounding soft tissue, this cutting-edge approach ensures a natural-feeling joint with minimal blood loss and swift rehabilitation. Why travel to Delhi or Lucknow when world-class robotic surgery is available at Bargadawa, Gorakhpur?",
     philosophy: "Dr. Vatsal Khetan focuses on robotic sub-millimeter precision, rapid recovery, and minimal tissue trauma—ensuring every patient achieves natural joint kinematics.",
     indications: [
       "Severe joint pain that interferes with daily household activities",
@@ -857,7 +857,7 @@ export const allServices = [
       "FRCS Edinburgh & UK NHS specialist trauma training",
       "Comprehensive digital imaging and modular surgical instrumentation",
       "Over 10,000 successful orthopaedic surgical cases managed",
-      "Round-the-clock emergency hospital admission in Betiahata, Gorakhpur"
+      "Round-the-clock emergency hospital admission in Vikas Nagar, Bargadawa, Gorakhpur"
     ],
     recovery: "Tailored to fracture pattern. Stable fixation enables early bedside physiotherapy within 24-48 hours to preserve muscle tone."
   }
@@ -873,8 +873,8 @@ export const allLocations = [
   {
     city: "Gorakhpur",
     isMain: true,
-    title: "Main Surgical Centre — Betiahata, Gorakhpur",
-    address: "SK Pandey Complex, Beside Union Bank of India, Betiahata Road, Gorakhpur, UP 273001",
+    title: "Main Surgical Centre — Bargadawa, Gorakhpur",
+    address: "Vikas Nagar Bargadawa Gorakhpur, Gorakhpur, Uttar Pradesh, 273015",
     timings: "Monday - Saturday: 9:00 AM - 1:00 PM | 2:00 PM - 8:00 PM",
     phone: "+91 96623 65917",
     servicesAvailable: "Full OPD, Robotic Joint Replacement, Keyhole Arthroscopy, Digital X-Rays, Cashless TPA Desk",

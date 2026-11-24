@@ -19,7 +19,7 @@ export const doctorImages = {
   // About Section & Profile Story Photo
   portrait: "/images/dr-vatsal-main.webp",
   
-  // Secondary / Consultation Photo at Betiahata Clinic
+  // Secondary / Consultation Photo at Bargadawa Hospital
   consultation: "/images/dr-vatsal-consult.webp",
   
   // International Fellowship & UK Royal College Credentials

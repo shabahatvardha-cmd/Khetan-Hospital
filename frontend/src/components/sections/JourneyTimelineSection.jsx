@@ -6,7 +6,7 @@ export const JourneyTimelineSection = ({ onBookClick }) => {
     {
       num: "01",
       title: "Consultation & 3D Digital Imaging",
-      desc: "Comprehensive OPD evaluation at Betiahata, weight-bearing alignment X-rays, and transparent explanation of joint condition and preservation options."
+      desc: "Comprehensive OPD evaluation at Bargadawa, weight-bearing alignment X-rays, and transparent explanation of joint condition and preservation options."
     },
     {
       num: "02",

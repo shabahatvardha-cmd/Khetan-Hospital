@@ -193,7 +193,7 @@ export const ServiceDetailPage = ({ onBookClick }) => {
               Clinical evaluation, 3D imaging assessment &amp; personalized recovery planning.
             </p>
             <p className="text-xs text-[#ff5722] font-semibold pt-1">
-              Betiahata, Gorakhpur &bull; Helpline: 9662365917
+              Bargadawa, Gorakhpur &bull; Helpline: 9662365917
             </p>
           </div>
           <button 

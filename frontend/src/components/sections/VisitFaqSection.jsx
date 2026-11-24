@@ -8,7 +8,7 @@ export const VisitFaqSection = ({ onBookClick }) => {
   const faqs = [
     {
       q: "Where is Khetan Hospital located in Gorakhpur and what are the OPD hours?",
-      a: "Khetan Hospital is conveniently located at SK Pandey Complex, Beside Union Bank of India, Betiahata Road, Gorakhpur, UP 273001. Consultation timings are Monday to Saturday: 09:00 AM - 01:00 PM and 02:00 PM - 08:00 PM."
+      a: "Khetan Hospital is conveniently located at Vikas Nagar Bargadawa Gorakhpur, Gorakhpur, Uttar Pradesh, 273015. Consultation timings are Monday to Saturday: 09:00 AM - 01:00 PM and 02:00 PM - 08:00 PM."
     },
     {
       q: "Do you accept health insurance and provide cashless TPA facilities?",
@@ -49,7 +49,7 @@ export const VisitFaqSection = ({ onBookClick }) => {
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
-            A little preparation makes a big difference. Here is everything you need to know regarding cashless insurance, consultation prep, and recovery expectations at Khetan Hospital, Betiahata.
+            A little preparation makes a big difference. Here is everything you need to know regarding cashless insurance, consultation prep, and recovery expectations at Khetan Hospital, Bargadawa.
           </p>
 
           {/* Cashless Insurance Note Card */}

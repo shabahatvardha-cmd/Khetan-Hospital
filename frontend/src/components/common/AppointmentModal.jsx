@@ -39,7 +39,7 @@ export const AppointmentModal = ({ isOpen, onClose }) => {
         <div className="bg-[#0b2545] text-white p-5 flex items-center justify-between">
           <div>
             <h3 className="text-base font-bold text-white">Book An Appointment</h3>
-            <p className="text-xs text-cyan-300">{clinicInfo.clinicName} &bull; Betiahata, Gorakhpur</p>
+            <p className="text-xs text-cyan-300">{clinicInfo.clinicName} &bull; Bargadawa, Gorakhpur</p>
           </div>
           <button onClick={onClose} className="p-1 rounded-full text-slate-400 hover:text-white">
             <X className="w-5 h-5" />
