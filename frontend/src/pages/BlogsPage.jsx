@@ -47,33 +47,20 @@ export const BlogsPage = ({ onBookClick }) => {
     }
   }, [searchParams]);
 
-  // Unique categories list
-  const categories = useMemo(() => {
-    const set = new Set();
-    allBlogs.forEach(b => {
-      if (b.category) set.add(b.category);
-      if (b.allCategories) b.allCategories.forEach(c => set.add(c));
-    });
-    return ['All', ...Array.from(set).slice(0, 8)];
-  }, []);
-
-  // Filtered blogs based on search query and category
+  // Filtered blogs based on search query
   const filteredBlogs = useMemo(() => {
     return allBlogs.filter(b => {
-      const matchesSearch = 
-        !searchQuery || 
-        b.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        b.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (b.textContent && b.textContent.toLowerCase().includes(searchQuery.toLowerCase()));
-      
-      const matchesCategory = 
-        selectedCategory === 'All' || 
-        b.category === selectedCategory || 
-        b.allCategories?.includes(selectedCategory);
-
-      return matchesSearch && matchesCategory;
+      if (!searchQuery) return true;
+      const q = searchQuery.toLowerCase();
+      return (
+        b.title.toLowerCase().includes(q) ||
+        b.excerpt.toLowerCase().includes(q) ||
+        (b.category && b.category.toLowerCase().includes(q)) ||
+        (b.allCategories && b.allCategories.some(c => c.toLowerCase().includes(q))) ||
+        (b.textContent && b.textContent.toLowerCase().includes(q))
+      );
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery]);
 
   // Total pages calculation
   const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE) || 1;
@@ -135,39 +122,26 @@ export const BlogsPage = ({ onBookClick }) => {
       {/* 2. Main Content Area */}
       <section ref={gridTopRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* Search & Category Filter Strip */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          {/* Category Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleCategorySelect(cat)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? 'bg-[#00bcd4] text-white shadow-xs'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        {/* Search Strip */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <p className="text-xs text-slate-500">
+            Search clinical guides, procedure checklists, and recovery protocols:
+          </p>
 
           {/* Search Bar */}
-          <div className="w-full md:w-72 relative">
+          <div className="w-full sm:w-80 relative">
             <input 
               type="text" 
-              placeholder="Search by topic, e.g. 'Robotic', 'ACL'..." 
+              placeholder="Search by topic, e.g. 'Robotic', 'ACL', 'Hip'..." 
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-9 pr-8 py-2 rounded-full bg-white text-slate-700 placeholder-slate-400 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-xs shadow-2xs"
+              className="w-full pl-9 pr-8 py-2.5 rounded-full bg-white text-slate-700 placeholder-slate-400 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-xs shadow-xs"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             {searchQuery && (
               <button 
                 onClick={() => handleSearchChange('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -180,9 +154,9 @@ export const BlogsPage = ({ onBookClick }) => {
           <span>
             Showing <strong>{currentBlogs.length > 0 ? (currentPage - 1) * POSTS_PER_PAGE + 1 : 0}</strong> &ndash; <strong>{Math.min(currentPage * POSTS_PER_PAGE, filteredBlogs.length)}</strong> of <strong>{filteredBlogs.length}</strong> medical articles
           </span>
-          {selectedCategory !== 'All' && (
+          {searchQuery && (
             <span className="text-[#00bcd4] font-semibold">
-              Filtered by: {selectedCategory}
+              Search results for: "{searchQuery}"
             </span>
           )}
         </div>
@@ -201,12 +175,12 @@ export const BlogsPage = ({ onBookClick }) => {
                   onClick={() => setSelectedBlog(blog)}
                   className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 >
-                  {/* Photo */}
-                  <div className="h-48 bg-slate-100 overflow-hidden relative">
+                  {/* Photo with complete uncropped visibility */}
+                  <div className="h-52 bg-slate-50 overflow-hidden relative flex items-center justify-center p-3 border-b border-slate-100">
                     <img 
                       src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"
                       loading="lazy"
                       onError={(e) => {
                         e.target.onerror = null;
@@ -215,7 +189,7 @@ export const BlogsPage = ({ onBookClick }) => {
                     />
                     {blog.category && (
                       <div className="absolute top-3 left-3">
-                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-2xs">
+                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-xs border border-slate-100">
                           {blog.category}
                         </span>
                       </div>
@@ -355,11 +329,11 @@ export const BlogsPage = ({ onBookClick }) => {
             <div className="p-6 sm:p-10 overflow-y-auto space-y-6 flex-1 text-slate-700 text-xs sm:text-sm leading-relaxed">
               {/* Featured Image */}
               {selectedBlog.featuredImage && (
-                <div className="rounded-xl overflow-hidden shadow-sm bg-slate-100 max-h-80">
+                <div className="rounded-2xl overflow-hidden shadow-xs bg-slate-50 p-3 flex justify-center max-h-80 border border-slate-100">
                   <img 
                     src={selectedBlog.featuredImage} 
                     alt={selectedBlog.title} 
-                    className="w-full h-full object-cover"
+                    className="w-auto max-h-72 mx-auto object-contain"
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}

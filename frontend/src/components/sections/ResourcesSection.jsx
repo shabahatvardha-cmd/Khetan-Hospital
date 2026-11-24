@@ -50,12 +50,12 @@ export const ResourcesSection = ({ onBookClick }) => {
                 className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 onClick={() => setSelectedBlog(blog)}
               >
-                {/* Photo */}
-                <div className="h-52 bg-slate-100 overflow-hidden relative">
+                {/* Photo with complete uncropped visibility */}
+                <div className="h-52 bg-slate-50 overflow-hidden relative flex items-center justify-center p-3 border-b border-slate-100">
                   <img
                     src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
                     alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"
                     loading="lazy"
                     onError={(e) => {
                       e.target.onerror = null;
@@ -161,14 +161,16 @@ export const ResourcesSection = ({ onBookClick }) => {
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-4 flex-1 text-slate-700 text-xs sm:text-sm leading-relaxed">
               {selectedBlog.featuredImage && (
-                <img
-                  src={selectedBlog.featuredImage}
-                  alt={selectedBlog.title}
-                  className="w-full max-h-72 object-cover rounded-xl shadow-xs mb-4"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
+                <div className="rounded-2xl overflow-hidden shadow-xs bg-slate-50 p-3 flex justify-center max-h-80 border border-slate-100 mb-4">
+                  <img
+                    src={selectedBlog.featuredImage}
+                    alt={selectedBlog.title}
+                    className="w-auto max-h-72 mx-auto object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
               )}
 
               {/* RENDER FULL HTML ARTICLE */}
