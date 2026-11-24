@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Activity, MapPin, Phone, Mail } from 'lucide-react';
 import { clinicInfo } from '../../data/navigationData';
 
@@ -9,7 +10,7 @@ export const Footer = ({ onBookClick }) => {
       {/* Footer Top Bar */}
       <div className="footer-top">
         <span className="eyebrow text-slate-300">
-          ADVANCED ORTHOPEDICS & JOINT PRESERVATION · GORAKHPUR
+          ADVANCED ORTHOPEDICS &amp; JOINT PRESERVATION · GORAKHPUR
         </span>
         <a 
           href="#top" 
@@ -20,7 +21,7 @@ export const Footer = ({ onBookClick }) => {
         </a>
       </div>
 
-      {/* Massive Editorial Wordmark (Hostinger feature) */}
+      {/* Massive Editorial Wordmark */}
       <div className="footer-wordmark">
         <span>Restoring Motion</span>
         <Activity className="w-10 h-10 md:w-16 md:h-16 text-[#f37021] flex-shrink-0 animate-pulse" />
@@ -36,20 +37,23 @@ export const Footer = ({ onBookClick }) => {
             Khetan Knee N Shoulder Clinic<br />
             Betiahata, Gorakhpur, UP
           </p>
-          <p className="text-[#f37021] font-semibold">
+          <p className="text-[#f37021] font-semibold text-xs">
             MBBS · MS (Ortho) · MRCS · FRCS (UK)<br />
             IOC Diploma in Sports Medicine
           </p>
+          <Link to="/about" className="inline-flex items-center gap-1 text-xs text-orange-400 font-bold hover:underline mt-2">
+            View Complete Profile &rarr;
+          </Link>
         </div>
 
         {/* Column 2: Surgical Specialties */}
         <div>
           <h3>Specialized Care</h3>
-          <a href="#care">Robotic Knee Replacement</a>
-          <a href="#care">Knee &amp; Shoulder Arthroscopy</a>
-          <a href="#care">ACL &amp; Ligament Repair</a>
-          <a href="#care">Hip &amp; Joint Reconstruction</a>
-          <a href="#care">Joint Preservation Orthopedics</a>
+          <Link to="/services/robotic-knee-surgery">Robotic Knee Replacement</Link>
+          <Link to="/services/shoulder-arthroscopy">Knee &amp; Shoulder Arthroscopy</Link>
+          <Link to="/services/acl-surgery">ACL &amp; Ligament Repair</Link>
+          <Link to="/services/hip-replacement">Hip &amp; Joint Reconstruction</Link>
+          <Link to="/services">View All 9 Specialties &rarr;</Link>
         </div>
 
         {/* Column 3: Patient Care */}
@@ -58,9 +62,10 @@ export const Footer = ({ onBookClick }) => {
           <button onClick={onBookClick} className="text-left hover:text-[#f37021] transition-colors mb-2 block text-xs text-[#bcccdc]">
             Book OPD Appointment
           </button>
-          <a href="#your-visit">Cashless TPA Insurance</a>
-          <a href="#your-visit">First Visit Guidelines</a>
-          <a href="#resources">Post-Op Rehab Guides</a>
+          <Link to="/about/published-papers">Published Research Papers</Link>
+          <Link to="/about/memorable-moments">Memorable Moments &amp; UK Training</Link>
+          <Link to="/blogs">Patient Recovery Guides</Link>
+          <Link to="/contact">Emergency Contact &amp; OPD Desk</Link>
         </div>
 
         {/* Column 4: Clinic Hours & Outreach */}
@@ -73,8 +78,11 @@ export const Footer = ({ onBookClick }) => {
             <strong>OPD:</strong> {clinicInfo.timings}
           </p>
           <p>
-            <strong>Priority Phone:</strong> {clinicInfo.phone}
+            <strong>Priority Phone:</strong> <a href={`tel:${clinicInfo.phone.replace(/\s+/g, '')}`} className="text-[#f37021]">{clinicInfo.phone}</a>
           </p>
+          <Link to="/locations" className="inline-flex items-center gap-1 text-xs text-orange-400 font-bold hover:underline mt-1">
+            Outreach Clinics (Deoria, Basti, Bihar) &rarr;
+          </Link>
         </div>
 
       </div>

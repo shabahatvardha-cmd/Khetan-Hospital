@@ -1,75 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
-import { HeroSection } from './components/sections/HeroSection';
-import { DoctorStorySection } from './components/sections/DoctorStorySection';
-import { CareSection } from './components/sections/CareSection';
-import { ResourcesSection } from './components/sections/ResourcesSection';
-import { PhilosophySection } from './components/sections/PhilosophySection';
-import { JourneyTimelineSection } from './components/sections/JourneyTimelineSection';
-import { VisitFaqSection } from './components/sections/VisitFaqSection';
-import { BookingInvitationSection } from './components/sections/BookingInvitationSection';
 import { Footer } from './components/layout/Footer';
 import { AppointmentModal } from './components/common/AppointmentModal';
 import { AdminDashboard } from './admin/AdminDashboard';
+
+// Dedicated Route Pages
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { MemorableMomentsPage } from './pages/MemorableMomentsPage';
+import { PublishedPapersPage } from './pages/PublishedPapersPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
+import { LocationsPage } from './pages/LocationsPage';
+import { BlogsPage } from './pages/BlogsPage';
+import { ContactPage } from './pages/ContactPage';
+
+// Helper component to scroll to top whenever route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   const [isAdminView, setIsAdminView] = useState(false);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
 
-  // If Admin View is toggled, render the Clinic Admin Dashboard
+  // If Admin View is toggled, render the Clinic Admin CRM Dashboard
   if (isAdminView) {
     return <AdminDashboard onBackToPublicSite={() => setIsAdminView(false)} />;
   }
 
-  // Otherwise, render the Complete Modern Website (Hostinger Horizons Aesthetic)
   return (
-    <div id="top" className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800 antialiased selection:bg-[#08284d] selection:text-white">
-      
-      {/* 1. Modern Glassmorphic Sticky Navbar (Hostinger Specs) */}
-      <Navbar 
-        onBookClick={() => setIsAppointmentModalOpen(true)}
-        isAdminView={isAdminView}
-        onToggleAdmin={() => setIsAdminView(!isAdminView)}
-      />
-
-      {/* Main Website Sections */}
-      <main className="flex-1">
+    <BrowserRouter>
+      <ScrollToTop />
+      <div id="top" className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800 antialiased selection:bg-[#08284d] selection:text-white">
         
-        {/* 2. Hero Section with Doctor Photo, Soft Gradient Wash & Floating Badge */}
-        <HeroSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+        {/* Sticky Header with Navigation Dropdowns */}
+        <Navbar 
+          onBookClick={() => setIsAppointmentModalOpen(true)}
+          isAdminView={isAdminView}
+          onToggleAdmin={() => setIsAdminView(!isAdminView)}
+        />
 
-        {/* 3. Meet Dr. Vatsal Khetan — Two-Column Doctor Portrait & Story */}
-        <DoctorStorySection onBookClick={() => setIsAppointmentModalOpen(true)} />
+        {/* Dynamic Multi-Page Router */}
+        <main className="flex-1">
+          <Routes>
+            {/* 1. Home Page */}
+            <Route path="/" element={<HomePage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 4. Clinical Specialties & Surgical Care — 3-Tile Visual Grid */}
-        <CareSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+            {/* 2. About Pages */}
+            <Route path="/about" element={<AboutPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/about/dr-vatsal-khetan" element={<AboutPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/about/memorable-moments" element={<MemorableMomentsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/timeline" element={<MemorableMomentsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/about/published-papers" element={<PublishedPapersPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 5. Patient Recovery Guides & Educational Rail */}
-        <ResourcesSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+            {/* 3. Services & Surgery Detail Pages */}
+            <Route path="/services" element={<ServicesPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/services/:slug" element={<ServiceDetailPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 6. Clinical Philosophy & Editorial Quote Banner */}
-        <PhilosophySection />
+            {/* 4. Outreach Locations */}
+            <Route path="/locations" element={<LocationsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/locations/:city" element={<LocationsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 7. Surgical Care Journey — Step-by-Step Pathway */}
-        <JourneyTimelineSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+            {/* 5. Patient Education & Blogs */}
+            <Route path="/blogs" element={<BlogsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/blogs/:slug" element={<BlogsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 8. Before Your Visit — Cashless Insurance & FAQs Accordion */}
-        <VisitFaqSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+            {/* 6. Contact & OPD Hours */}
+            <Route path="/contact" element={<ContactPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+            <Route path="/contact-us" element={<ContactPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
 
-        {/* 9. Booking Invitation Banner with Doctor Consultation Anchor */}
-        <BookingInvitationSection onBookClick={() => setIsAppointmentModalOpen(true)} />
+            {/* Fallback */}
+            <Route path="*" element={<HomePage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
+          </Routes>
+        </main>
 
-      </main>
+        {/* Site Footer */}
+        <Footer onBookClick={() => setIsAppointmentModalOpen(true)} />
 
-      {/* 10. Modern Massive Wordmark Footer */}
-      <Footer onBookClick={() => setIsAppointmentModalOpen(true)} />
+        {/* Global Appointment Booking Modal */}
+        <AppointmentModal 
+          isOpen={isAppointmentModalOpen}
+          onClose={() => setIsAppointmentModalOpen(false)}
+        />
 
-      {/* 11. WhatsApp & REST API Appointment Modal */}
-      <AppointmentModal 
-        isOpen={isAppointmentModalOpen}
-        onClose={() => setIsAppointmentModalOpen(false)}
-      />
-
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }

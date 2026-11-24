@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ArrowUpRight, 
   Menu, 
   X, 
   ChevronDown, 
   Phone, 
-  ShieldCheck, 
-  LayoutDashboard,
-  MapPin,
-  Sparkles
+  LayoutDashboard
 } from 'lucide-react';
 import { clinicInfo, navMenu } from '../../data/navigationData';
 
@@ -19,7 +17,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
 
   return (
     <>
-      {/* 1. Hostinger-Inspired Micro Status Bar */}
+      {/* 1. Micro Status Bar */}
       <div className="bg-[#08284d] text-white text-[10.5px] py-1.5 px-4 hidden md:block border-b border-[#0f3563]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-6">
@@ -60,12 +58,12 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
         </div>
       </div>
 
-      {/* 2. Modern 90px Sticky Header (Hostinger Horizons Specification) */}
+      {/* 2. Modern Sticky Header */}
       <header className="site-header">
         
         {/* Brand / Logo */}
-        <a 
-          href="/" 
+        <Link 
+          to="/" 
           className="flex items-center gap-3 flex-shrink-0 group py-1"
           aria-label="Dr. Vatsal Khetan Clinic"
         >
@@ -74,7 +72,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             alt="Dr. Vatsal Khetan Logo" 
             className="h-8 sm:h-11 md:h-13 w-auto object-contain transition-transform group-hover:scale-[1.02]"
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav hidden lg:flex" aria-label="Main navigation">
@@ -87,7 +85,8 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
                   onMouseEnter={() => setActiveDropdown(item.title)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button 
+                  <Link 
+                    to={item.href}
                     className="flex items-center gap-1.5 focus:outline-none"
                     aria-expanded={activeDropdown === item.title}
                   >
@@ -95,7 +94,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
                       activeDropdown === item.title ? 'rotate-180 text-[#f37021]' : 'text-slate-400'
                     }`} />
-                  </button>
+                  </Link>
 
                   {/* Dropdown Menu */}
                   {activeDropdown === item.title && (
@@ -103,29 +102,33 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
                       className="absolute top-full left-0 pt-2 w-80 animate-in fade-in zoom-in-95 duration-150 z-50"
                     >
                       <div className="glass-dropdown rounded-2xl p-3 shadow-dropdown">
-                        {item.dropdown.map((sub, sIdx) => (
-                          <a
-                            key={sIdx}
-                            href={sub.href}
-                            className="block p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="text-xs font-bold text-[#08284d] group-hover/item:text-[#f37021] transition-colors">
-                                {sub.title}
-                              </span>
-                              {sub.tag && (
-                                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-orange-100 text-[#f37021] font-semibold">
-                                  {sub.tag}
+                        {item.dropdown.map((sub, sIdx) => {
+                          const targetHref = sub.href || `/locations/${sub.city?.toLowerCase()}`;
+                          return (
+                            <Link
+                              key={sIdx}
+                              to={targetHref}
+                              onClick={() => setActiveDropdown(null)}
+                              className="block p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs font-bold text-[#08284d] group-hover/item:text-[#f37021] transition-colors">
+                                  {sub.title || sub.city}
                                 </span>
+                                {(sub.tag || sub.isMain) && (
+                                  <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-orange-100 text-[#f37021] font-semibold">
+                                    {sub.tag || 'Main Clinic'}
+                                  </span>
+                                )}
+                              </div>
+                              {(sub.desc || sub.note) && (
+                                <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 font-normal">
+                                  {sub.desc || sub.note}
+                                </p>
                               )}
-                            </div>
-                            {sub.desc && (
-                              <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 font-normal lowercase first-letter:uppercase">
-                                {sub.desc}
-                              </p>
-                            )}
-                          </a>
-                        ))}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -134,18 +137,18 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             }
 
             return (
-              <a 
+              <Link 
                 key={idx} 
-                href={item.href}
+                to={item.href}
               >
                 {item.title}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
         {/* Right Header Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           
           {/* Emergency / Phone Contact (Desktop) */}
           <a
@@ -156,7 +159,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             <span>{clinicInfo.phone}</span>
           </a>
 
-          {/* Hostinger Modern Navy Pill Button */}
+          {/* Booking Pill Button */}
           <button 
             onClick={onBookClick}
             className="button-navy !min-h-[38px] sm:!min-h-[44px] !px-3 sm:!px-5 !py-1.5 sm:!py-2.5 !text-[10px] sm:!text-[11.5px] !gap-1.5 sm:!gap-3"
@@ -208,27 +211,30 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
                       </button>
                       {mobileExpanded === item.title && (
                         <div className="pl-4 space-y-2 mt-2">
-                          {item.dropdown.map((sub, sIdx) => (
-                            <a
-                              key={sIdx}
-                              href={sub.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="block py-1.5 text-xs font-medium text-slate-700 hover:text-[#f37021]"
-                            >
-                              {sub.title}
-                            </a>
-                          ))}
+                          {item.dropdown.map((sub, sIdx) => {
+                            const targetHref = sub.href || `/locations/${sub.city?.toLowerCase()}`;
+                            return (
+                              <Link
+                                key={sIdx}
+                                to={targetHref}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="block py-1.5 text-xs font-medium text-slate-700 hover:text-[#f37021]"
+                              >
+                                {sub.title || sub.city}
+                              </Link>
+                            );
+                          })}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className="block py-2 text-sm font-bold text-[#08284d]"
                     >
                       {item.title}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}
