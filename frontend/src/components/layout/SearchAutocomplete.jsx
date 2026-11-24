@@ -13,7 +13,7 @@ import {
   TrendingUp,
   Sparkles
 } from 'lucide-react';
-import { allServices, allBlogs, clinicInfo } from '../../data/clinicContent';
+import { allServices, allBlogs } from '../../data/clinicContent';
 
 const RECENT_SEARCHES_KEY = 'khetan_hospital_recent_searches';
 const MAX_RECENTS = 5;
@@ -111,7 +111,6 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     if ('dr vatsal khetan frcs surgeon qualification edinburgh fellowship'.includes(q)) {
       infoMatches.push({
         title: 'Dr. Vatsal Khetan — FRCS (Edinburgh), M.Ch (UK)',
-        subtitle: 'Senior Consultant Joint Replacement & Sports Surgeon',
         path: '/about',
         icon: User
       });
@@ -119,15 +118,13 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     if ('opd timings hours betiahata contact emergency phone appointment'.includes(q)) {
       infoMatches.push({
         title: 'Betiahata Clinic OPD Timings & Location',
-        subtitle: 'Mon - Sat: 9:00 AM – 8:00 PM • Betiahata Rd, Gorakhpur',
         path: '/contact',
         icon: MapPin
       });
     }
     if ('papers research publication journal cementless bone'.includes(q)) {
       infoMatches.push({
-        title: 'Published Research Papers (Bone & Joint Open, Acta Orthop)',
-        subtitle: '10 International Peer-Reviewed Surgical Publications',
+        title: 'Published Research Papers (Bone & Joint Open)',
         path: '/about/published-papers',
         icon: BookOpen
       });
@@ -158,7 +155,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
   };
 
   return (
-    <div ref={containerRef} className={`relative ${isMobile ? 'w-full' : 'w-52 lg:w-64'}`}>
+    <div ref={containerRef} className={`relative ${isMobile ? 'w-full' : 'w-48 lg:w-60'}`}>
       {/* Search Input Box */}
       <form onSubmit={handleSubmit} className="relative">
         <input 
@@ -266,7 +263,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
 
             </div>
           ) : (
-            /* B. While typing: Live Autocomplete Results */
+            /* B. While typing: Live Autocomplete Results (Strictly 1-Liner items) */
             <div className="max-h-96 overflow-y-auto divide-y divide-slate-100 text-xs">
               
               {!hasResults && (
@@ -276,17 +273,17 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                   <p className="text-[11px] text-slate-400 mt-1">Press Enter to search all 61 medical publications</p>
                   <button 
                     onClick={handleSubmit}
-                    className="mt-3 px-4 py-1.5 rounded-full bg-[#00bcd4] text-white font-bold text-xs hover:bg-[#00acc1]"
+                    className="mt-3 px-4 py-1.5 rounded-full bg-[#00bcd4] text-white font-bold text-xs hover:bg-[#00acc1] cursor-pointer"
                   >
                     Search Blogs for "{query}"
                   </button>
                 </div>
               )}
 
-              {/* 1. Surgeries & Specialties */}
+              {/* 1. Surgeries & Specialties (Strictly 1-Liner) */}
               {liveResults.services.length > 0 && (
-                <div className="p-3">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5 px-2">
+                <div className="p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5 px-2">
                     <Activity className="w-3 h-3 text-[#00bcd4]" />
                     <span>Specialized Surgeries</span>
                   </div>
@@ -297,25 +294,23 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                         onClick={() => handleSelect(`/services/${srv.slug}`, srv.title)}
                         className="p-2 rounded-xl hover:bg-sky-50 transition-colors flex items-center justify-between cursor-pointer group"
                       >
-                        <div>
-                          <div className="font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors">
+                        <div className="flex items-center gap-2 truncate">
+                          <Activity className="w-3.5 h-3.5 text-[#00bcd4] shrink-0" />
+                          <span className="font-semibold text-slate-800 group-hover:text-[#00bcd4] transition-colors truncate">
                             {srv.title}
-                          </div>
-                          <div className="text-[10px] text-slate-400 line-clamp-1">
-                            {srv.tag || srv.category} Specialty
-                          </div>
+                          </span>
                         </div>
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#00bcd4] -translate-x-1 group-hover:translate-x-0 transition-all" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#00bcd4] -translate-x-1 group-hover:translate-x-0 transition-all shrink-0 ml-2" />
                       </div>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* 2. Doctor & Facility Quick Matches */}
+              {/* 2. Doctor & Facility Quick Matches (Strictly 1-Liner) */}
               {liveResults.info.length > 0 && (
-                <div className="p-3 bg-slate-50/50">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5 px-2">
+                <div className="p-2.5 bg-slate-50/50">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5 px-2">
                     <User className="w-3 h-3 text-purple-600" />
                     <span>Doctor &amp; Hospital Information</span>
                   </div>
@@ -328,18 +323,13 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                           onClick={() => handleSelect(info.path, info.title)}
                           className="p-2 rounded-xl hover:bg-purple-50 transition-colors flex items-center justify-between cursor-pointer group"
                         >
-                          <div className="flex items-center gap-2">
-                            <Icon className="w-4 h-4 text-purple-600 shrink-0" />
-                            <div>
-                              <div className="font-bold text-slate-800 group-hover:text-purple-600 transition-colors">
-                                {info.title}
-                              </div>
-                              <div className="text-[10px] text-slate-400">
-                                {info.subtitle}
-                              </div>
-                            </div>
+                          <div className="flex items-center gap-2 truncate">
+                            <Icon className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                            <span className="font-semibold text-slate-800 group-hover:text-purple-600 transition-colors truncate">
+                              {info.title}
+                            </span>
                           </div>
-                          <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-purple-600 transition-colors" />
+                          <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-purple-600 shrink-0 transition-transform group-hover:translate-x-0.5 ml-2" />
                         </div>
                       );
                     })}
@@ -347,10 +337,10 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                 </div>
               )}
 
-              {/* 3. Clinical Guides & Blogs */}
+              {/* 3. Clinical Guides & Blogs (Strictly 1-Liner) */}
               {liveResults.blogs.length > 0 && (
-                <div className="p-3">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5 px-2">
+                <div className="p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5 px-2">
                     <BookOpen className="w-3 h-3 text-[#ff5722]" />
                     <span>Clinical Guides &amp; Articles</span>
                   </div>
@@ -361,15 +351,13 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                         onClick={() => handleSelect(`/blogs?search=${encodeURIComponent(blog.title)}`, blog.title)}
                         className="p-2 rounded-xl hover:bg-orange-50 transition-colors flex items-center justify-between cursor-pointer group"
                       >
-                        <div className="pr-2">
-                          <div className="font-bold text-slate-800 group-hover:text-[#ff5722] transition-colors line-clamp-1">
+                        <div className="flex items-center gap-2 truncate">
+                          <BookOpen className="w-3.5 h-3.5 text-[#ff5722] shrink-0" />
+                          <span className="font-semibold text-slate-800 group-hover:text-[#ff5722] transition-colors truncate">
                             {blog.title}
-                          </div>
-                          <div className="text-[10px] text-slate-400">
-                            {blog.date || 'Recent Clinical Guide'}
-                          </div>
+                          </span>
                         </div>
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#ff5722] shrink-0" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#ff5722] shrink-0 transition-transform group-hover:translate-x-0.5 ml-2" />
                       </div>
                     ))}
                   </div>
