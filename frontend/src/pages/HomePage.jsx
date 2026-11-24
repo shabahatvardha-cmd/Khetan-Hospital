@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeroSection } from '../components/sections/HeroSection';
 import { DoctorStorySection } from '../components/sections/DoctorStorySection';
+import { StatsCounterSection } from '../components/sections/StatsCounterSection';
 import { CareSection } from '../components/sections/CareSection';
 import { ResourcesSection } from '../components/sections/ResourcesSection';
 import { PhilosophySection } from '../components/sections/PhilosophySection';
@@ -17,22 +18,25 @@ export const HomePage = ({ onBookClick }) => {
       {/* 2. Meet Dr. Vatsal Khetan — Two-Column Doctor Portrait & Story */}
       <DoctorStorySection onBookClick={onBookClick} />
 
-      {/* 3. Clinical Specialties & Surgical Care — 3-Tile Visual Grid */}
+      {/* 3. Surgical Excellence & Milestone Stats Counter Strip */}
+      <StatsCounterSection />
+
+      {/* 4. Clinical Specialties & Surgical Care — 6-Department Oreo Grid */}
       <CareSection onBookClick={onBookClick} />
 
-      {/* 4. Patient Recovery Guides & Educational Rail */}
+      {/* 5. Patient Recovery Guides & Medical Blogs Showcase */}
       <ResourcesSection onBookClick={onBookClick} />
 
-      {/* 5. Clinical Philosophy & Editorial Quote Banner */}
+      {/* 6. Clinical Philosophy & Editorial Quote Banner */}
       <PhilosophySection />
 
-      {/* 6. Surgical Care Journey — Step-by-Step Pathway */}
+      {/* 7. Surgical Care Journey — Step-by-Step Pathway */}
       <JourneyTimelineSection onBookClick={onBookClick} />
 
-      {/* 7. Before Your Visit — Cashless Insurance & FAQs Accordion */}
+      {/* 8. Before Your Visit — Cashless Insurance & FAQs Accordion */}
       <VisitFaqSection onBookClick={onBookClick} />
 
-      {/* 8. Booking Invitation Banner with Doctor Consultation Anchor */}
+      {/* 9. Interactive Appointment Booking Hub with Doctor Consultation Desk */}
       <BookingInvitationSection onBookClick={onBookClick} />
     </>
   );

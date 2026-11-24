@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { AppointmentModal } from './components/common/AppointmentModal';
+import { FloatingActions } from './components/common/FloatingActions';
 import { AdminDashboard } from './admin/AdminDashboard';
 
 // Dedicated Route Pages
@@ -88,6 +89,9 @@ export default function App() {
           isOpen={isAppointmentModalOpen}
           onClose={() => setIsAppointmentModalOpen(false)}
         />
+
+        {/* Global Floating Action Buttons (WhatsApp, Emergency, Scroll-to-Top) */}
+        <FloatingActions onBookClick={() => setIsAppointmentModalOpen(true)} />
 
       </div>
     </BrowserRouter>
