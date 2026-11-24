@@ -46,12 +46,18 @@ export const ResourcesSection = ({ onBookClick }) => {
                 className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 onClick={() => setSelectedBlog(blog)}
               >
-                {/* Photo fitting the card banner cleanly */}
-                <div className="h-44 sm:h-48 w-full bg-slate-100 overflow-hidden relative">
+                {/* Photo: Ambient blurred fill + 100% uncut foreground image (zero clipping from top) */}
+                <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 flex items-center justify-center border-b border-slate-100">
+                  <img
+                    src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover blur-md scale-110 opacity-30 select-none pointer-events-none"
+                    aria-hidden="true"
+                  />
                   <img
                     src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
                     alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
+                    className="relative z-10 max-h-full max-w-full object-contain p-2 group-hover:scale-102 transition-transform duration-300 select-none"
                     loading="lazy"
                     onError={(e) => {
                       e.target.onerror = null;
