@@ -1,15 +1,15 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  BookOpen, 
-  Clock, 
-  Calendar, 
-  ChevronRight, 
-  Search, 
-  Tag, 
-  X, 
-  User, 
+import {
+  ArrowRight,
+  BookOpen,
+  Clock,
+  Calendar,
+  ChevronRight,
+  Search,
+  Tag,
+  X,
+  User,
   MessageSquare,
   ChevronLeft,
   Share2,
@@ -101,7 +101,7 @@ export const BlogsPage = ({ onBookClick }) => {
 
   return (
     <div className="bg-slate-50 min-h-screen">
-      
+
       {/* 1. Oreo Interior Breadcrumb Banner */}
       <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -121,7 +121,7 @@ export const BlogsPage = ({ onBookClick }) => {
 
       {/* 2. Main Content Area */}
       <section ref={gridTopRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
+
         {/* Search Strip */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <p className="text-xs text-slate-500">
@@ -130,16 +130,16 @@ export const BlogsPage = ({ onBookClick }) => {
 
           {/* Search Bar */}
           <div className="w-full sm:w-80 relative">
-            <input 
-              type="text" 
-              placeholder="Search by topic, e.g. 'Robotic', 'ACL', 'Hip'..." 
+            <input
+              type="text"
+              placeholder="Search by topic, e.g. 'Robotic', 'ACL', 'Hip'..."
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               className="w-full pl-9 pr-8 py-2.5 rounded-full bg-white text-slate-700 placeholder-slate-400 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-xs shadow-xs"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             {searchQuery && (
-              <button 
+              <button
                 onClick={() => handleSearchChange('')}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
               >
@@ -166,15 +166,15 @@ export const BlogsPage = ({ onBookClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentBlogs.map((blog, idx) => {
               return (
-                <article 
+                <article
                   key={blog.id || idx}
                   onClick={() => setSelectedBlog(blog)}
                   className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 >
                   {/* Photo: Ambient blurred fill + 100% uncut foreground image (zero clipping from top) */}
                   <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 flex items-center justify-center border-b border-slate-100">
-                    <img 
-                      src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
+                    <img
+                      src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
                       alt="" 
                       className="absolute inset-0 w-full h-full object-cover blur-md scale-110 opacity-30 select-none pointer-events-none"
                       aria-hidden="true"
@@ -251,19 +251,18 @@ export const BlogsPage = ({ onBookClick }) => {
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
                 // Show first, last, and pages close to current
                 if (
-                  page === 1 || 
-                  page === totalPages || 
+                  page === 1 ||
+                  page === totalPages ||
                   (page >= currentPage - 2 && page <= currentPage + 2)
                 ) {
                   return (
                     <button
                       key={page}
                       onClick={() => handlePageChange(page)}
-                      className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        currentPage === page
-                          ? 'bg-[#00bcd4] text-white shadow-xs'
-                          : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
-                      }`}
+                      className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${currentPage === page
+                        ? 'bg-[#00bcd4] text-white shadow-xs'
+                        : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
+                        }`}
                     >
                       {page}
                     </button>
@@ -291,7 +290,7 @@ export const BlogsPage = ({ onBookClick }) => {
       {/* 3. Comprehensive Article Modal Reader (Renders Full Article Content) */}
       {selectedBlog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div 
+          <div
             className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
@@ -305,7 +304,7 @@ export const BlogsPage = ({ onBookClick }) => {
                   {selectedBlog.title}
                 </h2>
               </div>
-              <button 
+              <button
                 onClick={() => setSelectedBlog(null)}
                 className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors cursor-pointer shrink-0"
                 aria-label="Close"
@@ -319,9 +318,9 @@ export const BlogsPage = ({ onBookClick }) => {
               {/* Featured Image */}
               {selectedBlog.featuredImage && (
                 <div className="rounded-2xl overflow-hidden shadow-xs bg-slate-50 p-3 flex justify-center max-h-80 border border-slate-100">
-                  <img 
-                    src={selectedBlog.featuredImage} 
-                    alt={selectedBlog.title} 
+                  <img
+                    src={selectedBlog.featuredImage}
+                    alt={selectedBlog.title}
                     className="w-auto max-h-72 mx-auto object-contain"
                     onError={(e) => {
                       e.target.style.display = 'none';
@@ -346,7 +345,7 @@ export const BlogsPage = ({ onBookClick }) => {
                     <Clock className="w-3.5 h-3.5 text-[#00bcd4]" />
                     <span>{selectedBlog.readTime || '5 min read'}</span>
                   </span>
-                  <button 
+                  <button
                     onClick={handleShare}
                     className="inline-flex items-center gap-1 text-[#00bcd4] hover:underline font-bold"
                   >
@@ -357,10 +356,10 @@ export const BlogsPage = ({ onBookClick }) => {
               </div>
 
               {/* RENDER FULL HTML ARTICLE */}
-              <div 
+              <div
                 className="blog-article-content max-w-none text-slate-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ 
-                  __html: selectedBlog.content || selectedBlog.rawHtml || selectedBlog.textContent || selectedBlog.excerpt 
+                dangerouslySetInnerHTML={{
+                  __html: selectedBlog.content || selectedBlog.rawHtml || selectedBlog.textContent || selectedBlog.excerpt
                 }}
               />
             </div>

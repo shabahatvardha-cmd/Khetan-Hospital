@@ -170,10 +170,10 @@ export const ResourcesSection = ({ onBookClick }) => {
               )}
 
               {/* RENDER FULL HTML ARTICLE */}
-              <div 
+              <div
                 className="blog-article-content max-w-none text-slate-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ 
-                  __html: selectedBlog.content || selectedBlog.rawHtml || selectedBlog.textContent || selectedBlog.excerpt 
+                dangerouslySetInnerHTML={{
+                  __html: selectedBlog.content || selectedBlog.rawHtml || selectedBlog.textContent || selectedBlog.excerpt
                 }}
               />
             </div>
