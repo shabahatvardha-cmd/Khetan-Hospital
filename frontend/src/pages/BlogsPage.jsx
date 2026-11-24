@@ -171,8 +171,8 @@ export const BlogsPage = ({ onBookClick }) => {
                   onClick={() => setSelectedBlog(blog)}
                   className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 >
-                  {/* Photo with complete uncropped visibility */}
-                  <div className="h-52 bg-slate-50 overflow-hidden relative flex items-center justify-center p-3 border-b border-slate-100">
+                  {/* Photo with complete uncropped visibility (compact sleek height) */}
+                  <div className="h-32 sm:h-36 bg-slate-50 overflow-hidden relative flex items-center justify-center p-2 border-b border-slate-100">
                     <img 
                       src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
                       alt={blog.title}
@@ -184,16 +184,16 @@ export const BlogsPage = ({ onBookClick }) => {
                       }}
                     />
                     {blog.category && (
-                      <div className="absolute top-3 left-3">
-                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-xs border border-slate-100">
+                      <div className="absolute top-2.5 left-2.5">
+                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-xs border border-slate-100">
                           {blog.category}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  {/* Content (Title & Meta only, no duplicate description) */}
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  {/* Content (Title & Meta only, compact layout) */}
+                  <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors leading-snug line-clamp-2">
                       {blog.title}
                     </h3>
