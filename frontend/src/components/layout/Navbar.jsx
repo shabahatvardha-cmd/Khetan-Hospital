@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -24,6 +24,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Scroll listener to pin white bar at the top on scroll
   useEffect(() => {
@@ -50,6 +51,20 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  const handleNavLinkClick = () => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery && searchQuery.trim()) {
+      navigate(`/blogs?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
+      setMobileMenuOpen(false);
+    }
+  };
 
   const navItems = [
     { title: 'Home', href: '/' },
