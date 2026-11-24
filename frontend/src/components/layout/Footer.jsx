@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { clinicInfo } from '../../data/clinicContent';
 
-export const Footer = ({ onBookClick }) => {
+export const Footer = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -145,8 +145,19 @@ export const Footer = ({ onBookClick }) => {
 
         {/* Bottom Bar: Copyright & Scroll to Top */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            Copyright &copy; 2026 <strong>Khetan Hospital</strong>. All rights reserved.
+          <div className="flex items-center gap-2">
+            <span>Copyright &copy; 2026 <strong>Khetan Hospital</strong>. All rights reserved.</span>
+            {onToggleAdmin && (
+              <>
+                <span className="text-slate-300">&bull;</span>
+                <button 
+                  onClick={onToggleAdmin}
+                  className="hover:text-[#00bcd4] transition-colors text-[11px] underline cursor-pointer text-slate-400"
+                >
+                  {isAdminView ? '← Public Site' : 'Doctor Portal'}
+                </button>
+              </>
+            )}
           </div>
 
           {/* Oreo Centered Scroll-to-top Orange Dot Button */}

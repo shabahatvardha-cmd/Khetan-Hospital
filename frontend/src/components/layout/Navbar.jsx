@@ -29,7 +29,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   // Scroll listener to pin white bar at the top on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 95);
+      setIsScrolled(window.scrollY > 75);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -126,44 +126,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   return (
     <header className="w-full relative z-50">
 
-      {/* 1. Top Bar (Oreo Template top thin line) */}
-      <div className="bg-[#1e2229] text-slate-300 text-[11px] py-1.5 px-4 sm:px-6 lg:px-8 border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <a
-              href="mailto:drvatsalkhetan@gmail.com"
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Mail className="w-3 h-3 text-[#00c5dc]" />
-              <span>drvatsalkhetan@gmail.com</span>
-            </a>
-            <span className="text-white/20 hidden sm:inline">|</span>
-            <a
-              href="tel:9662365917"
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Phone className="w-3 h-3 text-[#00c5dc]" />
-              <span>+91 96623 65917</span>
-            </a>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <span className="text-emerald-400 font-semibold hidden md:inline-flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Emergency OPD Open
-            </span>
-            <span className="text-white/20 hidden md:inline">|</span>
-            <button
-              onClick={onToggleAdmin}
-              className="hover:text-white transition-colors text-[10.5px] cursor-pointer"
-            >
-              {isAdminView ? '← Public Portal' : 'Doctor Sign In'}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Main Cyan Brand Header (Exact Oreo Vibrant Cyan Bar) */}
+      {/* Main Cyan Brand Header */}
       <div className="bg-[#00bcd4] text-white py-4 px-4 sm:px-6 lg:px-8 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
 

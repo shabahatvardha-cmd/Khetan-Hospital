@@ -127,7 +127,11 @@ export default function App() {
         </main>
 
         {/* Site Footer */}
-        <Footer onBookClick={() => setIsAppointmentModalOpen(true)} />
+        <Footer 
+          onBookClick={() => setIsAppointmentModalOpen(true)} 
+          onToggleAdmin={() => setIsAdminView(!isAdminView)}
+          isAdminView={isAdminView}
+        />
 
         {/* Global Appointment Booking Modal */}
         <AppointmentModal 
