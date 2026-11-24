@@ -63,15 +63,6 @@ export const ServiceDetailPage = ({ onBookClick }) => {
           </div>
           
           <div className="lg:col-span-7 p-6 sm:p-8 space-y-4 flex flex-col justify-center">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-sky-50 text-[#00bcd4]">
-                {service.category} SPECIALTY
-              </span>
-              <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-orange-50 text-[#ff5722]">
-                {service.tag}
-              </span>
-            </div>
-
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               {service.summary}
             </p>

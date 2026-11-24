@@ -313,7 +313,7 @@ export const allServices = [
     tagline: "Your Trusted Knee Replacement Surgeon in Gorakhpur — Bettiahata Clinic",
     tag: "High Longevity",
     category: "Knee",
-    summary: "Total and partial knee arthroplasty utilizing high-durability implants to relieve chronic arthritic pain and restore natural joint movement. Why go to Delhi or Lucknow when world-class British-trained care is available in Gorakhpur?",
+    summary: "Total and partial knee arthroplasty utilizing high-durability implants to relieve chronic arthritic pain and restore natural joint movement. Performed using advanced tissue-sparing techniques, patients experience significantly reduced post-operative swelling and are encouraged to stand and walk within 24 hours. Why travel to Delhi or Lucknow when world-class British-trained surgical care is available right here in Gorakhpur?",
     philosophy: "Dr. Vatsal Khetan prioritizes joint preservation first. Knee replacement is recommended only when conservative treatments are exhausted and surgery offers the best long-term mobility.",
     indications: [
       "Persistent knee pain, especially severe at night or early in the morning",
@@ -394,7 +394,7 @@ export const allServices = [
     tagline: "Your Trusted Robotic Knee Surgeon in Gorakhpur — Bettiahata Clinic",
     tag: "Zero-Error Precision",
     category: "Knee",
-    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery. Why travel to Delhi or Lucknow when world-class robotic surgery is available at Bettiahata, Gorakhpur?",
+    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery. By preserving healthy cruciate ligaments and surrounding soft tissue, this cutting-edge approach ensures a natural-feeling joint with minimal blood loss and swift rehabilitation. Why travel to Delhi or Lucknow when world-class robotic surgery is available at Bettiahata, Gorakhpur?",
     philosophy: "Dr. Vatsal Khetan focuses on robotic sub-millimeter precision, rapid recovery, and minimal tissue trauma—ensuring every patient achieves natural joint kinematics.",
     indications: [
       "Severe joint pain that interferes with daily household activities",
@@ -474,7 +474,7 @@ export const allServices = [
     tagline: "Best Hip Replacement Doctors in Gorakhpur — Dr. Vatsal Khetan",
     tag: "Rapid Recovery",
     category: "Hip",
-    summary: "Total Hip Arthroplasty (THA) using ceramic-on-polyethylene bearings for avascular necrosis (AVN), osteoarthritis, and hip fractures. Restore mobility and live a pain-free life with advanced joint care.",
+    summary: "Total Hip Arthroplasty (THA) using ceramic-on-polyethylene bearings for avascular necrosis (AVN), osteoarthritis, and hip fractures. Utilizing UK Wrightington fellowship techniques, our muscle-sparing approach accelerates healing, allowing patients to walk comfortably on Day 1 and return to active daily living without limping.",
     philosophy: "Each patient receives a customized treatment plan focusing on comfort, rapid recovery, and long-term durability using modern ceramic bearings.",
     indications: [
       "Severe Osteoarthritis causing deep groin and hip stiffness",
@@ -554,7 +554,7 @@ export const allServices = [
     tagline: "Advanced and Minimally Invasive Knee Arthroscopy in Gorakhpur — Dr. Vatsal Khetan",
     tag: "Day Care Procedure",
     category: "Sports Medicine",
-    summary: "Minimally invasive keyhole joint surgery using high-definition fiberoptic cameras to repair meniscus tears, cartilage damage, loose bodies, and ligament tears with tiny incisions.",
+    summary: "Minimally invasive keyhole joint surgery using high-definition fiberoptic cameras to repair meniscus tears, cartilage damage, loose bodies, and ligament tears with tiny incisions. With pinhole incisions under 5 mm and zero muscle trauma, this daycare procedure provides immediate joint decompression and enables patients to return home the very same day.",
     philosophy: "Preserve the native knee anatomy whenever possible through targeted microscopic keyhole repairs and biological restoration.",
     indications: [
       "Meniscus tears causing joint locking, catching, or clicking sensations",
@@ -633,7 +633,7 @@ export const allServices = [
     tagline: "Best Shoulder Replacement Doctors in Gorakhpur — Dr. Vatsal Khetan",
     tag: "Anatomic & Reverse",
     category: "Shoulder",
-    summary: "Anatomic total shoulder arthroplasty and Reverse Shoulder Replacement for severe cuff tear arthropathy, complex proximal humerus fractures, and debilitating arthritis.",
+    summary: "Anatomic total shoulder arthroplasty and Reverse Shoulder Replacement for severe cuff tear arthropathy, complex proximal humerus fractures, and debilitating arthritis. By re-establishing smooth glenohumeral biomechanics and harnessing deltoid muscle efficiency, patients overcome severe stiffness to regain pain-free overhead reaching and restful sleep.",
     philosophy: "Regain smooth overhead reach and pain-free arm function through customized anatomical and reverse shoulder reconstruction.",
     indications: [
       "Severe shoulder osteoarthritis unresponsive to medications or injections",
@@ -711,7 +711,7 @@ export const allServices = [
     tagline: "Expert ACL Reconstruction & Sports Knee Restoration — Dr. Vatsal Khetan",
     tag: "Sports Medicine",
     category: "Sports Medicine",
-    summary: "Anatomical ACL reconstruction using autograft tendon and modern bioabsorbable fixation to restore rotational knee stability for athletes. Heel ligament injury and restore knee strength.",
+    summary: "Anatomical ACL reconstruction using autograft tendon and modern bioabsorbable fixation to restore rotational knee stability for athletes and active individuals. Following Olympic IOC medical protocols and Dr. Anant Joshi mentorship principles, our keyhole procedure ensures anatomical graft placement for a dependable, confident return to high-demand sports.",
     philosophy: "Sports-focused knee restoration using British and IOC sports protocols to safely return athletes to competitive sports.",
     indications: [
       "Complete Anterior Cruciate Ligament (ACL) tear from sports or falls",
@@ -798,7 +798,7 @@ export const allServices = [
     title: "Spine Surgery & Back Pain Management",
     tag: "Targeted Care",
     category: "Spine",
-    summary: "Comprehensive conservative, medical, and surgical management of lumbar disc herniation, sciatica, spinal canal stenosis, and chronic back pain.",
+    summary: "Comprehensive conservative, medical, and surgical management of lumbar disc herniation, sciatica, spinal canal stenosis, and chronic back pain. Employing a progressive approach prioritizing physical therapy and targeted nerve root blocks, microscopic decompression is offered when required to safely relieve nerve impingement and restore pain-free walking.",
     indications: [
       "Sciatica (shooting nerve pain down the leg below the knee)",
       "Lumbar disc prolapse (slipped disc) compressing nerve roots",
@@ -818,7 +818,7 @@ export const allServices = [
     title: "Ankle Surgery & Trauma",
     tag: "Anatomical Care",
     category: "Ankle",
-    summary: "Specialized management of complex ankle fractures, ligament tears, chronic instability, and post-traumatic arthritis.",
+    summary: "Specialized management of complex ankle fractures, ligament tears, chronic instability, and post-traumatic arthritis. Through rigid anatomical biological fixation and minimally invasive ligament repair, patients achieve robust joint stabilization, reduced swelling, and a rapid, confident return to weight-bearing activities.",
     indications: [
       "Bimalleolar and trimalleolar ankle fractures",
       "Chronic lateral ankle instability and recurrent sprains",
@@ -838,7 +838,7 @@ export const allServices = [
     title: "Trauma & Complex Fracture Care",
     tag: "Emergency 24/7",
     category: "Trauma",
-    summary: "Immediate surgical stabilization and reconstruction of high-velocity road traffic injuries, pelvic fractures, compound open fractures, and non-unions.",
+    summary: "Immediate surgical stabilization and reconstruction of high-velocity road traffic injuries, pelvic fractures, compound open fractures, and non-unions. Supported by 24/7 dedicated modular operating theatres and advanced AO/ASIF biological fixation principles, our trauma team focuses on rapid limb salvage and early anatomical mobilization.",
     indications: [
       "Complex intra-articular fractures around the knee, hip, shoulder, and elbow",
       "Pelvic and acetabular trauma requiring advanced anatomical reconstruction",

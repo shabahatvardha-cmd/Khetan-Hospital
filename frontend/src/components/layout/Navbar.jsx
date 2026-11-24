@@ -68,19 +68,8 @@ export const Navbar = ({ onBookClick }) => {
       ]
     },
     {
-      title: 'Departments',
-      href: '/services/robotic-knee-surgery', // Direct routing to first item place on click
-      dropdown: [
-        { title: 'Robotic Joint Arthroplasty', href: '/services/robotic-knee-surgery' },
-        { title: 'Joint Reconstruction & Preservation', href: '/services/hip-replacement' },
-        { title: 'Sports Medicine & Arthroscopy', href: '/services/acl-surgery' },
-        { title: 'Trauma & Emergency Fractures', href: '/services/trauma-surgery' },
-        { title: 'Spine & Musculoskeletal Care', href: '/services/spine-surgery' }
-      ]
-    },
-    {
       title: 'Doctors',
-      href: '/about', // Direct routing to first item place on click
+      href: '/about', // Direct routing to Dr. Vatsal Khetan on click
       dropdown: [
         { title: 'Dr. Vatsal Khetan (FRCS Edinburgh)', href: '/about' },
         { title: 'Fellowship Timeline & Moments', href: '/about/memorable-moments' },
@@ -89,7 +78,7 @@ export const Navbar = ({ onBookClick }) => {
     },
     {
       title: 'Blog',
-      href: '/blogs', // Direct routing to first item place on click
+      href: '/blogs', // Direct routing to all clinical articles on click
       dropdown: [
         { title: 'All Clinical Articles (61)', href: '/blogs' },
         { title: 'Knee & Joint Preservation', href: '/blogs?search=Knee' },
@@ -99,17 +88,33 @@ export const Navbar = ({ onBookClick }) => {
       ]
     },
     {
-      title: 'Pages',
-      href: '/about', // Direct routing to first item place on click
-      dropdown: [
-        { title: 'About Dr. Vatsal Khetan', href: '/about' },
-        { title: 'Published Research Papers', href: '/about/published-papers' },
-        { title: 'International Fellowships', href: '/about/memorable-moments' },
-        { title: 'Outreach OPD Locations', href: '/locations' }
-      ]
+      title: 'Locations',
+      href: '/locations' // Direct routing to outreach OPD centres on click
     },
     { title: 'Contact Us', href: '/contact' }
   ];
+
+  const checkIsActive = (item) => {
+    if (item.href === '/') {
+      return location.pathname === '/';
+    }
+    if (item.title === 'Services') {
+      return location.pathname.startsWith('/services');
+    }
+    if (item.title === 'Doctors') {
+      return location.pathname.startsWith('/about') || location.pathname === '/timeline';
+    }
+    if (item.title === 'Blog') {
+      return location.pathname.startsWith('/blogs');
+    }
+    if (item.title === 'Locations') {
+      return location.pathname.startsWith('/locations');
+    }
+    if (item.title === 'Contact Us') {
+      return location.pathname.startsWith('/contact');
+    }
+    return location.pathname === item.href;
+  };
 
   return (
     <header className="w-full relative z-50">
@@ -185,10 +190,7 @@ export const Navbar = ({ onBookClick }) => {
           {/* Desktop Nav Links (Direct Click Navigation + Strictly 1-Liner Dropdowns) */}
           <nav className="hidden lg:flex items-center space-x-6 text-xs font-bold text-slate-700">
             {navItems.map((item, idx) => {
-              const isActive = 
-                item.href === '/' 
-                  ? location.pathname === '/' 
-                  : location.pathname === item.href || (item.dropdown && item.dropdown.some(d => location.pathname === d.href));
+              const isActive = checkIsActive(item);
               const isHovered = activeDropdown === item.title;
 
               return (
@@ -286,7 +288,9 @@ export const Navbar = ({ onBookClick }) => {
                       <Link
                         to={item.href}
                         onClick={handleNavLinkClick}
-                        className="text-xs font-bold text-slate-800 hover:text-[#00bcd4] uppercase tracking-wider"
+                        className={`text-xs font-bold uppercase tracking-wider ${
+                          checkIsActive(item) ? 'text-[#00bcd4]' : 'text-slate-800 hover:text-[#00bcd4]'
+                        }`}
                       >
                         {item.title}
                       </Link>
@@ -320,7 +324,9 @@ export const Navbar = ({ onBookClick }) => {
                   <Link
                     to={item.href}
                     onClick={handleNavLinkClick}
-                    className="block text-xs font-bold text-slate-800 py-1.5 hover:text-[#00bcd4] uppercase tracking-wider"
+                    className={`block text-xs font-bold py-1.5 uppercase tracking-wider ${
+                      checkIsActive(item) ? 'text-[#00bcd4]' : 'text-slate-800 hover:text-[#00bcd4]'
+                    }`}
                   >
                     {item.title}
                   </Link>
