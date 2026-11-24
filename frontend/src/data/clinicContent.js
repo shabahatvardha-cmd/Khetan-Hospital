@@ -836,7 +836,10 @@ export const allServices = [
 ];
 
 
-export const allBlogs = blogsData;
+export const allBlogs = blogsData.map(b => ({
+  ...b,
+  content: b.rawHtml || b.content || b.textContent
+}));
 
 export const allLocations = [
   {
