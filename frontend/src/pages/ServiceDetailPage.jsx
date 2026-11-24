@@ -2,15 +2,15 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   CheckCircle2, 
-  ArrowUpRight, 
+  ArrowRight, 
   ArrowLeft, 
   Clock, 
   ShieldCheck, 
   Activity, 
   HelpCircle, 
   Sparkles, 
-  HeartHandshake, 
-  Calendar 
+  ChevronRight,
+  Phone
 } from 'lucide-react';
 import { allServices, clinicInfo } from '../data/clinicContent';
 
@@ -28,62 +28,72 @@ export const ServiceDetailPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* Header Banner */}
-      <section className="bg-[#08284d] text-white py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <Link 
-            to="/services" 
-            className="inline-flex items-center gap-2 text-xs font-bold text-orange-400 hover:text-orange-300 transition-colors mb-4"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>All Services &amp; Specialties</span>
-          </Link>
+      {/* 1. Oreo Interior Breadcrumb Banner */}
+      <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
+                {service.title}
+              </h1>
+            </div>
+            {service.tagline && (
+              <p className="text-xs text-[#ff5722] font-semibold mt-1 pl-3.5">
+                {service.tagline}
+              </p>
+            )}
+          </div>
 
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <span className="eyebrow bg-white/10 px-3 py-1 rounded-full text-slate-200">
+          {/* Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <Link to="/services" className="hover:text-[#00bcd4] transition-colors">Services</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="text-[#00bcd4]">{service.title}</span>
+          </nav>
+        </div>
+      </section>
+
+      {/* 2. Main Content Details */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        
+        {/* Overview & Philosophy */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-sky-50 text-[#00bcd4]">
               {service.category} SPECIALTY
             </span>
-            <span className="eyebrow bg-orange-500/20 px-3 py-1 rounded-full text-orange-300 border border-orange-500/40">
+            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-orange-50 text-[#ff5722]">
               {service.tag}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            {service.title}
-          </h1>
-          
-          {service.tagline && (
-            <p className="mt-2 text-sm sm:text-base font-semibold text-orange-400">
-              {service.tagline}
-            </p>
-          )}
-
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
             {service.summary}
           </p>
 
           {service.philosophy && (
-            <div className="mt-5 p-4 rounded-2xl bg-white/5 border border-white/10 max-w-2xl text-xs sm:text-sm text-slate-200 italic">
-              <strong>Joint Preservation First:</strong> "{service.philosophy}"
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700 italic">
+              <strong className="text-slate-900 not-italic">Joint Preservation Philosophy:</strong> "{service.philosophy}"
             </div>
           )}
         </div>
-      </section>
 
-      {/* Main Content Details */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-        
         {/* Why Patients Choose Dr. Vatsal Khetan */}
         {service.whyChoose && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4">
-            <span className="eyebrow text-[#00458b]">CLINICAL EXCELLENCE IN GORAKHPUR</span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
-              Why Patients in Gorakhpur Prefer Dr. Vatsal Khetan
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-4">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h2 className="text-lg font-bold text-slate-800">
+                Why Patients in Gorakhpur Prefer Dr. Vatsal Khetan
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               {service.whyChoose.map((point, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 p-3.5 rounded-xl bg-blue-50/50 border border-blue-100 text-xs sm:text-sm text-slate-800">
-                  <ShieldCheck className="w-4 h-4 text-[#00458b] flex-shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700">
+                  <ShieldCheck className="w-4 h-4 text-[#00bcd4] shrink-0 mt-0.5" />
                   <span>{point}</span>
                 </div>
               ))}
@@ -92,15 +102,17 @@ export const ServiceDetailPage = ({ onBookClick }) => {
         )}
 
         {/* Clinical Indications Box */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4">
-          <span className="eyebrow text-[#f37021]">WHEN IS THIS SURGERY NEEDED?</span>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
-            Symptoms &amp; Conditions Treated
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-4">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+            <h2 className="text-lg font-bold text-slate-800">
+              Symptoms &amp; Conditions Treated
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             {service.indications.map((ind, i) => (
-              <div key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-[#ff5722] shrink-0 mt-0.5" />
                 <span>{ind}</span>
               </div>
             ))}
@@ -109,68 +121,28 @@ export const ServiceDetailPage = ({ onBookClick }) => {
 
         {/* Procedure Steps (01, 02, 03, 04) */}
         {service.procedureSteps && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
-            <div>
-              <span className="eyebrow text-emerald-700">STEP-BY-STEP CLINICAL PROTOCOL</span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-6">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h2 className="text-lg font-bold text-slate-800">
                 The Surgical Procedure: What to Expect
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {service.procedureSteps.map((step, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-full bg-[#08284d] text-white flex items-center justify-center text-xs font-mono font-bold">
-                      {step.step || idx + 1}
-                    </span>
-                    <h4 className="text-sm font-bold text-[#08284d]">{step.title}</h4>
+                <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
+                  <span className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-800 flex items-center justify-center font-mono font-bold text-sm shrink-0 shadow-xs">
+                    {step.step}
+                  </span>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-800 mb-1">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed pl-9">
-                    {step.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Procedures / Variants Offered */}
-        {service.proceduresOffered && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4">
-            <span className="eyebrow text-[#00458b]">ADVANCED OPTIONS</span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
-              Specialized Procedures &amp; Options Offered
-            </h2>
-            <div className="space-y-3 pt-2">
-              {service.proceduresOffered.map((opt, i) => (
-                <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-800">
-                  <Sparkles className="w-4 h-4 text-[#f37021] flex-shrink-0 mt-0.5" />
-                  <span className="font-semibold">{opt}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Life After Surgery (Lifestyle Transformation) */}
-        {service.lifestyleAfter && (
-          <div className="bg-[#08284d] text-white rounded-3xl p-6 sm:p-10 shadow-lg space-y-6">
-            <div>
-              <span className="eyebrow text-orange-400">PATIENT OUTCOMES</span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-white">
-                Life After Surgery (सर्जरी के बाद का नया जीवन)
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Regain painless movement, restorative sleep, and independent mobility.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {service.lifestyleAfter.map((item, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-white/10 border border-white/15 space-y-1.5">
-                  <h4 className="text-sm font-bold text-[#f37021]">{item.title}</h4>
-                  <p className="text-xs text-slate-200 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -178,14 +150,16 @@ export const ServiceDetailPage = ({ onBookClick }) => {
         )}
 
         {/* Recovery & Rehabilitation Protocol */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4">
-          <span className="eyebrow text-emerald-700">RAPID RECOVERY</span>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
-            Post-Operative Recovery Timeline
-          </h2>
-          <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-start gap-3.5">
-            <Clock className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-4">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+            <h2 className="text-lg font-bold text-slate-800">
+              Post-Operative Recovery Timeline
+            </h2>
+          </div>
+          <div className="p-5 rounded-xl bg-emerald-50 border border-emerald-100 flex items-start gap-3.5">
+            <Clock className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="text-xs text-slate-700 leading-relaxed">
               {service.recovery}
             </p>
           </div>
@@ -193,19 +167,19 @@ export const ServiceDetailPage = ({ onBookClick }) => {
 
         {/* Clinical FAQs */}
         {service.faqs && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-5">
-            <div>
-              <span className="eyebrow text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#08284d]">
-                अक्सर पूछे जाने वाले सवाल (Patient FAQs)
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-5">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h2 className="text-lg font-bold text-slate-800">
+                Frequently Asked Questions (Patient FAQs)
               </h2>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               {service.faqs.map((faq, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1.5">
-                  <h4 className="text-xs sm:text-sm font-bold text-[#08284d] flex items-start gap-2">
-                    <HelpCircle className="w-4 h-4 text-[#f37021] flex-shrink-0 mt-0.5" />
+                <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-800 flex items-start gap-2">
+                    <HelpCircle className="w-4 h-4 text-[#ff5722] shrink-0 mt-0.5" />
                     <span>{faq.q}</span>
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed pl-6">
@@ -217,23 +191,22 @@ export const ServiceDetailPage = ({ onBookClick }) => {
           </div>
         )}
 
-        {/* Booking Invitation Card */}
-        <div className="p-8 rounded-3xl bg-[#08284d] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        {/* Booking Invitation Card in Clean Oreo Style */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
-            <h3 className="text-xl font-extrabold">Consult Dr. Vatsal Khetan</h3>
-            <p className="text-xs text-slate-300">
-              Evaluation, 3D imaging assessment &amp; personalized recovery planning.
+            <h3 className="text-base font-bold text-slate-900">Consult Dr. Vatsal Khetan</h3>
+            <p className="text-xs text-slate-500">
+              Clinical evaluation, 3D imaging assessment &amp; personalized recovery planning.
             </p>
-            <p className="text-xs text-orange-400 font-mono pt-1">
-              Betiahata, Gorakhpur · Helpline: 9662365917
+            <p className="text-xs text-[#ff5722] font-semibold pt-1">
+              Betiahata, Gorakhpur &bull; Helpline: 9662365917
             </p>
           </div>
           <button 
             onClick={onBookClick}
-            className="button-primary bg-[#f37021] text-white hover:bg-orange-600 flex-shrink-0"
+            className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-md transition-all shrink-0 cursor-pointer"
           >
             <span>Book Appointment</span>
-            <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
 

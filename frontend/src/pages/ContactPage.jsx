@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, MessageSquare, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
+  MessageSquare, 
+  Send, 
+  CheckCircle2, 
+  ArrowRight,
+  ChevronRight
+} from 'lucide-react';
 import { clinicInfo, treatmentsData } from '../data/navigationData';
 
 export const ContactPage = ({ onBookClick }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    city: 'Gorakhpur',
+    city: '',
     service: treatmentsData[0]?.name || 'Robotic Knee Surgery',
     message: ''
   });
+
   const [submitted, setSubmitted] = useState(false);
 
   const handleSend = (e) => {
@@ -28,75 +40,86 @@ export const ContactPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* Header Banner */}
-      <section className="bg-[#08284d] text-white py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow text-orange-400 mb-3 block">
-            GET IN TOUCH · HOSPITAL VISITS &amp; INQUIRIES
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            Contact Dr. Vatsal Khetan<br />
-            <span className="text-[#f37021]">Khetan Hospital.</span>
-          </h1>
-          <p className="mt-4 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Located centrally at Betiahata Chowk, Gorakhpur. Reach our priority hospital desk directly for OPD consultations, second opinions, and emergency joint care.
-          </p>
+      {/* 1. Oreo Interior Breadcrumb Banner */}
+      <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
+                Contact <span className="font-normal text-slate-600">Khetan Hospital</span>
+              </h1>
+            </div>
+            <p className="text-xs text-slate-500 mt-1 pl-3.5">
+              Priority hospital desk &bull; Betiahata Road, Gorakhpur
+            </p>
+          </div>
+
+          {/* Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <Link to="/" className="hover:text-[#00bcd4] transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="text-[#00bcd4]">Contact Us</span>
+          </nav>
         </div>
       </section>
 
-      {/* Main Grid */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      {/* 2. Main Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Left Column: Hospital Contact Details */}
+          {/* Left Column: Hospital Contact Details (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
-              <h3 className="text-xl font-extrabold text-[#08284d]">
-                Hospital Information
-              </h3>
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+                <h3 className="text-lg font-bold text-slate-800">
+                  Hospital Information
+                </h3>
+              </div>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-orange-50 text-[#f37021] flex-shrink-0 mt-0.5">
+                  <div className="p-2.5 rounded-xl bg-orange-50 text-[#ff5722] shrink-0 mt-0.5">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <div className="text-xs sm:text-sm text-slate-700">
-                    <strong className="block text-[#08284d] text-sm">Hospital Address</strong>
+                  <div className="text-xs text-slate-600">
+                    <strong className="block text-slate-900 text-xs sm:text-sm font-bold">Hospital Address</strong>
                     {clinicInfo.location}
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-blue-50 text-[#00458b] flex-shrink-0 mt-0.5">
+                  <div className="p-2.5 rounded-xl bg-sky-50 text-[#00bcd4] shrink-0 mt-0.5">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div className="text-xs sm:text-sm text-slate-700">
-                    <strong className="block text-[#08284d] text-sm">Priority Phone / WhatsApp</strong>
-                    <a href={`tel:${clinicInfo.phone.replace(/\s+/g, '')}`} className="font-bold text-[#f37021] hover:underline">
+                  <div className="text-xs text-slate-600">
+                    <strong className="block text-slate-900 text-xs sm:text-sm font-bold">Priority Phone / Helpline</strong>
+                    <a href={`tel:${clinicInfo.phone.replace(/\s+/g, '')}`} className="font-bold text-[#ff5722] hover:underline">
                       {clinicInfo.phone}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 flex-shrink-0 mt-0.5">
+                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 shrink-0 mt-0.5">
                     <Clock className="w-5 h-5" />
                   </div>
-                  <div className="text-xs sm:text-sm text-slate-700">
-                    <strong className="block text-[#08284d] text-sm">OPD Consultation Hours</strong>
+                  <div className="text-xs text-slate-600">
+                    <strong className="block text-slate-900 text-xs sm:text-sm font-bold">OPD Consultation Hours</strong>
                     {clinicInfo.timings}
-                    <span className="block text-[11px] text-slate-400 mt-1">Sunday by prior appointment only</span>
+                    <span className="block text-[11px] text-slate-400 mt-0.5">Sunday by prior appointment only</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-purple-50 text-purple-600 flex-shrink-0 mt-0.5">
+                  <div className="p-2.5 rounded-xl bg-purple-50 text-[#8c79b2] shrink-0 mt-0.5">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div className="text-xs sm:text-sm text-slate-700">
-                    <strong className="block text-[#08284d] text-sm">Official Email</strong>
+                  <div className="text-xs text-slate-600">
+                    <strong className="block text-slate-900 text-xs sm:text-sm font-bold">Official Email</strong>
                     <span>{clinicInfo.email}</span>
                   </div>
                 </div>
@@ -107,9 +130,9 @@ export const ContactPage = ({ onBookClick }) => {
                   href={`https://wa.me/${clinicInfo.phone.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full button-navy !justify-center gap-2"
+                  className="w-full py-2.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md transition-all flex items-center justify-center gap-2"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#f37021]" />
+                  <MessageSquare className="w-4 h-4 text-white" />
                   <span>Chat on WhatsApp Directly</span>
                 </a>
               </div>
@@ -117,27 +140,29 @@ export const ContactPage = ({ onBookClick }) => {
 
           </div>
 
-          {/* Right Column: Interactive Consultation Request Form */}
+          {/* Right Column: Interactive Consultation Request Form (7 Cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
-              <span className="eyebrow text-[#f37021]">SCHEDULE YOUR CONSULTATION</span>
-              <h3 className="text-2xl font-extrabold text-[#08284d] mt-2 mb-2">
-                Send an Online Inquiry
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mb-6">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-1.5 h-5 bg-[#00bcd4] inline-block rounded-full"></span>
+                <h3 className="text-lg font-bold text-slate-800">
+                  Send an Online Inquiry
+                </h3>
+              </div>
+              <p className="text-xs text-slate-500 mb-6 pl-3.5">
                 Fill in your details below and Khetan Hospital's coordinator will confirm your appointment slot promptly.
               </p>
 
               {submitted ? (
                 <div className="p-8 text-center space-y-3 bg-emerald-50 rounded-2xl border border-emerald-100">
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
-                  <h4 className="text-lg font-bold text-slate-900">Inquiry Dispatched!</h4>
+                  <h4 className="text-base font-bold text-slate-900">Inquiry Dispatched!</h4>
                   <p className="text-xs text-slate-600">
                     Your consultation request has been forwarded directly to Khetan Hospital desk. We will respond promptly.
                   </p>
                   <button 
                     onClick={() => setSubmitted(false)}
-                    className="button-navy text-xs !min-h-[38px] mt-2"
+                    className="px-6 py-2 rounded-full text-xs font-bold uppercase bg-[#ff5722] text-white hover:bg-[#e64a19] transition-all cursor-pointer mt-2"
                   >
                     Send Another Message
                   </button>
@@ -153,7 +178,7 @@ export const ContactPage = ({ onBookClick }) => {
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         placeholder="e.g. Ramesh Kumar"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-[#08284d] focus:outline-none"
+                        className="w-full px-4 py-2.5 rounded-full border border-slate-200 text-xs focus:border-[#00bcd4] focus:outline-hidden"
                       />
                     </div>
                     <div>
@@ -164,7 +189,7 @@ export const ContactPage = ({ onBookClick }) => {
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="e.g. 9876543210"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-[#08284d] focus:outline-none"
+                        className="w-full px-4 py-2.5 rounded-full border border-slate-200 text-xs focus:border-[#00bcd4] focus:outline-hidden"
                       />
                     </div>
                   </div>
@@ -177,7 +202,7 @@ export const ContactPage = ({ onBookClick }) => {
                         value={formData.city}
                         onChange={(e) => setFormData({...formData, city: e.target.value})}
                         placeholder="e.g. Gorakhpur, Deoria, Basti..."
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-[#08284d] focus:outline-none"
+                        className="w-full px-4 py-2.5 rounded-full border border-slate-200 text-xs focus:border-[#00bcd4] focus:outline-hidden"
                       />
                     </div>
                     <div>
@@ -185,7 +210,7 @@ export const ContactPage = ({ onBookClick }) => {
                       <select 
                         value={formData.service}
                         onChange={(e) => setFormData({...formData, service: e.target.value})}
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-[#08284d] focus:outline-none bg-white"
+                        className="w-full px-4 py-2.5 rounded-full border border-slate-200 text-xs focus:border-[#00bcd4] focus:outline-hidden bg-white"
                       >
                         {treatmentsData.map((t, i) => (
                           <option key={i} value={t.name}>{t.name}</option>
@@ -201,16 +226,16 @@ export const ContactPage = ({ onBookClick }) => {
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       placeholder="e.g. Severe knee pain when walking, previous X-ray shows osteoarthritis..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-[#08284d] focus:outline-none"
+                      className="w-full px-4 py-2.5 rounded-2xl border border-slate-200 text-xs focus:border-[#00bcd4] focus:outline-hidden resize-none"
                     ></textarea>
                   </div>
 
                   <button 
                     type="submit"
-                    className="w-full button-orange !justify-center"
+                    className="w-full py-3 px-6 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Send Inquiry to Hospital</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
               )}
