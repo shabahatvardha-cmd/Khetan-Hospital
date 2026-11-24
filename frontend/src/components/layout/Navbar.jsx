@@ -49,7 +49,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
       title: 'Locations', 
       href: '/locations',
       dropdown: [
-        { title: 'Main Clinic — Betiahata, Gorakhpur', href: '/locations', desc: 'Daily OPD & Advanced OT facility' },
+        { title: 'Khetan Hospital — Betiahata, Gorakhpur', href: '/locations', desc: 'Daily OPD & Advanced OT facility' },
         { title: 'Deoria Outreach Centre', href: '/locations', desc: 'Weekly specialized joint consultation' },
         { title: 'Basti Outreach Centre', href: '/locations', desc: 'Outreach joint pain evaluations' },
         { title: 'Kushinagar Outreach Centre', href: '/locations', desc: 'Arthritis & ACL screening camps' },
@@ -92,7 +92,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             <span className="text-white/20">|</span>
 
             <a 
-              href={`https://wa.me/919662365917?text=Hello%20Dr.%20Vatsal%20Khetan%20Clinic,%20I%20would%20like%20to%20book%20an%20OPD%20appointment.`}
+              href={`https://wa.me/919662365917?text=Hello%20Khetan%20Hospital,%20I%20would%20like%20to%20book%20an%20OPD%20appointment.`}
               target="_blank" 
               rel="noreferrer"
               className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
@@ -142,10 +142,10 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             </div>
             <div>
               <span className="block text-base sm:text-lg font-extrabold text-[#08284d] tracking-tight leading-tight group-hover:text-[#00458b] transition-colors">
-                Khetan Knee N Shoulder Clinic
+                Khetan Hospital
               </span>
               <span className="block text-[10.5px] font-semibold text-[#00b4d8] tracking-wide uppercase">
-                Dr. Vatsal Khetan &bull; FRCS (Edinburgh) &bull; M.Ch (UK)
+                Dr. Vatsal Khetan &bull; FRCS (Edinburgh) &bull; Orthopedics &amp; Joint Care
               </span>
             </div>
           </Link>

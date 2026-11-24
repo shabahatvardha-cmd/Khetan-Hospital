@@ -90,7 +90,7 @@ export const PublishedPapersPage = ({ onBookClick }) => {
               Committed to Scientific Rigor &amp; Patient Safety
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-              Every surgical protocol at Khetan Knee N Shoulder Clinic is backed by peer-reviewed clinical studies and international guidelines.
+              Every surgical protocol at Khetan Hospital is backed by peer-reviewed clinical studies and international guidelines.
             </p>
           </div>
           <button onClick={onBookClick} className="button-navy flex-shrink-0">

@@ -35,7 +35,7 @@ export const DoctorStorySection = ({ onBookClick }) => {
                 <div className="p-4 bg-gradient-to-r from-[#08284d] to-[#00458b] text-white flex items-center justify-between text-xs">
                   <div>
                     <span className="block font-bold">Dr. Vatsal Khetan</span>
-                    <span className="block text-[10px] text-[#00b4d8]">Khetan Knee N Shoulder Clinic</span>
+                    <span className="block text-[10px] text-[#00b4d8]">Khetan Hospital</span>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/20">
                     Betiahata, Gorakhpur

@@ -41,7 +41,7 @@ export const AboutPage = ({ onBookClick }) => {
                   MBBS, MS (Ortho), MRCS, FRCS (Edinburgh), M.Ch. (UK), IOC Sports Med
                 </p>
                 <p className="text-xs text-slate-500 mt-2">
-                  Founder &amp; Senior Consultant at Khetan Knee N Shoulder Clinic
+                  Founder &amp; Chief Surgeon at Khetan Hospital
                 </p>
                 <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-center gap-2">
                   <a 
@@ -232,7 +232,7 @@ export const AboutPage = ({ onBookClick }) => {
             हमारे मरीजों के विचार (Patient Experiences)
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-2">
-            Real feedback from patients treated at Khetan Knee N Shoulder Clinic.
+            Real feedback from patients treated at Khetan Hospital.
           </p>
         </div>
 

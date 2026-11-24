@@ -1,7 +1,8 @@
 export const clinicInfo = {
   name: "Dr. Vatsal Khetan",
   qualification: "MBBS, MS (Ortho), MRCS, FRCS, IOC Dip (Sports Med)",
-  clinicName: "Khetan Knee N Shoulder Clinic",
+  clinicName: "Khetan Hospital",
+  hospitalName: "Khetan Hospital",
   subtitle: "Orthopedic, Joint Replacement & Arthroscopy Surgeon",
   location: "SK Pandey Complex, Betiahata Rd, Beside Union Bank, Betiahata, Gorakhpur, UP 273001",
   phone: "+91 96623 65917",

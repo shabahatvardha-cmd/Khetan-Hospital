@@ -61,7 +61,7 @@ export const Footer = ({ onBookClick }) => {
                   Dr. Vatsal Khetan
                 </h3>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[#00b4d8] block">
-                  Khetan Knee N Shoulder Clinic
+                  Khetan Hospital
                 </span>
               </div>
             </div>
@@ -232,7 +232,7 @@ export const Footer = ({ onBookClick }) => {
             </span>
           </div>
           <span className="text-[11px] text-slate-400">
-            Dedicated Insurance Desk at Betiahata Clinic
+            Dedicated Insurance Desk at Khetan Hospital, Betiahata
           </span>
         </div>
       </div>
@@ -241,7 +241,7 @@ export const Footer = ({ onBookClick }) => {
       <div className="border-t border-white/10 py-6 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <span>
-            &copy; 2026 Dr. Vatsal Khetan &bull; Khetan Knee N Shoulder Clinic. All rights reserved.
+            &copy; 2026 Dr. Vatsal Khetan &bull; Khetan Hospital. All rights reserved.
           </span>
           <span>
             Dedicated to Restoring Lifelong Pain-Free Mobility

@@ -1,5 +1,5 @@
-# Dr. Vatsal Khetan — Khetan Knee N Shoulder Clinic
-## Master Clinic & Hospital Information Repository
+# Dr. Vatsal Khetan — Khetan Hospital
+## Master Hospital & Orthopedic Information Repository
 
 > **Purpose:** Centralized, authoritative record of all clinical credentials, publications, timeline events, patient testimonials, contact information, and service descriptions.
 
@@ -29,7 +29,7 @@
 
 ### 2. Clinic Contact, Address & Timings
 
-- **Clinic Name:** Khetan Knee N Shoulder Clinic / Khetan Hospital
+- **Hospital Name:** Khetan Hospital
 - **Main Address:** SK Pandey Complex, Betiahata Rd, beside Union Bank, Betiahata, Gorakhpur, Uttar Pradesh 273001
 - **Phone / Emergency / Appointment:** `+91 96623 65917` (9662365917)
 - **WhatsApp:** `+91 96623 65917`

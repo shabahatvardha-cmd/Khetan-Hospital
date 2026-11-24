@@ -14,7 +14,7 @@ export const ContactPage = ({ onBookClick }) => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    const msg = `*New Inquiry - Dr. Vatsal Khetan Clinic*%0A` +
+    const msg = `*New Inquiry - Khetan Hospital (Dr. Vatsal Khetan)*%0A` +
       `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
       `📞 *Phone:* ${encodeURIComponent(formData.phone)}%0A` +
       `📍 *City:* ${encodeURIComponent(formData.city)}%0A` +
@@ -32,14 +32,14 @@ export const ContactPage = ({ onBookClick }) => {
       <section className="bg-[#08284d] text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow text-orange-400 mb-3 block">
-            GET IN TOUCH · CLINIC VISITS & INQUIRIES
+            GET IN TOUCH · HOSPITAL VISITS &amp; INQUIRIES
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             Contact Dr. Vatsal Khetan<br />
-            <span className="text-[#f37021]">Khetan Knee N Shoulder Clinic.</span>
+            <span className="text-[#f37021]">Khetan Hospital.</span>
           </h1>
           <p className="mt-4 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Located centrally at Betiahata Chowk, Gorakhpur. Reach our priority clinic desk directly for OPD consultations, second opinions, and emergency joint care.
+            Located centrally at Betiahata Chowk, Gorakhpur. Reach our priority hospital desk directly for OPD consultations, second opinions, and emergency joint care.
           </p>
         </div>
       </section>
@@ -49,12 +49,12 @@ export const ContactPage = ({ onBookClick }) => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Left Column: Clinic Contact Details */}
+          {/* Left Column: Hospital Contact Details */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
               <h3 className="text-xl font-extrabold text-[#08284d]">
-                Clinic Information
+                Hospital Information
               </h3>
 
               <div className="space-y-4">
@@ -63,7 +63,7 @@ export const ContactPage = ({ onBookClick }) => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div className="text-xs sm:text-sm text-slate-700">
-                    <strong className="block text-[#08284d] text-sm">Main Clinic Address</strong>
+                    <strong className="block text-[#08284d] text-sm">Hospital Address</strong>
                     {clinicInfo.location}
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export const ContactPage = ({ onBookClick }) => {
                 Send an Online Inquiry
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 mb-6">
-                Fill in your details below and Dr. Vatsal Khetan’s clinic coordinator will confirm your appointment slot promptly.
+                Fill in your details below and Khetan Hospital's coordinator will confirm your appointment slot promptly.
               </p>
 
               {submitted ? (
@@ -133,7 +133,7 @@ export const ContactPage = ({ onBookClick }) => {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="text-lg font-bold text-slate-900">Inquiry Dispatched!</h4>
                   <p className="text-xs text-slate-600">
-                    Your consultation request has been forwarded directly to our clinic desk. We will respond promptly.
+                    Your consultation request has been forwarded directly to Khetan Hospital desk. We will respond promptly.
                   </p>
                   <button 
                     onClick={() => setSubmitted(false)}
@@ -209,7 +209,7 @@ export const ContactPage = ({ onBookClick }) => {
                     type="submit"
                     className="w-full button-orange !justify-center"
                   >
-                    <span>Send Inquiry to Clinic</span>
+                    <span>Send Inquiry to Hospital</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </form>

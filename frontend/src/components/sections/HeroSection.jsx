@@ -31,7 +31,7 @@ export const HeroSection = ({ onBookClick }) => {
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 text-[#0077b6] text-xs font-bold border border-blue-200/80 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#00b4d8] animate-ping" />
-              <span>LEADING ORTHOPAEDIC &amp; ROBOTIC SURGEON &bull; GORAKHPUR</span>
+              <span>KHETAN HOSPITAL &bull; LEADING ORTHOPAEDIC &amp; ROBOTIC CENTRE &bull; GORAKHPUR</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#08284d] tracking-tight leading-[1.12]">
@@ -42,7 +42,7 @@ export const HeroSection = ({ onBookClick }) => {
             </h1>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-              Why travel to Delhi or Lucknow? <strong>Dr. Vatsal Khetan</strong> (FRCS Edinburgh, UK NHS Fellowship) brings world-class sub-millimeter robotic knee replacements, keyhole shoulder arthroscopy, and IOC sports injury care to Bettiahata, Gorakhpur.
+              Why travel to Delhi or Lucknow? <strong>Dr. Vatsal Khetan</strong> (FRCS Edinburgh, UK NHS Fellowship) brings world-class sub-millimeter robotic knee replacements, keyhole shoulder arthroscopy, and IOC sports injury care to <strong>Khetan Hospital</strong>, Bettiahata, Gorakhpur.
             </p>
 
             {/* Quick Check Highlights */}

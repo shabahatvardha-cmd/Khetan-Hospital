@@ -7,8 +7,8 @@ export const VisitFaqSection = ({ onBookClick }) => {
 
   const faqs = [
     {
-      q: "Where is the clinic located in Gorakhpur and what are the OPD hours?",
-      a: "Khetan Knee N Shoulder Clinic is conveniently located at SK Pandey Complex, Beside Union Bank of India, Betiahata Road, Gorakhpur, UP 273001. Consultation timings are Monday to Saturday: 09:00 AM - 01:00 PM and 02:00 PM - 08:00 PM."
+      q: "Where is Khetan Hospital located in Gorakhpur and what are the OPD hours?",
+      a: "Khetan Hospital is conveniently located at SK Pandey Complex, Beside Union Bank of India, Betiahata Road, Gorakhpur, UP 273001. Consultation timings are Monday to Saturday: 09:00 AM - 01:00 PM and 02:00 PM - 08:00 PM."
     },
     {
       q: "Do you accept health insurance and provide cashless TPA facilities?",
@@ -49,7 +49,7 @@ export const VisitFaqSection = ({ onBookClick }) => {
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
-            A little preparation makes a big difference. Here is everything you need to know regarding cashless insurance, consultation prep, and recovery expectations at our Betiahata clinic.
+            A little preparation makes a big difference. Here is everything you need to know regarding cashless insurance, consultation prep, and recovery expectations at Khetan Hospital, Betiahata.
           </p>
 
           {/* Cashless Insurance Note Card */}
@@ -112,7 +112,7 @@ export const VisitFaqSection = ({ onBookClick }) => {
 
           <div className="p-4 text-center">
             <p className="text-[11px] text-slate-400">
-              Have another question? Reach out directly to our OPD Desk at <strong>+91 96623 65917</strong>.
+              Have another question? Reach out directly to Khetan Hospital OPD Desk at <strong>+91 96623 65917</strong>.
             </p>
           </div>
         </div>

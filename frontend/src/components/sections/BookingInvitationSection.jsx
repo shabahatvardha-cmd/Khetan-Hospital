@@ -30,7 +30,7 @@ export const BookingInvitationSection = () => {
     e.preventDefault();
     
     // Construct structured WhatsApp message
-    const message = `*OPD Appointment Request - Dr. Vatsal Khetan*%0A` +
+    const message = `*OPD Appointment Request - Khetan Hospital (Dr. Vatsal Khetan)*%0A` +
       `━━━━━━━━━━━━━━━━━━━━━━%0A` +
       `👤 *Patient Name:* ${encodeURIComponent(formData.name)}%0A` +
       `📞 *Mobile No:* ${encodeURIComponent(formData.phone)}%0A` +
@@ -56,10 +56,10 @@ export const BookingInvitationSection = () => {
             FAST-TRACK CONSULTATION
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#08284d]">
-            Make an Appointment with Dr. Vatsal Khetan
+            Make an Appointment at Khetan Hospital
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-2">
-            Schedule your evaluation at Betiahata, Gorakhpur. Avoid long queues and receive priority slot confirmation directly on WhatsApp.
+            Schedule your evaluation with Dr. Vatsal Khetan at Betiahata, Gorakhpur. Avoid long queues and receive priority slot confirmation directly on WhatsApp.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export const BookingInvitationSection = () => {
                     MBBS &bull; MS (Ortho) &bull; MRCS &bull; FRCS (UK)
                   </p>
                   <p className="text-[11px] text-slate-300">
-                    Knee, Hip, Shoulder &amp; Sports Specialist
+                    Chief Orthopedic Surgeon &bull; Khetan Hospital
                   </p>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export const BookingInvitationSection = () => {
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                      Clinic Location
+                      Hospital Location
                     </span>
                     <span className="text-xs font-bold text-white">
                       SK Pandey Complex, Beside Union Bank
@@ -183,7 +183,7 @@ export const BookingInvitationSection = () => {
                   Appointment Request Sent!
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. Your consultation request for <strong>{formData.department}</strong> on <strong>{formData.date}</strong> has been transmitted to Dr. Vatsal Khetan's clinical coordinator on WhatsApp.
+                  Thank you, <strong>{formData.name}</strong>. Your consultation request for <strong>{formData.department}</strong> on <strong>{formData.date}</strong> has been transmitted to Khetan Hospital's clinical coordinator on WhatsApp.
                 </p>
                 <div className="pt-4 flex flex-wrap justify-center gap-3">
                   <a 
@@ -191,7 +191,7 @@ export const BookingInvitationSection = () => {
                     className="px-6 py-2.5 rounded-full text-xs font-bold bg-[#08284d] text-white hover:bg-[#00458b] transition-all inline-flex items-center gap-2"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#f37021]" />
-                    <span>Call Direct Desk: 9662365917</span>
+                    <span>Call Hospital Desk: 9662365917</span>
                   </a>
                   <button
                     onClick={() => {

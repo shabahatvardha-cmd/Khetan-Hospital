@@ -17,7 +17,7 @@ export const LocationsPage = ({ onBookClick }) => {
             <span className="text-[#f37021]">Eastern UP &amp; Western Bihar.</span>
           </h1>
           <p className="mt-4 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Patients from Deoria, Basti, Kushinagar, Maharajganj, Bettiah, and Siwan no longer need to travel to Delhi or Lucknow. Dr. Vatsal Khetan offers world-class robotic joint replacement and sports orthopaedics at Khetan Knee N Shoulder Clinic, Gorakhpur.
+            Patients from Deoria, Basti, Kushinagar, Maharajganj, Bettiah, and Siwan no longer need to travel to Delhi or Lucknow. Dr. Vatsal Khetan offers world-class robotic joint replacement and sports orthopaedics at Khetan Hospital, Gorakhpur.
           </p>
         </div>
       </section>

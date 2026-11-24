@@ -2,7 +2,7 @@ import blogsData from './blogsData.json';
 
 export const clinicInfo = {
   name: "Dr. Vatsal Khetan",
-  clinicName: "Khetan Knee N Shoulder Clinic",
+  clinicName: "Khetan Hospital",
   hospitalName: "Khetan Hospital",
   degrees: "MBBS, MS (Ortho), MRCS (Edinburgh), FRCS (Trauma & Orthopaedic Surgery, Edinburgh), M.Ch. (Knee Arthroplasty, Edge Hill UK)",
   sportsDiploma: "Diploma in Sports Medicine (International Olympic Committee, Switzerland)",

@@ -49,7 +49,7 @@ export const FloatingActions = ({ onBookClick }) => {
 
       {/* WhatsApp Floating Action Button */}
       <a
-        href="https://wa.me/919662365917?text=Hello%20Dr.%20Vatsal%20Khetan%20Clinic,%20I%20would%20like%20to%20book%20an%20OPD%20appointment."
+        href="https://wa.me/919662365917?text=Hello%20Khetan%20Hospital,%20I%20would%20like%20to%20book%20an%20OPD%20appointment."
         target="_blank"
         rel="noreferrer"
         aria-label="Book OPD via WhatsApp"

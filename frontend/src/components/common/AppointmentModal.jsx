@@ -18,7 +18,7 @@ export const AppointmentModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const msg = `*Appointment Request - Dr. Vatsal Khetan Clinic*%0A` +
+    const msg = `*Appointment Request - Khetan Hospital (Dr. Vatsal Khetan)*%0A` +
       `👤 *Patient:* ${encodeURIComponent(formData.name)}%0A` +
       `📞 *Phone:* ${encodeURIComponent(formData.phone)}%0A` +
       `🩺 *Service:* ${encodeURIComponent(formData.treatment)}%0A` +
@@ -51,9 +51,9 @@ export const AppointmentModal = ({ isOpen, onClose }) => {
             <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h4 className="text-base font-bold text-slate-900">Request Sent to Clinic!</h4>
+            <h4 className="text-base font-bold text-slate-900">Request Sent to Khetan Hospital!</h4>
             <p className="text-xs text-slate-500 max-w-xs mx-auto">
-              We have forwarded your consultation request to Dr. Vatsal Khetan's team on WhatsApp.
+              We have forwarded your consultation request to Khetan Hospital's clinical team on WhatsApp.
             </p>
             <button
               onClick={() => {
