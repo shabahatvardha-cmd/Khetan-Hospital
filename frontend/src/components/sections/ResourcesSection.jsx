@@ -40,10 +40,6 @@ export const ResourcesSection = ({ onBookClick }) => {
         {/* 3 Blog Cards (Exact Oreo Page 3 Grid) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredBlogs.map((blog, idx) => {
-            const cleanSnippet = blog.excerpt
-              ? blog.excerpt.replace(/<[^>]+>/g, '').slice(0, 140) + '...'
-              : 'Read comprehensive evidence-based clinical guidance written by Dr. Vatsal Khetan regarding joint mobility, surgical precautions, and physiotherapy.';
-
             return (
               <article
                 key={idx}
@@ -64,27 +60,21 @@ export const ResourcesSection = ({ onBookClick }) => {
                   />
                 </div>
 
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors leading-snug line-clamp-2">
-                      {blog.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed mt-2.5 line-clamp-3">
-                      {cleanSnippet}
-                    </p>
-                  </div>
+                {/* Content (Title & Meta only, no duplicate description) */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors leading-snug line-clamp-2">
+                    {blog.title}
+                  </h3>
 
-                  {/* Oreo Meta Strip (Orange Calendar & Comment) */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                  {/* Meta Strip */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-[#ff5722]" />
                       <span>{blog.date || '02 Feb 2026'}</span>
                     </span>
 
-                    <span className="inline-flex items-center gap-1.5">
-                      <MessageSquare className="w-3.5 h-3.5 text-[#ff5722]" />
-                      <span>Comment ( 25 )</span>
+                    <span className="inline-flex items-center gap-1 font-bold text-[#00bcd4] group-hover:underline">
+                      <span>Read Guide &rarr;</span>
                     </span>
                   </div>
                 </div>
