@@ -839,19 +839,83 @@ export const allBlogs = [
     slug: "how-to-recover-from-hip-replacement-surgery-at-home-a-complete-guide",
     title: "How to Recover from Hip Replacement Surgery at Home: A Complete Guide",
     date: "November 2026",
-    readTime: "5 min read",
+    readTime: "7 min read",
     category: "Hip Care",
     excerpt: "Recovering from total hip replacement requires structured home preparation, safe mobility habits, and progressive exercises to ensure lifelong joint health.",
-    content: "Undergoing a hip replacement is a life-changing milestone that restores painless movement. In this guide, Dr. Vatsal Khetan breaks down essential home recovery tips: setting up safe recovery zones, navigating stairs safely, managing post-op swelling, and adhering to the 90-degree hip flexion rule in the first few weeks."
+    content: "Undergoing a hip replacement is a life-changing milestone that restores painless movement. In this guide, Dr. Vatsal Khetan breaks down essential home recovery tips: setting up safe recovery zones, navigating stairs safely, managing post-op swelling, and adhering to the 90-degree hip flexion rule in the first few weeks.",
+    sections: [
+      {
+        heading: "1. Preparing Your Home for Recovery",
+        text: "Before or immediately after surgery, make your home safe and accessible: keep essentials (phone, medicines, water) within arm's reach; use a firm chair with armrests rather than soft low sofas; install bathroom grab bars; and remove all loose rugs, cords, or clutter to prevent accidental trips."
+      },
+      {
+        heading: "2. Safe Early Movement",
+        text: "Movement is essential, but it must be gradual: begin walking with a walker or crutches as advised; increase walking distance slowly every day; and avoid twisting your operated hip or making sudden pivoting turns."
+      },
+      {
+        heading: "3. Essential Physiotherapy Exercises",
+        text: "Perform ankle pumps frequently throughout the day to prevent blood clots (DVT); practice static quadriceps and gluteal contractions to rebuild muscle tone; and do gentle controlled hip movements. Consistency is more important than intensity."
+      },
+      {
+        heading: "4. Multimodal Pain Control",
+        text: "Take prescribed pain medications on a disciplined schedule, especially in the first week. Apply cold ice packs for 15–20 minutes at a time to reduce localized joint swelling."
+      },
+      {
+        heading: "5. Proper Sleeping Posture",
+        text: "Sleep flat on your back with a pillow between your legs to keep the hip in a neutral position. Strictly avoid crossing your legs at the knees or ankles."
+      },
+      {
+        heading: "6. Surgical Wound Care & Warning Signs",
+        text: "Keep the dressing clean and dry. Watch for warning signs: spreading redness, foul-smelling discharge, sudden fever, or calf pain/swelling (signs of a possible blood clot). Contact Dr. Khetan immediately if any occur."
+      },
+      {
+        heading: "7. Nutrition for Faster Healing",
+        text: "Consume high-protein foods (dal, paneer, eggs, chicken), adequate calcium and Vitamin D, and drink 2.5–3 liters of water daily to support tissue regeneration and bone ingrowth."
+      },
+      {
+        heading: "8. What to Strictly Avoid",
+        text: "Do NOT sit cross-legged on the floor; do NOT bend your hip past 90 degrees; avoid lifting heavy loads; and do not resume driving without medical clearance."
+      },
+      {
+        heading: "9. General Recovery Timeline",
+        text: "2–4 Weeks: Walking with support. 4–8 Weeks: Independent mobility and significantly reduced pain. 3 Months: Return to most daily household and social routines. 6 Months: Near-complete recovery with lifelong joint durability."
+      }
+    ]
   },
   {
     slug: "how-to-choose-the-right-doctor-for-knee-replacement-a-complete-patient-guide",
     title: "How to Choose the Right Doctor for Knee Replacement: A Complete Patient Guide",
     date: "October 2026",
-    readTime: "5 min read",
+    readTime: "6 min read",
     category: "Patient Guidance",
     excerpt: "What to look for when choosing an orthopedic surgeon: surgical volume, international fellowships (FRCS UK), robotic certification, and transparent consultations.",
-    content: "Joint replacement is an investment in your next 25 years of mobility. Selecting a fellowship-trained surgeon with high annual case volumes, modern robotic technology, and a dedicated post-op rehabilitation team ensures the best long-term outcome."
+    content: "Joint replacement is an investment in your next 25 years of mobility. Selecting a fellowship-trained surgeon with high annual case volumes, modern robotic technology, and a dedicated post-op rehabilitation team ensures the best long-term outcome.",
+    sections: [
+      {
+        heading: "1. Surgeon Qualifications & Specialized Training",
+        text: "Verify specialized fellowship credentials (e.g. Royal College FRCS/MRCS UK, Edge Hill M.Ch.) and high annual surgical volumes in primary and revision knee replacements."
+      },
+      {
+        heading: "2. Hospital Affiliation & Infrastructure",
+        text: "Ensure the operating hospital features ultra-clean laminar flow modular OTs, dedicated ICU back-up, and experienced orthopaedic nursing staff."
+      },
+      {
+        heading: "3. Expertise in Advanced Robotic Systems",
+        text: "Robotic navigation provides sub-millimeter precision. Ensure the surgeon has dedicated hands-on robotic fellowship experience rather than relying solely on manual alignment rods."
+      },
+      {
+        heading: "4. Genuine Patient Reviews & Transparent Consultations",
+        text: "Look for authentic local patient testimonials and a surgeon who patiently walks you through your X-rays and imaging without rushing your appointment."
+      },
+      {
+        heading: "5. Focus on Aftercare & Structured Physiotherapy",
+        text: "Surgery is only half the journey. Ensure your clinical team provides comprehensive rehabilitation and daily follow-up guidance."
+      },
+      {
+        heading: "6. Red Flags to Watch Out For",
+        text: "Be cautious if a doctor rushes consultations, refuses to discuss potential risks or non-surgical alternatives, or provides vague pricing without clear insurance guidance."
+      }
+    ]
   },
   {
     slug: "benefits-of-robotic-surgery-in-orthopedics-precision-meets-better-outcomes",

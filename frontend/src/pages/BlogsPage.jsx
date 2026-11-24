@@ -49,6 +49,18 @@ export const BlogsPage = ({ onBookClick }) => {
 
               <div className="text-sm text-slate-700 leading-relaxed space-y-3 pt-2">
                 <p>{selectedBlog.content}</p>
+
+                {selectedBlog.sections && selectedBlog.sections.length > 0 && (
+                  <div className="space-y-3 pt-2">
+                    {selectedBlog.sections.map((sec, idx) => (
+                      <div key={idx} className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+                        <h4 className="text-xs font-bold text-[#08284d]">{sec.heading}</h4>
+                        <p className="text-xs text-slate-600 leading-relaxed">{sec.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <p className="bg-blue-50 p-4 rounded-2xl border border-blue-100 text-xs text-[#00458b]">
                   <strong>Doctor's Advice:</strong> Every patient's bone density, joint geometry, and recovery curve are unique. Consult Dr. Vatsal Khetan in OPD for individualized assessment.
                 </p>
