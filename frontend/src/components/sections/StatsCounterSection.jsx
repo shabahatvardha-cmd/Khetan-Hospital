@@ -1,5 +1,6 @@
 import React from 'react';
 import { User, Heart, ThumbsUp, Smile } from 'lucide-react';
+import { backgroundTextures } from '../../data/imageConfig';
 
 export const StatsCounterSection = () => {
   const stats = [
@@ -26,8 +27,16 @@ export const StatsCounterSection = () => {
   ];
 
   return (
-    <section className="bg-[#8c79b2] text-white py-14 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-[#8c79b2] text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background Hospital Facility Overlay with soft purple blend */}
+      <img 
+        src={backgroundTextures.statsCounter} 
+        alt="" 
+        className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay pointer-events-none select-none" 
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#8c79b2]/95 via-[#8c79b2]/85 to-[#8c79b2]/95 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;

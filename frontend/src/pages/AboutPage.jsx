@@ -14,12 +14,13 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { clinicInfo, careerTimeline, testimonials, insurancePartners } from '../data/clinicContent';
+import { doctorImages } from '../data/imageConfig';
 
 export const AboutPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. Oreo Interior Breadcrumb Banner */}
+      {/* 1. Interior Breadcrumb Banner */}
       <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -42,12 +43,14 @@ export const AboutPage = ({ onBookClick }) => {
           
           {/* Left Column: Doctor Photo & Stats Card (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 overflow-hidden">
-              <img 
-                src="/images/dr-vatsal-portrait.webp" 
-                alt="Dr. Vatsal Khetan - Orthopedic Surgeon" 
-                className="w-full h-auto rounded-xl object-cover"
-              />
+            <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 overflow-hidden">
+              <div className="bg-gradient-to-b from-sky-50 to-slate-50 rounded-2xl p-4 flex justify-center">
+                <img 
+                  src={doctorImages.portrait} 
+                  alt="Dr. Vatsal Khetan - Orthopedic Surgeon" 
+                  className="w-auto max-h-[460px] object-contain drop-shadow-xl"
+                />
+              </div>
               <div className="p-4 text-center">
                 <h3 className="text-lg font-bold text-slate-900">Dr. Vatsal Khetan</h3>
                 <p className="text-xs font-bold text-[#ff5722] mt-1">

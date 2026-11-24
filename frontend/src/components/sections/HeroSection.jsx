@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Calendar, Phone, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Calendar, Phone, MessageCircle, Award, ShieldCheck } from 'lucide-react';
 import { clinicInfo } from '../../data/clinicContent';
+import { doctorImages } from '../../data/imageConfig';
 
 export const HeroSection = ({ onBookClick }) => {
   const [formData, setFormData] = useState({
@@ -67,15 +68,32 @@ export const HeroSection = ({ onBookClick }) => {
             </div>
           </div>
 
-          {/* Right Column: Doctor Portrait Photo */}
+          {/* Right Column: Doctor Portrait Photo (Uncropped Transparent Cutout) */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
-            <div className="relative max-w-md w-full">
+            {/* Ambient Backlight Glow behind doctor */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-tr from-[#00bcd4]/20 via-sky-300/15 to-transparent blur-3xl"></div>
+            </div>
+
+            {/* Doctor Image Container */}
+            <div className="relative z-10 flex flex-col items-center">
               <img 
-                src="/images/dr-vatsal-hero.webp" 
+                src={doctorImages.hero} 
                 alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon" 
-                className="w-full h-auto object-cover rounded-3xl drop-shadow-xl"
+                className="w-auto max-h-[460px] sm:max-h-[520px] lg:max-h-[560px] object-contain drop-shadow-2xl select-none"
                 loading="eager"
               />
+
+              {/* Floating Badge / Accreditation Pill */}
+              <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00bcd4] to-sky-600 flex items-center justify-center text-white font-black text-xs shadow-sm shrink-0">
+                  FRCS
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-800 leading-tight">Dr. Vatsal Khetan</div>
+                  <div className="text-[10px] text-slate-500 font-medium">FRCS (Edinburgh) &bull; M.Ch (UK)</div>
+                </div>
+              </div>
             </div>
           </div>
 

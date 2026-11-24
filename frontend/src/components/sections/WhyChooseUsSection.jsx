@@ -1,16 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { surgeryImages, backgroundTextures } from '../../data/imageConfig';
 
 export const WhyChooseUsSection = ({ onBookClick }) => {
   return (
     <div className="w-full">
       
-      {/* 1. Dark Navy "Why Choose Us" Box (Exact Oreo Page 2-3) */}
-      <section className="bg-[#282d3c] text-white py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      {/* 1. Dark Navy "Why Choose Us" Box */}
+      <section className="bg-[#282d3c] text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Modular OT Overlay */}
+        <img 
+          src={backgroundTextures.modularOt} 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-overlay pointer-events-none select-none" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#282d3c]/95 via-[#282d3c]/90 to-[#282d3c]/95 pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           
-          {/* Oreo Header with Cyan Vertical Bar */}
+          {/* Header with Cyan Vertical Bar */}
           <div className="mb-12">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
@@ -62,11 +71,11 @@ export const WhyChooseUsSection = ({ onBookClick }) => {
             </div>
 
             <div className="lg:col-span-5 flex justify-center">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-700 max-w-md w-full">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-700 max-w-md w-full bg-slate-900 group">
                 <img 
-                  src="/images/dr-vatsal-robotic.webp" 
-                  alt="Robotic Surgery Technology at Khetan Hospital"
-                  className="w-full h-auto object-cover"
+                  src={surgeryImages["robotic-knee-surgery"].image} 
+                  alt="Sub-Millimeter Robotic Surgery Technology at Khetan Hospital"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>

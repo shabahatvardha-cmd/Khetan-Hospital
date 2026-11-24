@@ -1,37 +1,64 @@
-# 📸 Dr. Vatsal Khetan — Exact Image Placement & Sizing Guide
+# 📸 Khetan Hospital — Image Structure & Replacement Guide
 
-This guide details all **8 dedicated image slots** throughout the website where photos of **Dr. Vatsal Khetan** and clinical procedures are placed.
+This guide explains how all images across the website are organized, where each photo appears, and how you can easily replace or update them anytime.
 
-All image files are located in:
+All images are stored in:
 👉 `d:\Programming\Khetan Hospital\frontend\public\images\`
 
----
-
-## 🗺️ Visual Map of Image Slots
-
-| Section | File Name | Recommended Size | Framing / Visual Description | Where It Appears on Site |
-| :--- | :--- | :--- | :--- | :--- |
-| **1. Hero Banner** | `dr-vatsal-hero.svg` (or `.jpg` / `.webp`) | **1536 × 1024 px** (3:2) | **Dr. Vatsal Khetan in clinical coat or scrubs**, looking welcomingly toward the camera or examining a joint model. Anchored to the right side of the banner with the left side reserved for headline text. | Top of website inside the Hero section with the soft frosted wash overlay. |
-| **2. Doctor Portrait** | `dr-vatsal-portrait.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | **Full-height professional portrait of Dr. Vatsal Khetan** in white doctor's coat, arms crossed or friendly posture against a clean clinic background. | Left half of the **"01 / Meet Dr. Vatsal"** section. |
-| **3. Fellowship & Credentials** | `dr-vatsal-fellowship.svg` (or `.jpg` / `.webp`) | **1024 × 768 px** (4:3 horizontal) | Dr. Vatsal receiving his fellowship certificate, operating at **Wrightington Hospital (UK)**, or interacting with fellow orthopedic surgeons / sports athletes. | In the right column of the Doctor story, right above his bio. |
-| **4. Robotic Knee Surgery** | `dr-vatsal-robotic.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | Dr. Vatsal in the OT operating with the robotic navigation arm or reviewing 3D joint scans. | Card 1 (Yellow) in the **"02 / Specialized Care"** grid. |
-| **5. Keyhole Arthroscopy** | `dr-vatsal-arthroscopy.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | Dr. Vatsal performing minimally invasive keyhole arthroscopy or examining an athlete's knee/shoulder. | Card 2 (Blue) in the **"02 / Specialized Care"** grid. |
-| **6. Joint Reconstruction** | `dr-vatsal-reconstruction.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | High-precision joint anatomical implant or Dr. Vatsal consulting an active patient about joint restoration. | Card 3 (Mint) in the **"02 / Specialized Care"** grid. |
-| **7. Clinic Consultation** | `dr-vatsal-consult.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | Dr. Vatsal sitting across his consultation desk at **Betiahata Clinic**, explaining an X-ray or smiling with a patient. | Left image of the **3-column Booking Invitation Banner**. |
-| **8. Restored Mobility Outcome** | `dr-vatsal-rehab.svg` (or `.jpg` / `.webp`) | **768 × 1024 px** (3:4 vertical) | An active, recovered patient walking, jogging, or doing yoga pain-free. | Right image of the **3-column Booking Invitation Banner**. |
+Central configuration file:
+👉 `d:\Programming\Khetan Hospital\frontend\src\data\imageConfig.js`
 
 ---
 
-## 🚀 How to Replace Placeholders with Real Photos
+## 👨‍⚕️ 1. Doctor Portraits (Dr. Vatsal Khetan)
 
-1. Export your photos from your phone or camera in `.webp`, `.jpg`, or `.png`.
-2. Crop them according to the recommended aspect ratio (either **3:2 horizontal** or **3:4 vertical**).
-3. Name them with the exact file names above, e.g.:
-   * `dr-vatsal-hero.jpg`
-   * `dr-vatsal-portrait.jpg`
-   * `dr-vatsal-consult.jpg`
-4. Copy them directly into:
-   ```
-   d:\Programming\Khetan Hospital\frontend\public\images\
-   ```
-5. Vite will hot-reload and immediately display the real photos on the website!
+| Image Role | File Path | Description / Framing | Where It Appears |
+| :--- | :--- | :--- | :--- |
+| **Main Doctor Portrait (Featured)** | `/images/dr-vatsal-main.webp` | **Authentic uncropped photo in surgical scrubs** with "DR. VATSAL" embroidery and surgical cap. Transparent cutout with zero clipping. | **Hero Section** (Top right with ambient lighting and FRCS accreditation pill) & **About Doctor Section** |
+| **Doctor Profile Portrait** | `/images/dr-vatsal-portrait.webp` | Professional doctor portrait in natural vertical framing. | **About Page** (`/about`) & Doctor Story |
+| **OPD Consultation** | `/images/dr-vatsal-consult.webp` | Dr. Vatsal Khetan in clinical consultation at Betiahata Clinic. | **Booking Invitation Card** |
+| **UK NHS Fellowship** | `/images/dr-vatsal-fellowship.webp` | Fellowship & surgical accreditation in the UK. | **Doctor Story & Credentials** |
+
+> [!TIP]
+> **Zero Cropping Guarantee:** The doctor's portraits are styled using `object-contain` and natural aspect ratio containers. His surgical cap, head, shoulders, and arms are displayed 100% full-frame without being cut off by the browser.
+
+---
+
+## 🔬 2. Specialized Surgery Cards
+
+All procedural photos are stored in: `frontend/public/images/surgeries/`
+
+| Surgery Name | File Path | Featured Procedure |
+| :--- | :--- | :--- |
+| **Robotic Knee Surgery** | `/images/surgeries/robotic-knee.jpg` | Real-time robotic CT navigation & sub-millimeter knee alignment |
+| **Total Knee Replacement** | `/images/surgeries/knee-replacement.jpg` | High-durability knee arthroplasty implants (20+ yr longevity) |
+| **Hip Replacement & AVN** | `/images/surgeries/hip-replacement.jpg` | Wrightington UK ceramic bearings & hip preservation |
+| **Shoulder Surgery & Repair** | `/images/surgeries/shoulder-surgery.jpg` | High-definition arthroscopic rotator cuff repair |
+| **ACL & Sports Medicine** | `/images/surgeries/acl-surgery.jpg` | Minimally invasive keyhole arthroscopy & ligament repair |
+| **Trauma & Fracture Care** | `/images/surgeries/trauma-surgery.jpg` | Emergency titanium locking plates & pelvic-acetabular fixation |
+| **Spine Care & Decompression** | `/images/surgeries/spine-surgery.jpg` | Optical microscope & minimally invasive spine navigation |
+| **Foot & Ankle Reconstruction** | `/images/surgeries/ankle-surgery.jpg` | Ankle arthroscopy & sports ligament stabilization |
+| **Elbow Arthroscopy** | `/images/surgeries/elbow-surgery.jpg` | Complex joint preservation & tendon repair |
+
+---
+
+## 🏛️ 3. Section Background Textures
+
+All background textures are stored in: `frontend/public/images/backgrounds/`
+
+| Section | File Path | Visual Effect |
+| :--- | :--- | :--- |
+| **Stats Counter Bar** | `/images/backgrounds/hospital-interior.jpg` | Modern hospital wing interior with purple overlay (`mix-blend-overlay`) |
+| **Why Choose Us Section** | `/images/backgrounds/modular-ot.jpg` | High-tech modular operating theater with deep navy overlay |
+
+---
+
+## 🚀 How to Replace Any Image in Seconds
+
+You have two easy ways to update any photo:
+
+### Method A (Direct File Overwrite — Fastest):
+Simply copy your new image file into `frontend/public/images/` with the exact same name (e.g. `dr-vatsal-main.webp` or `surgeries/robotic-knee.jpg`). The website updates instantly!
+
+### Method B (Update Configuration):
+Add your new photo to `frontend/public/images/`, open `frontend/src/data/imageConfig.js`, and point the relevant line to your new filename.

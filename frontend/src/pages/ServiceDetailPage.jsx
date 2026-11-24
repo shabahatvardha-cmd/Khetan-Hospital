@@ -13,6 +13,7 @@ import {
   Phone
 } from 'lucide-react';
 import { allServices, clinicInfo } from '../data/clinicContent';
+import { surgeryImages } from '../data/imageConfig';
 
 export const ServiceDetailPage = ({ onBookClick }) => {
   const { slug } = useParams();
@@ -28,7 +29,7 @@ export const ServiceDetailPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. Oreo Interior Header Banner */}
+      {/* 1. Interior Header Banner */}
       <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -50,26 +51,37 @@ export const ServiceDetailPage = ({ onBookClick }) => {
       {/* 2. Main Content Details */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         
-        {/* Overview & Philosophy */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xs border border-slate-200/80 space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-sky-50 text-[#00bcd4]">
-              {service.category} SPECIALTY
-            </span>
-            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-orange-50 text-[#ff5722]">
-              {service.tag}
-            </span>
+        {/* Overview & Philosophy with Procedure Image */}
+        <div className="bg-white rounded-3xl overflow-hidden shadow-xs border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12">
+          <div className="lg:col-span-5 relative h-64 lg:h-auto min-h-[260px] bg-slate-100 overflow-hidden">
+            <img 
+              src={surgeryImages[service.slug]?.image || "/images/surgeries/robotic-knee.jpg"} 
+              alt={surgeryImages[service.slug]?.alt || service.title} 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent lg:hidden"></div>
           </div>
-
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-            {service.summary}
-          </p>
-
-          {service.philosophy && (
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700 italic">
-              <strong className="text-slate-900 not-italic">Joint Preservation Philosophy:</strong> "{service.philosophy}"
+          
+          <div className="lg:col-span-7 p-6 sm:p-8 space-y-4 flex flex-col justify-center">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-sky-50 text-[#00bcd4]">
+                {service.category} SPECIALTY
+              </span>
+              <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-orange-50 text-[#ff5722]">
+                {service.tag}
+              </span>
             </div>
-          )}
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              {service.summary}
+            </p>
+
+            {service.philosophy && (
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 italic">
+                <strong className="text-slate-900 not-italic">Joint Preservation Philosophy:</strong> "{service.philosophy}"
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Why Patients Choose Dr. Vatsal Khetan */}

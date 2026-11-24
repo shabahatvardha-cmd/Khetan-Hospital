@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { clinicInfo } from '../../data/clinicContent';
+import { doctorImages } from '../../data/imageConfig';
 
 export const DoctorStorySection = ({ onBookClick }) => {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         
-        {/* Oreo Section Header with Cyan Vertical Bar */}
+        {/* Section Header with Cyan Vertical Bar */}
         <div className="mb-14">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
@@ -24,18 +25,27 @@ export const DoctorStorySection = ({ onBookClick }) => {
         {/* 2-Column Split: Image on Left with Decorative Horizontal Line, Story on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Doctor Photo with decorative line */}
+          {/* Left Column: Doctor Photo with decorative line & zero cropping */}
           <div className="lg:col-span-5 relative flex justify-center">
             {/* Decorative horizontal accent line */}
             <div className="hidden lg:block absolute -left-12 top-1/2 w-16 h-0.5 bg-slate-800 -translate-y-1/2"></div>
             
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 max-w-sm w-full">
-              <img 
-                src="/images/dr-vatsal-portrait.webp" 
-                alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon" 
-                className="w-full h-auto object-cover"
-                loading="lazy"
-              />
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-gradient-to-b from-sky-50 via-slate-50 to-slate-100 max-w-sm w-full p-6 flex flex-col items-center">
+              <div className="relative w-full flex justify-center">
+                <img 
+                  src={doctorImages.portrait} 
+                  alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon" 
+                  className="w-auto max-h-[440px] object-contain drop-shadow-xl"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Doctor Details Bar */}
+              <div className="w-full mt-4 pt-4 border-t border-slate-200/80 text-center">
+                <div className="text-base font-extrabold text-slate-900">Dr. Vatsal Khetan</div>
+                <div className="text-xs font-bold text-[#00bcd4] mt-0.5">Chief Orthopedic &amp; Joint Surgeon</div>
+                <div className="text-[11px] text-slate-500 font-medium mt-0.5">FRCS (Edinburgh) &bull; M.Ch (UK) &bull; MS (Ortho)</div>
+              </div>
             </div>
           </div>
 
