@@ -832,6 +832,34 @@ export const allServices = [
       "High success rate in restoring sports running and jumping"
     ],
     recovery: "Protected splint/boot for 2-4 weeks, progressing to weight-bearing and balance proprioception training."
+  },
+  {
+    slug: "trauma-surgery",
+    title: "Trauma & Complex Fracture Care",
+    tag: "Emergency 24/7",
+    category: "Trauma",
+    summary: "Immediate surgical stabilization and reconstruction of high-velocity road traffic injuries, pelvic fractures, compound open fractures, and non-unions.",
+    indications: [
+      "Complex intra-articular fractures around the knee, hip, shoulder, and elbow",
+      "Pelvic and acetabular trauma requiring advanced anatomical reconstruction",
+      "Compound open fractures with soft tissue defects",
+      "Geriatric hip fragility fractures requiring rapid 24-hour fixation",
+      "Failed fracture fixations, non-unions, and malunions"
+    ],
+    benefits: [
+      "Emergency trauma availability with rapid operating theatre mobilization",
+      "AO/ASIF biological fixation principles minimizing soft-tissue trauma",
+      "Laminar flow modular OTs ensuring lowest post-traumatic infection risk",
+      "Early anatomical mobilization to prevent permanent joint stiffness",
+      "Integrated orthopaedic rehabilitation and limb salvage protocols"
+    ],
+    whyChoose: [
+      "FRCS Edinburgh & UK NHS specialist trauma training",
+      "Comprehensive digital imaging and modular surgical instrumentation",
+      "Over 10,000 successful orthopaedic surgical cases managed",
+      "Round-the-clock emergency hospital admission in Betiahata, Gorakhpur"
+    ],
+    recovery: "Tailored to fracture pattern. Stable fixation enables early bedside physiotherapy within 24-48 hours to preserve muscle tone."
   }
 ];
 
