@@ -305,16 +305,131 @@ export const insurancePartners = {
 
 export const allServices = [
   {
+    slug: "knee-replacement",
+    aliases: ["knee-replacement-surgery-in-gorakhpur"],
+    title: "Knee Replacement Surgery",
+    tagline: "Your Trusted Knee Replacement Surgeon in Gorakhpur — Bettiahata Clinic",
+    tag: "High Longevity",
+    category: "Knee",
+    summary: "Total and partial knee arthroplasty utilizing high-durability implants to relieve chronic arthritic pain and restore natural joint movement. Why go to Delhi or Lucknow when world-class British-trained care is available in Gorakhpur?",
+    philosophy: "Dr. Vatsal Khetan prioritizes joint preservation first. Knee replacement is recommended only when conservative treatments are exhausted and surgery offers the best long-term mobility.",
+    indications: [
+      "Persistent knee pain, especially severe at night or early in the morning",
+      "A rubbing or popping sensation in the joint with bone-on-bone friction",
+      "Swelling, warmth, or chronic irritation around the knee",
+      "Trouble walking or climbing stairs comfortably",
+      "Stiffness that makes bending or straightening the leg difficult",
+      "Not responding to medications, intra-articular injections, or physiotherapy",
+      "Severe Osteoarthritis, Rheumatoid Arthritis, or post-traumatic knee injury"
+    ],
+    whyChoose: [
+      "Advanced implants engineered for maximum strength and 20+ year longevity",
+      "Dedicated post-surgery mobility assistance and pain management plan",
+      "Same-day or 24-hour standing and assisted walking in most cases",
+      "Compassionate, friendly atmosphere prioritizing patient comfort",
+      "Customized implant selection tailored to your lifestyle and anatomy"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Pre-Surgery Check-up & 3D Mapping",
+        desc: "Your anatomy is unique. Dr. Khetan performs a detailed evaluation through advanced digital imaging, lab panels, and personalized anatomical alignment analysis."
+      },
+      {
+        step: "02",
+        title: "Robotic & Precision Surgical Techniques",
+        desc: "State-of-the-art computer-guided instruments place knee implants with sub-millimeter precision, preserving healthy bone and ligaments."
+      },
+      {
+        step: "03",
+        title: "Post-Operative Multimodal Care",
+        desc: "Immediate post-op care focusing on multimodal pain control, Thromboembolic Disease (TED) prevention, and early joint mobilization protocols."
+      },
+      {
+        step: "04",
+        title: "Rapid Recovery & Guided Rehab",
+        desc: "Tailored physiotherapy enables most patients to walk independently and resume daily household routines within 6 to 12 weeks."
+      }
+    ],
+    benefits: [
+      "Proven 20+ year implant survivorship with modern high-flex bearings",
+      "Complete eradication of chronic arthritic joint pain",
+      "Correction of leg bowing (varus/valgus deformities)",
+      "Restoration of active lifestyle and unassisted mobility"
+    ],
+    lifestyleAfter: [
+      { title: "दर्द से राहत (Pain Relief)", desc: "अब घुटनों के पुराने दर्द से छुटकारा पाएं, जिसने आपको सालों से रोक रखा था।" },
+      { title: "बेहतर गतिशीलता (Improved Mobility)", desc: "आत्मविश्वास के साथ चलें, सीढ़ियाँ चढ़ें और बिना सहारे के घूमें-फिरें।" },
+      { title: "बेहतर नींद (Restful Sleep)", desc: "दर्द और सूजन की वजह से अब रात की नींद खराब नहीं होगी।" },
+      { title: "सक्रिय जीवनशैली (Active Lifestyle)", desc: "उन चीज़ों को फिर से करना शुरू करें जिन्हें आप पसंद करते हैं—हॉबीज़, घूमना-फिरना और सामाजिक जीवन।" }
+    ],
+    proceduresOffered: [
+      "Total Knee Replacement (TKR): Complete joint resurfacing for advanced arthritis",
+      "Partial Knee Replacement (PKR): Preserves healthy compartments when only one side is damaged",
+      "Revision Knee Surgery: Specialized correction when previous surgeries performed elsewhere fail",
+      "Robotic-Assisted Knee Surgery: Sub-millimeter robotic precision for the highest surgical accuracy"
+    ],
+    faqs: [
+      {
+        q: "गोरखपुर में घुटने के प्रत्यारोपण की सर्जरी में कितना समय लगता है?",
+        a: "आमतौर पर 60 से 90 मिनट लगते हैं। ज़्यादातर मरीज़ 24 घंटे के अंदर सहारे से खड़े होने या चलने लगते हैं।"
+      },
+      {
+        q: "क्या बुजुर्गों के लिए नी रिप्लेसमेंट करवाना सुरक्षित है?",
+        a: "हाँ, पूरी प्री-ऑपरेटिव जांच (हार्ट, ब्लड शुगर, एनेस्थीसिया फिटनेस) के बाद आधुनिक तकनीकों से यह प्रक्रिया बुजुर्गों के लिए भी पूरी तरह सुरक्षित है।"
+      },
+      {
+        q: "क्या मुझे ज़िंदगी भर बैसाखियों का इस्तेमाल करना पड़ेगा?",
+        a: "बिल्कुल नहीं! बैसाखी या वॉकर का इस्तेमाल केवल शुरुआती कुछ हफ़्तों के लिए होता है। अधिकांश मरीज़ 4 से 6 हफ़्तों में बिना किसी सहारे के चलने लगते हैं।"
+      }
+    ],
+    recovery: "Full weight-bearing initiated within 24 hours. Progressive physiotherapy enables independent walking and stair navigation within 6-12 weeks."
+  },
+  {
     slug: "robotic-knee-surgery",
+    aliases: ["robotic-surgery-in-gorakhpur", "robotic-knee-surgery-in-gorakhpur"],
     title: "Robotic Knee Surgery",
+    tagline: "Your Trusted Robotic Knee Surgeon in Gorakhpur — Bettiahata Clinic",
     tag: "Zero-Error Precision",
     category: "Knee",
-    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery.",
+    summary: "Sub-millimeter accurate knee replacement using real-time robotic guidance, personalized 3D bone mapping, and rapid 24-hour mobility recovery. Why travel to Delhi or Lucknow when world-class robotic surgery is available at Bettiahata, Gorakhpur?",
+    philosophy: "Dr. Vatsal Khetan focuses on robotic sub-millimeter precision, rapid recovery, and minimal tissue trauma—ensuring every patient achieves natural joint kinematics.",
     indications: [
-      "Severe end-stage osteoarthritis with bone-on-bone friction",
-      "Knee stiffness preventing standing, climbing stairs, or walking",
-      "Bow legs or knock knees (varus/valgus deformity)",
-      "Failed non-surgical treatments including injections and physiotherapy"
+      "Severe joint pain that interferes with daily household activities",
+      "Severe arthritis that doesn't respond to medications or injections",
+      "Knee injuries or deformities requiring precise anatomical realignment",
+      "Difficulty walking, bending, or climbing stairs",
+      "Previous knee surgery that did not yield satisfactory results",
+      "Patients seeking the most precise and minimally invasive joint replacement available"
+    ],
+    whyChoose: [
+      "Highly precise robot-assisted alignment matching natural kinematics",
+      "Minimal bone cuts, sparing collateral ligaments and healthy soft tissues",
+      "Significantly less blood loss and minimal post-operative swelling",
+      "Faster discharge from hospital and standing within 24 hours",
+      "Substantially decreased post-operative pain"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Pre-Surgery 3D CT/Optical Scan",
+        desc: "A personalized 3D digital model of your knee joint is generated to plan implant sizing and bone resection down to a fraction of a millimeter."
+      },
+      {
+        step: "02",
+        title: "Robotic Navigation Arm Execution",
+        desc: "During surgery, the robotic arm guides the surgeon with active haptic boundaries, ensuring cuts are made only within the safe pre-planned zone."
+      },
+      {
+        step: "03",
+        title: "Dynamic Soft-Tissue Balancing",
+        desc: "Real-time sensors monitor ligament tension throughout the full range of motion (0° to 120°+), ensuring the knee feels completely natural."
+      },
+      {
+        step: "04",
+        title: "Fast Recovery Protocol",
+        desc: "Patients walk within 24 hours, climb stairs within 3-4 days, and resume independent unassisted walking within 4 to 8 weeks."
+      }
     ],
     benefits: [
       "Sub-millimeter implant alignment matching natural anatomy",
@@ -322,127 +437,359 @@ export const allServices = [
       "Reduced post-operative pain and minimal blood loss",
       "Faster discharge (often 2-3 days) and standing within 24 hours"
     ],
-    recovery: "Most patients take their first assisted steps on Day 1, climb stairs within 3-4 days, and resume independent driving and daily life within 3-4 weeks."
+    lifestyleAfter: [
+      { title: "दर्द से राहत (Pain Relief)", desc: "लंबे समय से चले आ रहे जोड़ों के असहनीय दर्द को हमेशा के लिए अलविदा कहें।" },
+      { title: "बेहतर गतिशीलता (Enhanced Mobility)", desc: "जोड़ों की प्राकृतिक कार्यक्षमता के साथ आसानी से चलें-फिरें और सीढ़ियाँ चढ़ें।" },
+      { title: "बेहतर नींद (Restful Nights)", desc: "घुटनों के दर्द की वजह से अब आपकी रात की नींद खराब नहीं होगी।" },
+      { title: "सक्रिय जीवनशैली (Active Independence)", desc: "आत्मविश्वास के साथ यात्रा करें, सामाजिक कार्यक्रमों में भाग लें और सक्रिय जीवन जीएं।" }
+    ],
+    proceduresOffered: [
+      "Robotic Total Knee Replacement: Unmatched precision for advanced tri-compartmental arthritis",
+      "Robotic Partial Knee Replacement: Ultra-targeted resurfacing preserving natural ligaments",
+      "Revision Robotic Knee Surgery: Flawless corrective alignment for previously failed surgeries",
+      "Computer-Assisted Joint Realignment: State-of-the-art navigation for complex deformities"
+    ],
+    faqs: [
+      {
+        q: "रोबोटिक नी रिप्लेसमेंट सर्जरी में कितना समय लगता है?",
+        a: "आमतौर पर 60 से 90 मिनट का समय लगता है। अधिकांश मरीज़ 24 घंटे के अंदर सहारे से चलने लगते हैं।"
+      },
+      {
+        q: "क्या रोबोटिक सर्जरी में रोबोट अपने आप ऑपरेशन करता है?",
+        a: "नहीं, रोबोट केवल एक उच्च-सटीक गाइडेड सिस्टम है जिसे पूरी तरह से डॉ. वत्सल खेतान द्वारा नियंत्रित किया जाता है। यह सर्जन के हाथों की सटीकता को मिलीमीटर के दसवें हिस्से तक बढ़ा देता है।"
+      },
+      {
+        q: "क्या यह बुज़ुर्ग मरीज़ों के लिए सुरक्षित है?",
+        a: "हाँ, रोबोटिक सर्जरी में कम चीर-फाड़ और कम खून बहने के कारण बुजुर्ग मरीजों के लिए रिकवरी पारंपरिक सर्जरी की तुलना में काफी आसान और सुरक्षित होती है।"
+      }
+    ],
+    recovery: "Most patients take assisted steps on Day 1, climb stairs in 3-4 days, and resume unassisted walking within 4 to 8 weeks."
   },
   {
-    slug: "knee-replacement",
-    title: "Knee Replacement Surgery",
-    tag: "High Longevity",
-    category: "Knee",
-    summary: "Total and partial knee arthroplasty utilizing high-durability implants to relieve chronic arthritic pain and restore natural joint movement.",
+    slug: "hip-replacement",
+    aliases: ["hip-replacement-surgery-in-gorakhpur"],
+    title: "Hip Replacement Surgery",
+    tagline: "Best Hip Replacement Doctors in Gorakhpur — Dr. Vatsal Khetan",
+    tag: "Rapid Recovery",
+    category: "Hip",
+    summary: "Total Hip Arthroplasty (THA) using ceramic-on-polyethylene bearings for avascular necrosis (AVN), osteoarthritis, and hip fractures. Restore mobility and live a pain-free life with advanced joint care.",
+    philosophy: "Each patient receives a customized treatment plan focusing on comfort, rapid recovery, and long-term durability using modern ceramic bearings.",
     indications: [
-      "Chronic knee pain lasting over 6 months",
-      "Night pain disturbing normal sleep",
-      "Severe joint degeneration visible on weight-bearing X-rays",
-      "Difficulty walking more than 100 meters without resting"
+      "Severe Osteoarthritis causing deep groin and hip stiffness",
+      "Rheumatoid Arthritis with joint erosion",
+      "Femoral neck fractures in elderly and active adults",
+      "Avascular Necrosis (AVN) of the femoral head (Stage 3 & 4)",
+      "Severe difficulty sitting cross-legged, walking, or putting on shoes",
+      "Failure of non-operative treatments and pain medications"
+    ],
+    whyChoose: [
+      "Special expertise in both conventional and MIS (Minimally Invasive) hip replacement",
+      "Personalized patient care focused on rapid mobilization and comfort",
+      "Use of cutting-edge ceramic and highly cross-linked polyethylene implants",
+      "Top-rated hip replacement hospital facility in Gorakhpur with dedicated surgical suite",
+      "High success rate in equalizing leg lengths and eliminating limp"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Total Hip Replacement (THA)",
+        desc: "Replaces both the damaged femoral head (ball) and acetabular socket with precision ceramic-on-polyethylene prosthetics."
+      },
+      {
+        step: "02",
+        title: "MIS (Minimally Invasive) Hip Arthroplasty",
+        desc: "Performs the procedure through muscle-sparing intervals with smaller skin incisions, reducing blood loss and muscle soreness."
+      },
+      {
+        step: "03",
+        title: "Customized Treatment & Bearing Selection",
+        desc: "Implant sizing, head diameter, and offset are custom-tailored to the patient's age, bone geometry, and functional demands."
+      },
+      {
+        step: "04",
+        title: "Post-Operative Recovery Guidelines",
+        desc: "Patients are mobilized on Day 1. Guidelines on keeping the incision clean, using ice packs, and gentle physiotherapy ensure smooth healing."
+      }
     ],
     benefits: [
-      "Proven 20+ year implant survivorship",
-      "Complete eradication of arthritic joint pain",
-      "Correction of leg curvature and bowing",
-      "Restoration of active lifestyle and independent mobility"
+      "Effective and immediate relief from deep groin and buttock pain",
+      "Restoration of joint mobility, leg strength, and normal walking gait",
+      "Correction of limb length discrepancy and elimination of limping",
+      "Ultra-low wear modern implants designed to function smoothly for 15-20+ years"
     ],
-    recovery: "Full weight-bearing initiated immediately post-surgery. Progressive physiotherapy regimen to achieve 110-120 degrees of knee flexion."
-  },
-  {
-    slug: "shoulder-replacement",
-    title: "Shoulder Replacement Surgery",
-    tag: "Anatomic & Reverse",
-    category: "Shoulder",
-    summary: "Anatomic total shoulder arthroplasty and Reverse Shoulder Replacement for severe cuff tear arthropathy and complex proximal humerus fractures.",
-    indications: [
-      "Severe shoulder osteoarthritis unresponsive to medication",
-      "Massive, irreparable rotator cuff tears with secondary arthritis",
-      "Complex proximal humerus fractures in elderly patients",
-      "Severe stiffness and inability to lift the arm above chest level"
+    lifestyleAfter: [
+      { title: "दर्द से पूर्ण मुक्ति (Pain Relief)", desc: "कूल्हे के गंभीर दर्द से मुक्ति पाकर मरीज दोबारा सामान्य जीवन में लौटते हैं।" },
+      { title: "ताकत और गतिशीलता (Strength & Mobility)", desc: "बिना किसी खास परेशानी के चलना, सीढ़ियाँ चढ़ना और हल्की एक्सरसाइज करना संभव होता है।" },
+      { title: "जीवन की गुणवत्ता में सुधार (Quality of Life)", desc: "रोज़मर्रा के काम जैसे कपड़े पहनना और घूमना आसान और सुविधाजनक हो जाता है।" },
+      { title: "दीर्घकालिक टिकाऊपन (Long-Lasting Implants)", desc: "आधुनिक सिरेमिक इम्प्लांट्स 15 से 20 साल या उससे भी अधिक समय तक सुरक्षित काम करते हैं।" }
     ],
-    benefits: [
-      "Dramatic relief from constant nagging shoulder pain",
-      "Restoration of overhead arm elevation and reaching ability",
-      "Advanced reverse shoulder design utilizing deltoid muscle mechanics",
-      "Minimal hospitalization and structured outpatient therapy"
+    proceduresOffered: [
+      "Total Hip Replacement (THR): Complete anatomical joint restoration",
+      "MIS Hip Replacement: Minimally invasive muscle-sparing technique",
+      "Bipolar Hemiarthroplasty: Hip fracture management for elderly patients",
+      "Revision Hip Arthroplasty: Complex reconstruction for loosened or worn-out implants"
     ],
-    recovery: "Arm in supportive sling for 2-3 weeks with early passive pendulum exercises, progressing to active strength training at 6 weeks."
+    faqs: [
+      {
+        q: "डॉक्टर हिप रिप्लेसमेंट सर्जरी की सलाह कब देते हैं?",
+        a: "जब आर्थराइटिस, कूल्हे की हड्डी टूटने या एवस्कुलर नेक्रोसिस (AVN) के कारण दर्द इतना बढ़ जाए कि चलना-फिरना मुश्किल हो और दवाइयों या फिजियोथेरेपी से आराम न मिले।"
+      },
+      {
+        q: "हिप रिप्लेसमेंट के बाद रिकवरी में कितना समय लगता है?",
+        a: "अधिकांश मरीज़ सर्जरी के अगले ही दिन सहारे से चलने लगते हैं और 4 से 6 हफ़्तों में अपनी सामान्य दैनिक गतिविधियों में लौट आते हैं।"
+      },
+      {
+        q: "सर्जरी के बाद किन बातों का ध्यान रखना चाहिए?",
+        a: "चीरे को सूखा रखें, सूजन के लिए आइस पैक का उपयोग करें, शुरुआती हफ़्तों में जमीन पर बैठने या ज्यादा झुकने से बचें और नियमित फिजियोथेरेपी करें।"
+      }
+    ],
+    recovery: "Walking with walker on Day 1. Independent stair negotiation before hospital discharge. Driving and light activities resumed at 4-6 weeks."
   },
   {
     slug: "knee-arthroscopy",
+    aliases: ["knee-arthroscopy-surgery-in-gorakhpur"],
     title: "Knee Arthroscopy (Keyhole)",
+    tagline: "Advanced and Minimally Invasive Knee Arthroscopy in Gorakhpur — Dr. Vatsal Khetan",
     tag: "Day Care Procedure",
     category: "Sports Medicine",
-    summary: "Minimally invasive keyhole joint surgery using high-definition fiberoptic cameras to repair meniscus tears, cartilage damage, and loose bodies.",
+    summary: "Minimally invasive keyhole joint surgery using high-definition fiberoptic cameras to repair meniscus tears, cartilage damage, loose bodies, and ligament tears with tiny incisions.",
+    philosophy: "Preserve the native knee anatomy whenever possible through targeted microscopic keyhole repairs and biological restoration.",
     indications: [
-      "Meniscus tears (locking or clicking knee sensations)",
-      "Recurrent swelling and joint line tenderness",
-      "Loose cartilage fragments causing joint blockage",
-      "Early cartilage wear requiring biologic preservation"
+      "Meniscus tears causing joint locking, catching, or clicking sensations",
+      "ACL, PCL, or MCL ligament tears from sports or falls",
+      "Recurrent unexplained joint swelling and persistent tenderness",
+      "Loose cartilage fragments or bone chips causing joint blockage",
+      "Swollen synovial tissue (synovitis) or intra-articular knee infections"
+    ],
+    whyChoose: [
+      "Best knee arthroscopy treatment in Gorakhpur with recognized diagnostic excellence",
+      "Led by British & Sportsmed-trained specialist with high-volume arthroscopy experience",
+      "Equipped with high-definition arthroscopy towers and dedicated orthopaedic suite",
+      "Same-day daycare procedure allowing discharge within hours",
+      "Personalized athlete and patient rehabilitation program"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Pinhole Incisions (Keyholes)",
+        desc: "Two or three miniature incisions (under 5 mm) are made around the knee, causing virtually zero muscle damage and no noticeable scars."
+      },
+      {
+        step: "02",
+        title: "High-Definition Arthroscopic Diagnostics",
+        desc: "A fiberoptic camera illuminates and magnifies the internal knee structures on high-res monitors for 100% diagnostic accuracy."
+      },
+      {
+        step: "03",
+        title: "Targeted Repair / Meniscus Suture",
+        desc: "Specialized micro-instruments repair meniscus tears, smooth rough cartilage, or remove loose bone fragments."
+      },
+      {
+        step: "04",
+        title: "Same-Day Discharge & Early Rehab",
+        desc: "Patients are safely discharged on the same day with early walking exercises and minimal post-operative pain."
+      }
     ],
     benefits: [
       "Pinhole incisions (under 5 mm) with virtually no visible scarring",
-      "Same-day hospital discharge (Day Care admission)",
+      "Same-day hospital discharge (Day Care procedure)",
       "Minimal post-operative swelling and rapid return to work",
-      "Direct visualization and precise microscopic repair"
+      "Preservation of native cartilage to prevent premature arthritis"
+    ],
+    lifestyleAfter: [
+      { title: "अस्पताल में कम समय (Day Care)", desc: "सर्जरी के कुछ ही घंटों बाद मरीज़ अपने घर वापस जा सकते हैं।" },
+      { title: "काम पर जल्दी वापसी (Fast Recovery)", desc: "डेस्क जॉब करने वाले मरीज़ 3 से 5 दिनों में अपना काम फिर से शुरू कर सकते हैं।" },
+      { title: "सर्जरी का कम जोखिम (Minimal Risk)", desc: "छोटे चीरे होने के कारण संक्रमण और खून बहने का जोखिम लगभग नगण्य होता है।" },
+      { title: "लंबे समय तक जोड़ों की कार्यक्षमता (Cartilage Preservation)", desc: "मेनिस्कस और कार्टिलेज की मरम्मत से जोड़ सालों-साल स्वस्थ बना रहता है।" }
+    ],
+    proceduresOffered: [
+      "Meniscus Repair & Balancing: Inside-out and all-inside arthroscopic suture techniques",
+      "Diagnostic Knee Arthroscopy: Unexplained chronic knee effusion and joint pain investigation",
+      "Chondroplasty & Cartilage Repair: Microfracture and biologic joint preservation",
+      "Loose Body Removal: Arthroscopic retrieval of calcified loose bodies"
+    ],
+    faqs: [
+      {
+        q: "घुटने की आर्थ्रोस्कोपी सर्जरी क्या है?",
+        a: "यह एक न्यूनतम चीरा लगाने वाली (कीहोल) प्रक्रिया है जिसमें छोटे चीरों के ज़रिए कैमरे की मदद से घुटने के अंदर की समस्या की सटीक जाँच और इलाज किया जाता है।"
+      },
+      {
+        q: "क्या यह ओपन सर्जरी से बेहतर है?",
+        a: "हाँ, इसमें बड़े चीरे नहीं लगते, दर्द और सूजन बहुत कम होती है, खून नहीं बहता और रिकवरी कई गुना तेज़ होती है।"
+      },
+      {
+        q: "रिकवरी में कितना समय लगता है?",
+        a: "मरीज़ सर्जरी के दिन ही चलने लगते हैं। दैनिक काम 1 हफ़्ते में और खेलकूद 4 से 6 हफ़्तों में शुरू किए जा सकते हैं।"
+      }
     ],
     recovery: "Walking immediately with partial weight-bearing. Most desk workers resume work in 3-5 days; light sports resume in 4-6 weeks."
   },
   {
-    slug: "shoulder-arthroscopy",
-    title: "Shoulder Arthroscopy & Rotator Cuff",
-    tag: "Keyhole Precision",
+    slug: "shoulder-replacement",
+    aliases: ["shoulder-replacement-surgery-in-gorakhpur"],
+    title: "Shoulder Replacement Surgery",
+    tagline: "Best Shoulder Replacement Doctors in Gorakhpur — Dr. Vatsal Khetan",
+    tag: "Anatomic & Reverse",
     category: "Shoulder",
-    summary: "State-of-the-art keyhole shoulder surgery for rotator cuff repair, recurrent shoulder dislocation (Bankart repair), and frozen shoulder release.",
+    summary: "Anatomic total shoulder arthroplasty and Reverse Shoulder Replacement for severe cuff tear arthropathy, complex proximal humerus fractures, and debilitating arthritis.",
+    philosophy: "Regain smooth overhead reach and pain-free arm function through customized anatomical and reverse shoulder reconstruction.",
     indications: [
-      "Rotator cuff tendon tears causing weakness when lifting arm",
-      "Recurrent shoulder dislocations (Bankart & labral tears)",
-      "Subacromial impingement with chronic sharp overhead pain",
-      "Refractory frozen shoulder with severe loss of rotation"
+      "Severe shoulder osteoarthritis unresponsive to medications or injections",
+      "Massive, irreparable rotator cuff tears with secondary arthritis (Cuff Tear Arthropathy)",
+      "Complex comminuted proximal humerus fractures in elderly patients",
+      "Severe stiffness and inability to lift the arm above chest level or comb hair",
+      "Chronic night pain disturbing sleep"
+    ],
+    whyChoose: [
+      "Specialized fellowship training in shoulder arthroplasty with UK NHS shoulder teams",
+      "Expertise in both Total Anatomic and Reverse Shoulder Replacement",
+      "Patient-centered rehabilitation protocol ensuring safe recovery",
+      "Durable modern prosthetics engineered for lasting overhead strength"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Total Shoulder Replacement",
+        desc: "Replaces both the ball (humeral head) and socket (glenoid) with artificial components for patients with healthy rotator cuff tendons."
+      },
+      {
+        step: "02",
+        title: "Reverse Shoulder Replacement",
+        desc: "Inverts joint geometry so the deltoid muscle powers arm elevation when rotator cuff tendons are severely torn."
+      },
+      {
+        step: "03",
+        title: "Soft Tissue Balancing & Fixation",
+        desc: "Precise component alignment restores anatomical tension and smooth gliding of the shoulder girdle."
+      },
+      {
+        step: "04",
+        title: "Guided Outpatient Rehabilitation",
+        desc: "Early passive pendulum exercises protect healing tissues, progressing to active strength training by week 6."
+      }
     ],
     benefits: [
-      "No large muscle cutting required (spares the deltoid)",
-      "Ultra-strong suture anchors for anatomical tendon reattachment",
-      "Rapid outpatient procedure with minimal pain",
-      "High return-to-sport success rates for throwing athletes"
+      "Dramatic relief from constant, nagging shoulder and neck pain",
+      "Restoration of overhead arm elevation and reaching ability",
+      "Advanced reverse shoulder design utilizing deltoid muscle mechanics",
+      "Minimal hospitalization and structured outpatient therapy"
     ],
-    recovery: "Early gentle passive pendulum stretches, sling protection for 3-4 weeks, followed by targeted rotator cuff strengthening."
+    lifestyleAfter: [
+      { title: "लंबे समय तक दर्द से राहत (Pain Relief)", desc: "गठिया, रोटेटर कफ की चोट या फ्रैक्चर के कारण होने वाले दर्द से स्थायी राहत।" },
+      { title: "कंधे की गति में सुधार (Mobility Restoration)", desc: "कपड़े पहनना, सामान उठाना और ऊँचाई पर रखी वस्तुओं तक आसानी से पहुँचना सरल हो जाता है।" },
+      { title: "जीवन की गुणवत्ता में सुधार (Quality of Life)", desc: "मरीज़ अधिक आत्मनिर्भर, आत्मविश्वासी और सक्रिय जीवन जी पाते हैं।" },
+      { title: "टिकाऊ इम्प्लांट्स (Durable Prosthetics)", desc: "उच्च गुणवत्ता वाले आधुनिक इम्प्लांट्स लंबे समय तक स्थिरता और गति प्रदान करते हैं।" }
+    ],
+    proceduresOffered: [
+      "Anatomic Total Shoulder Arthroplasty (TSA): For intact rotator cuff arthritis",
+      "Reverse Total Shoulder Arthroplasty (rTSA): For massive cuff tears & fractures",
+      "Shoulder Hemiarthroplasty: Humeral head replacement for select fractures",
+      "Revision Shoulder Arthroplasty: Correction for failed or loose shoulder implants"
+    ],
+    faqs: [
+      {
+        q: "कंधे के रिप्लेसमेंट की आवश्यकता कब पड़ती है?",
+        a: "जब गंभीर आर्थराइटिस, रोटेटर कफ टियर या फ्रैक्चर के कारण कंधे में असहनीय दर्द हो और हाथ उठाना या कपड़े पहनना मुश्किल हो जाए।"
+      },
+      {
+        q: "रिवर्स शोल्डर रिप्लेसमेंट क्या होता है?",
+        a: "जब रोटेटर कफ की नसें पूरी तरह फट चुकी हों, तो रिवर्स रिप्लेसमेंट जोड़ की बनावट को बदलकर डेल्टॉइड मांसपेशी की मदद से हाथ को ऊपर उठाने में मदद करता है।"
+      },
+      {
+        q: "सर्जरी के बाद क्या सावधानियां रखनी चाहिए?",
+        a: "चीरे को सूखा रखें, सूजन के लिए ठंडी सिकाई करें, 2-3 हफ़्ते स्लिंग का उपयोग करें और बताए गए व्यायाम नियमित करें।"
+      }
+    ],
+    recovery: "Arm in supportive sling for 2-3 weeks with early passive pendulum exercises, progressing to active strength training at 6 weeks."
   },
   {
     slug: "acl-surgery",
-    title: "ACL Surgery & Ligament Repair",
+    aliases: ["acl-surgery-in-gorakhpur"],
+    title: "ACL Surgery & Ligament Reconstruction",
+    tagline: "Expert ACL Reconstruction & Sports Knee Restoration — Dr. Vatsal Khetan",
     tag: "Sports Medicine",
     category: "Sports Medicine",
-    summary: "Anatomical ACL reconstruction using autograft tendon and modern bioabsorbable fixation to restore rotational knee stability for athletes.",
+    summary: "Anatomical ACL reconstruction using autograft tendon and modern bioabsorbable fixation to restore rotational knee stability for athletes. Heel ligament injury and restore knee strength.",
+    philosophy: "Sports-focused knee restoration using British and IOC sports protocols to safely return athletes to competitive sports.",
     indications: [
-      "Complete Anterior Cruciate Ligament (ACL) tear",
-      "Knee giving way or buckling during pivoting movements",
+      "Complete Anterior Cruciate Ligament (ACL) tear from sports or falls",
+      "Knee giving way, buckling, or faltering during pivoting movements",
+      "Inability to fully straighten or bear weight on the knee",
       "Combined ACL + meniscus injuries sustained in football, cricket, or road accidents",
-      "Athletes desiring return to high-demand competitive sports"
+      "Athletes desiring safe return to high-demand competitive sports"
+    ],
+    whyChoose: [
+      "Pioneering sports surgeon trained under Dr. Anant Joshi and IOC Sports Medicine (Switzerland)",
+      "Anatomical footprint reconstruction matching natural biomechanics",
+      "Minimally invasive keyhole arthroscopy with small incisions and faster recovery",
+      "Proven track record treating national and regional athletic champions",
+      "Structured 6-phase rehabilitation program preventing re-injury"
+    ],
+    procedureSteps: [
+      {
+        step: "01",
+        title: "Early Rest & Pain Management",
+        desc: "Pain and swelling treated with cryotherapy and multi-modal analgesia, ensuring maximum patient comfort."
+      },
+      {
+        step: "02",
+        title: "Early Phase Physiotherapy",
+        desc: "Gentle range-of-motion exercises initiated within days of surgery to prevent joint stiffness and arthrofibrosis."
+      },
+      {
+        step: "03",
+        title: "Protected Crutch Support",
+        desc: "Temporary crutch use to reduce knee strain, gradually transitioning to unassisted walking under doctor guidance."
+      },
+      {
+        step: "04",
+        title: "Strength & Mobility Conditioning",
+        desc: "Targeted physiotherapy restores quadriceps, hamstring, and core stability for robust joint protection."
+      },
+      {
+        step: "05",
+        title: "Gradual Return to Activity",
+        desc: "Stationary cycling at 4-6 weeks, jogging at 3 months, and sport-specific agility drills at 6 months."
+      },
+      {
+        step: "06",
+        title: "Regular Monitoring & Sports Clearance",
+        desc: "Scheduled checkups ensure graft incorporation with full competitive sports clearance typically at 8-9 months."
+      }
     ],
     benefits: [
-      "Anatomical footprint reconstruction matching natural biomechanics",
-      "Strong graft fixation enabling early aggressive rehabilitation",
-      "Preservation of surrounding knee structures to prevent early arthritis",
+      "Anatomical footprint reconstruction matching natural knee biomechanics",
+      "Restoration of joint stability preventing knee buckling or giving way",
+      "Protection of secondary knee structures, preventing future meniscus tears and early arthritis",
       "IOC Sports Medicine protocol for safe return-to-play"
     ],
+    lifestyleAfter: [
+      { title: "घुटने की स्थिरता की पुनः प्राप्ति (Knee Stability)", desc: "बिना घुटना मुड़ने या जवाब देने के डर के आसानी से चलें, दौड़ें और सीढ़ियाँ चढ़ें।" },
+      { title: "सामान्य जीवन में जल्दी वापसी (Early Return)", desc: "उचित पुनर्वास के साथ मरीज़ कुछ ही महीनों में अपनी सक्रिय दिनचर्या में वापस लौट आते हैं।" },
+      { title: "न्यूनतम चीरा लगाने वाली सर्जरी (Keyhole Precision)", desc: "आर्थ्रोस्कोपिक तकनीक से छोटे चीरे लगते हैं, दर्द कम होता है और रिकवरी तेज़ होती है।" },
+      { title: "भविष्य की चोटों से बचाव (Joint Protection)", desc: "एसीएल सर्जरी भविष्य में घुटने के कार्टिलेज और मेनिस्कस के नुकसान के जोखिम को कम करती है।" }
+    ],
+    proceduresOffered: [
+      "Anatomic Hamstring Autograft ACL Reconstruction",
+      "Bone-Patellar Tendon-Bone (BTB) Reconstruction for Elite Athletes",
+      "Remnant-Preserving ACL Reconstruction (J-Arch Landmark)",
+      "Multi-Ligament Reconstruction (ACL + PCL + MCL / LCL)"
+    ],
+    faqs: [
+      {
+        q: "ACL सर्जरी क्या है और इसकी ज़रूरत क्यों होती है?",
+        a: "घुटने के मुख्य स्थिर करने वाले लिगामेंट (एसीएल) के फटने पर उसे दोबारा बनाने के लिए यह सर्जरी की जाती है, ताकि घुटना मुड़े नहीं और अस्थिरता खत्म हो।"
+      },
+      {
+        q: "सर्जरी के बाद ठीक होने में कितना समय लगता है?",
+        a: "मरीज़ कुछ हफ़्तों में चलना-फिरना शुरू कर सकते हैं। हल्की जॉगिंग 3 महीने में और खेलों में पूर्ण वापसी 8 से 9 महीने के रिहैब के बाद होती है।"
+      },
+      {
+        q: "क्या सर्जरी में देरी करने से नुकसान हो सकता है?",
+        a: "हाँ! अस्थिर घुटने के साथ चलने से मेनिस्कस फट सकता है और कम उम्र में ही घुटने में आर्थराइटिस हो सकता है।"
+      }
+    ],
     recovery: "Walking with brace on Day 1. Stationary cycling at 4-6 weeks, jogging at 3 months, agility drills at 6 months, full sports clearance at 8-9 months."
-  },
-  {
-    slug: "hip-replacement",
-    title: "Hip Replacement Surgery",
-    tag: "Rapid Recovery",
-    category: "Hip",
-    summary: "Total Hip Arthroplasty (THA) using ceramic-on-polyethylene bearings for avascular necrosis (AVN), osteoarthritis, and hip fractures.",
-    indications: [
-      "Avascular Necrosis (AVN) of femoral head (Stage 3 & 4)",
-      "Severe hip osteoarthritis and stiffness when walking or sitting",
-      "Ankylosing spondylitis with fused or painful hip joints",
-      "Femoral neck fractures in active adults and elderly"
-    ],
-    benefits: [
-      "Immediate elimination of deep groin and hip pain",
-      "Leg length equalization and correction of limp",
-      "Ultra-low wear ceramic bearings for 25+ year durability",
-      "Rapid mobilization: walking on the evening of surgery"
-    ],
-    recovery: "Walking with walker/crutches on Day 1. Independent stair negotiation before hospital discharge. Normal driving and light activities at 4-6 weeks."
   },
   {
     slug: "spine-surgery",
@@ -485,6 +832,7 @@ export const allServices = [
     recovery: "Protected splint/boot for 2-4 weeks, progressing to weight-bearing and balance proprioception training."
   }
 ];
+
 
 export const allBlogs = [
   {
