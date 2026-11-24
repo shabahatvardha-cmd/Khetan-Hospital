@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, MessageSquare, ArrowRight, X } from 'lucide-react';
-import blogsData from '../../data/blogsData.json';
+import { allBlogs } from '../../data/clinicContent';
 
 export const ResourcesSection = ({ onBookClick }) => {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [newsletterData, setNewsletterData] = useState({ name: '', email: '' });
   const [subscribed, setSubscribed] = useState(false);
 
-  // 3 Featured blogs from blogsData
+  // 3 Featured blogs from allBlogs
   const featuredBlogs = [
-    blogsData.find(b => b.slug.includes('hip-replacement-surgery-at-home')) || blogsData[0],
-    blogsData.find(b => b.slug.includes('robotic-surgery-in-orthopedic') || b.slug.includes('benefits-of-robotic')) || blogsData[2],
-    blogsData.find(b => b.slug.includes('risks-and-complications-of-acl-surgery')) || blogsData[5]
+    allBlogs.find(b => b.slug.includes('hip-replacement-surgery-at-home')) || allBlogs[0],
+    allBlogs.find(b => b.slug.includes('robotic-surgery-in-orthopedic') || b.slug.includes('benefits-of-robotic')) || allBlogs[2],
+    allBlogs.find(b => b.slug.includes('risks-and-complications-of-acl-surgery')) || allBlogs[5]
   ].filter(Boolean);
 
   const handleSubscribe = (e) => {

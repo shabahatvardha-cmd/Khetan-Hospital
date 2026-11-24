@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Phone, 
@@ -18,8 +18,36 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Scroll listener to pin white bar at the top on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 95);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Click outside listener to close dropdowns smoothly
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { title: 'Home', href: '/' },
@@ -50,10 +78,10 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
       title: 'Blog', 
       href: '/blogs',
       dropdown: [
-        { title: 'All 61 Health Blogs', href: '/blogs', desc: 'Full patient recovery archive' },
-        { title: 'Hip Recovery Guide', href: '/blogs', desc: 'Home rehab precautions' },
-        { title: 'Robotic Surgery Benefits', href: '/blogs', desc: 'Sub-millimeter evidence' },
-        { title: 'ACL Prevention & Rehab', href: '/blogs', desc: 'Sports injury protocols' }
+        { title: 'All Clinical Articles', href: '/blogs', desc: 'Browse complete 6-per-page patient archive' },
+        { title: 'Hip Recovery Guide', href: '/blogs?search=Hip', desc: 'Home rehab precautions' },
+        { title: 'Robotic Surgery Evidence', href: '/blogs?search=Robotic', desc: 'Sub-millimeter precision outcomes' },
+        { title: 'ACL & Sports Rehabilitation', href: '/blogs?search=ACL', desc: 'Sports injury recovery protocols' }
       ]
     },
     { 
@@ -81,6 +109,15 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
   const handleNavLinkClick = () => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
+  };
+
+  const handleItemClick = (e, item) => {
+    if (item.dropdown) {
+      e.preventDefault();
+      setActiveDropdown(activeDropdown === item.title ? null : item.title);
+    } else {
+      handleNavLinkClick();
+    }
   };
 
   return (
@@ -180,8 +217,18 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
         </div>
       </div>
 
-      {/* 3. Sticky White Navigation Bar Card (Pinned on scroll, reliable hover bridge) */}
-      <div className="sticky top-2 z-50 px-3 sm:px-6 lg:px-8 -mt-3">
+      {/* Spacer to prevent page jumping when navbar pins fixed */}
+      {isScrolled && <div className="h-16 w-full" />}
+
+      {/* 3. White Navigation Bar Card (Pinned to top on scroll, reliable hover + click bridge) */}
+      <div 
+        ref={navRef}
+        className={`${
+          isScrolled 
+            ? 'fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 py-2 bg-white/95 backdrop-blur-md shadow-xl transition-all duration-200' 
+            : 'relative z-50 px-3 sm:px-6 lg:px-8 -mt-3'
+        }`}
+      >
         <div className="max-w-7xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-4">
           
           {/* Mobile Left: Menu Toggle + Brand Icon */}
@@ -198,7 +245,7 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
             </Link>
           </div>
 
-          {/* Desktop Nav Links with Reliable Hover Bridge */}
+          {/* Desktop Nav Links with Click-Toggle + Hover Bridge */}
           <nav className="hidden lg:flex items-center space-x-6 text-xs font-bold text-slate-700">
             {navItems.map((item, idx) => {
               const isActive = location.pathname === item.href;
@@ -213,21 +260,21 @@ export const Navbar = ({ onBookClick, onToggleAdmin, isAdminView }) => {
                 >
                   <Link
                     to={item.href}
-                    onClick={() => setActiveDropdown(null)}
-                    className={`inline-flex items-center gap-1 transition-colors hover:text-[#00bcd4] py-1 ${
+                    onClick={(e) => handleItemClick(e, item)}
+                    className={`inline-flex items-center gap-1 transition-colors hover:text-[#00bcd4] py-1 cursor-pointer ${
                       isActive ? 'text-[#00bcd4]' : ''
                     }`}
                   >
                     <span>{item.title}</span>
                     {item.dropdown && (
-                      <ChevronDown className="w-3 h-3 text-slate-400 group-hover:rotate-180 transition-transform" />
+                      <ChevronDown className={`w-3 h-3 text-slate-400 group-hover:rotate-180 transition-transform ${isHovered ? 'rotate-180 text-[#00bcd4]' : ''}`} />
                     )}
                   </Link>
 
-                  {/* Dropdown Menu with Seamless Invisible Bridge */}
-                  {item.dropdown && isHovered && (
+                  {/* Dropdown Menu with Seamless Invisible Bridge & Group Hover Support */}
+                  {item.dropdown && (
                     <div 
-                      className="absolute top-full left-0 pt-2 z-50"
+                      className={`absolute top-full left-0 pt-2 z-50 ${isHovered ? 'block' : 'hidden group-hover:block'}`}
                       onMouseEnter={() => setActiveDropdown(item.title)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
