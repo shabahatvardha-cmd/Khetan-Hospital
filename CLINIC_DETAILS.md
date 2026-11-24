@@ -306,3 +306,98 @@
   - Minimal surgical trauma and significantly less blood loss.
   - Faster recovery: patients resume unassisted walking within 4 to 8 weeks.
   - Natural joint kinematics and extended implant longevity.
+
+
+---
+
+## 11. Regional Patient Stories & Outreach Centres
+
+Dr. Vatsal Khetan’s primary surgical centre is located at Betiahata, Gorakhpur. Patients from surrounding districts in Eastern Uttar Pradesh and Western Bihar regularly travel for world-class knee replacement, robotic joint surgery, and sports medicine consultations.
+
+### A. Deoria (~50 km from Gorakhpur)
+- **Catchment Towns:** Deoria city, Rudrapur, Salempur, Barhaj.
+- **Why Patients Choose Dr. Khetan:** Avoid traveling to Lucknow or Delhi; British NHS-trained care just 50 km away.
+- **Patient Stories:**
+  - **Ram Prasad Yadav (Deoria):** Suffered 3 years with severe knee pain; walked the very next day after knee replacement surgery.
+  - **Sharda Devi (Rudrapur, Deoria):** Bilateral knee replacement (both knees simultaneously); fast recovery and clear explanations in Hindi.
+  - **Mahendra Singh (Salempur, Deoria, 68 yrs):** Afraid of surgery initially; after 4 months, goes for morning walks daily.
+
+### B. Basti (~70-80 km from Gorakhpur)
+- **Catchment Towns:** Basti, Khalilabad, Harraiya.
+- **Travel Route:** 1.5 - 2 hrs by highway, ~1 hr by direct train.
+- **Demographics:** Farmers, shopkeepers, teachers, and homemakers.
+- **Patient Stories:**
+  - **Soni Sharma (Basti):** Both knees operated simultaneously; recovered much faster than anticipated.
+  - **Jitesh Gupta (Basti):** Delayed surgery for years out of fear; experienced a completely stress-free procedure.
+  - **Satya Prakash (Basti):** Long-term stair-climbing pain eliminated; walks comfortably without pain.
+
+### C. Kushinagar (~50 km from Gorakhpur)
+- **Catchment Towns:** Padrauna, Kushinagar, Rudrapur, Hata, Tamkuhi Raj.
+- **Travel Route:** Under 1 hour drive via NH27 highway.
+- **Patient Stories:**
+  - **Ashok Kumar Patel (Kushinagar):** Suffered 6 years with severe joint pain; now walks comfortably and attends family functions.
+  - **Monica Tripathi (Kushinagar):** Smooth recovery with zero constant discomfort.
+  - **Rajiv Gupta (Kushinagar):** Businessman needing prolonged standing; returned to full daily business activities comfortably.
+
+### D. Maharajganj (~50 km from Gorakhpur)
+- **Catchment Towns:** Maharajganj, Nautanwa, Nichlaul, Pharenda.
+- **Travel Route:** Under 1 hour drive via Gorakhpur-Maharajganj road.
+- **Patient Stories:**
+  - **Ramesh Chandra Verma (Maharajganj):** Chronic pain limited mobility for years; returned to active independent walking.
+  - **Meera Gupta (Maharajganj):** Outstanding arthritis care and clear guidance.
+  - **Harendra Yadav (Maharajganj, Farmer):** Resumed farming and field work with ease after surgery.
+
+### E. Bettiah (West Champaran, Bihar)
+- **Catchment Towns:** Bettiah, Bagaha, Narkatiaganj, Chanpatia, Raxaul.
+- **Travel Route:** Direct train connectivity to Gorakhpur Jn.
+- **Patient Stories:**
+  - **Ramashankar (Bettiah):** 4 years of pain, avoided long travel to Patna; took direct train to Gorakhpur and walked on Day 3.
+  - **Rita Gupta (Bettiah):** Appreciated all consultations and explanations in clear Hindi.
+  - **Ram Lal (Bettiah, Farmer):** Returned to farming and field labor within 3 months of joint replacement.
+
+### F. Siwan (Bihar)
+- **Catchment Towns:** Siwan, Mairwa, Maharajganj (Bihar), Goriyakothi, Ziradei.
+- **Travel Route:** Hourly trains to Gorakhpur (approx. 2 hours).
+- **Patient Stories:**
+  - **Shyam Narayan (Siwan):** 3 years of knee pain resolved; walks without support.
+  - **Renu Kumari (Siwan):** Night pain eliminated; now enjoys daily morning walks.
+  - **Awadhesh Rai (Siwan, Farmer):** Returned to full agricultural work after 2 months.
+
+### G. Motihari (East Champaran, Bihar)
+- **Catchment Towns:** Motihari, Chakia, Dhaka, Areraj.
+- **Travel Route:** Direct road/rail links to Gorakhpur.
+
+---
+
+## 12. Blog & Patient Education Directory (30+ Clinical Topics)
+
+1. *How to Recover from Hip Replacement Surgery at Home: A Complete Guide*
+2. *How to Choose the Right Doctor for Knee Replacement: A Complete Patient Guide*
+3. *Benefits of Robotic Surgery in Orthopaedics: Precision Meets Better Outcomes*
+4. *What is the Best Way to Find an Orthopedic Surgeon Near You? A Complete Guide*
+5. *Robotic Knee Replacement in India: Evidence-Based Benefits, Cost & What Patients Should Know*
+6. *Risks and Complications of ACL Surgery: What You Should Know*
+7. *How to Find a Doctor Who Specializes in Sports Injuries*
+8. *Difference Between Knee Replacement and Hip Replacement Surgery*
+9. *Non-Surgical Knee Pain Treatment in Gorakhpur: Options That Work*
+10. *Do You Constantly Have Joint Pain? This Article Is for You*
+11. *Do You Feel Your Knee Is Unstable? Understanding Ligament & Meniscus Tears*
+12. *Can We Prevent ACL Injury? Neuromuscular Training for Athletes*
+13. *Do You Want to Treat Your Knee Pain Without Surgery? Conservative Joint Preservation*
+14. *Effective Treatments for Ligament Injuries: Non-Surgical vs. Arthroscopic*
+15. *The Best Knee Braces for Osteoarthritis: A Comprehensive Guide*
+16. *Knee Arthroscopy: What to Expect Before, During, and After Surgery*
+17. *Bankart Repair: Understanding Recurrent Shoulder Dislocation Treatment*
+18. *Understanding Articular Cartilage Injuries: Causes, Treatments, and Recovery*
+19. *Arthroscopy: Benefits and Risks Explained*
+20. *Recovering from Anterior Cruciate Ligament (ACL) Repair*
+21. *The Ultimate Guide to ACL Reconstruction*
+22. *Finding the Best Knee Pain Doctor Near Me*
+23. *Orthopedic Surgeon for Degenerative Conditions: What to Expect*
+24. *The Role of a Minimally Invasive Orthopedic Surgeon*
+25. *Joint Preservation Surgery: Techniques and Benefits*
+26. *Why You Need a Sports Orthopedic Surgeon*
+27. *Living with Arthritis: Daily Mobility Tips and Evidence-Based Treatments*
+28. *Treating Ligament Injuries: Modern Methods and Recovery Time*
+29. *Knee Braces for Osteoarthritis: Choosing the Right Support*
+30. *Knee Arthroscopy: How It Can Help You*

@@ -845,6 +845,15 @@ export const allBlogs = [
     content: "Undergoing a hip replacement is a life-changing milestone that restores painless movement. In this guide, Dr. Vatsal Khetan breaks down essential home recovery tips: setting up safe recovery zones, navigating stairs safely, managing post-op swelling, and adhering to the 90-degree hip flexion rule in the first few weeks."
   },
   {
+    slug: "how-to-choose-the-right-doctor-for-knee-replacement-a-complete-patient-guide",
+    title: "How to Choose the Right Doctor for Knee Replacement: A Complete Patient Guide",
+    date: "October 2026",
+    readTime: "5 min read",
+    category: "Patient Guidance",
+    excerpt: "What to look for when choosing an orthopedic surgeon: surgical volume, international fellowships (FRCS UK), robotic certification, and transparent consultations.",
+    content: "Joint replacement is an investment in your next 25 years of mobility. Selecting a fellowship-trained surgeon with high annual case volumes, modern robotic technology, and a dedicated post-op rehabilitation team ensures the best long-term outcome."
+  },
+  {
     slug: "benefits-of-robotic-surgery-in-orthopedics-precision-meets-better-outcomes",
     title: "Benefits of Robotic Surgery in Orthopaedics: Precision Meets Better Outcomes",
     date: "October 2026",
@@ -852,6 +861,15 @@ export const allBlogs = [
     category: "Robotic Tech",
     excerpt: "Robotic-assisted knee replacement brings sub-millimeter precision, personalized 3D planning, and faster functional recovery compared to conventional techniques.",
     content: "Robotic joint replacement is not about a machine replacing the surgeon. Rather, it is a robotic navigation arm guided entirely by Dr. Vatsal Khetan that ensures implants are positioned with zero error down to a fraction of a millimeter. This translates directly to less tissue trauma, less blood loss, and walking within 24 hours."
+  },
+  {
+    slug: "what-is-the-best-way-to-find-an-orthopedic-surgeon-near-you-a-complete-guide",
+    title: "What is the Best Way to Find an Orthopaedic Surgeon Near You? A Complete Guide",
+    date: "October 2026",
+    readTime: "5 min read",
+    category: "Patient Guidance",
+    excerpt: "Essential questions to ask when evaluating orthopaedic surgeons: UK fellowships, volume of successful surgeries, and hospital accreditation.",
+    content: "When chronic joint pain limits your daily routine, finding an expert who listens and evaluates non-surgical options first is essential. Learn the critical credentials to verify."
   },
   {
     slug: "robotic-knee-replacement-in-india-evidence-based-benefits-cost-what-patients-should-know",
@@ -872,13 +890,22 @@ export const allBlogs = [
     content: "ACL tears are among the most frequent sports injuries among athletes and young adults. Dr. Vatsal Khetan explains the surgical procedure, why early graft incorporation requires disciplined adherence to physical therapy, and how modern arthroscopic techniques have made complications exceptionally rare."
   },
   {
-    slug: "how-to-choose-the-right-doctor-for-knee-replacement-a-complete-patient-guide",
-    title: "How to Choose the Right Doctor for Knee Replacement: A Complete Patient Guide",
+    slug: "how-to-find-a-doctor-who-specializes-in-sports-injuries",
+    title: "How to Find a Doctor Who Specializes in Sports Injuries",
     date: "September 2026",
     readTime: "5 min read",
-    category: "Patient Guidance",
-    excerpt: "What to look for when choosing an orthopedic surgeon: surgical volume, international fellowships (FRCS UK), robotic certification, and transparent consultations.",
-    content: "Joint replacement is an investment in your next 25 years of mobility. Selecting a fellowship-trained surgeon with high annual case volumes, modern robotic technology, and a dedicated post-op rehabilitation team ensures the best long-term outcome."
+    category: "Sports Medicine",
+    excerpt: "Understanding the difference between general orthopaedics and sports medicine specialists certified by international athletic bodies like the IOC.",
+    content: "Athletes require specialized care that understands biomechanics, agility, and aggressive return-to-sport protocols. Learn why an IOC-certified sports physician makes the difference."
+  },
+  {
+    slug: "difference-between-knee-replacement-and-hip-replacement-surgery",
+    title: "Difference Between Knee Replacement and Hip Replacement Surgery",
+    date: "September 2026",
+    readTime: "6 min read",
+    category: "Joint Replacement",
+    excerpt: "A comparative medical guide covering anatomical complexity, recovery timelines, weight-bearing milestones, and post-operative lifestyle.",
+    content: "While both procedures replace arthritic cartilage with durable modern bearings, hip replacements often mobilize slightly quicker while knee replacements require focused flexion therapy."
   },
   {
     slug: "non-surgical-knee-pain-treatment-in-gorakhpur",
@@ -888,6 +915,69 @@ export const allBlogs = [
     category: "Joint Preservation",
     excerpt: "Not every painful knee needs surgery. Explore evidence-based non-operative treatments including viscosupplementation, PRP, weight management, and physical therapy.",
     content: "At Khetan Knee N Shoulder Clinic, surgery is always the last resort. For patients with Grade 1 or 2 osteoarthritis, targeted quadriceps strengthening, offloader braces, and intra-articular injections can relieve pain and delay or eliminate the need for surgery for many years."
+  },
+  {
+    slug: "do-you-constantly-have-joint-pain",
+    title: "Do You Constantly Have Joint Pain? This Article Is for You",
+    date: "August 2026",
+    readTime: "5 min read",
+    category: "Joint Care",
+    excerpt: "Understanding the difference between mechanical wear-and-tear (osteoarthritis) vs inflammatory arthritis and when to seek specialist advice.",
+    content: "Chronic pain can wear down your mental well-being and daily independence. Recognizing warning signs like morning stiffness lasting over 30 minutes is the first step toward lasting relief."
+  },
+  {
+    slug: "do-you-feel-your-knee-is-unstable",
+    title: "Do You Feel Your Knee Is Unstable? Understanding Ligament & Meniscus Tears",
+    date: "July 2026",
+    readTime: "6 min read",
+    category: "Sports Medicine",
+    excerpt: "Why knees give way, pop, or buckle during sudden turns, and how timely MRI scans and keyhole repairs prevent early degenerative arthritis.",
+    content: "A knee giving way while descending stairs is a hallmark of ACL insufficiency. Prompt evaluation preserves the joint's shock-absorbing meniscus."
+  },
+  {
+    slug: "can-we-prevent-acl-injury",
+    title: "Can We Prevent ACL Injury? Neuromuscular Training for Athletes",
+    date: "July 2026",
+    readTime: "5 min read",
+    category: "Sports Medicine",
+    excerpt: "Proven warm-up drills, hamstring strengthening, and jump-landing biomechanics that reduce ligament tear risks by up to 50%.",
+    content: "Drawing on IOC sports protocols, Dr. Vatsal Khetan highlights essential injury-prevention regimens for young footballers, cricketers, and runners."
+  },
+  {
+    slug: "the-best-knee-braces-for-osteoarthritis-a-comprehensive-guide",
+    title: "The Best Knee Braces for Osteoarthritis: A Comprehensive Guide",
+    date: "June 2026",
+    readTime: "5 min read",
+    category: "Joint Preservation",
+    excerpt: "Comparing unloader braces, neoprene compression sleeves, and hinged supports for medial compartment knee arthritis.",
+    content: "An unloader brace shifts body weight away from the damaged medial compartment, offering immediate pain relief for active individuals."
+  },
+  {
+    slug: "knee-arthroscopy-what-to-expect-before-during-and-after-surgery",
+    title: "Knee Arthroscopy: What to Expect Before, During, and After Surgery",
+    date: "June 2026",
+    readTime: "6 min read",
+    category: "Arthroscopy",
+    excerpt: "A complete step-by-step walkthrough of day-care keyhole surgery, from anesthesia to walking the same day without visible scars.",
+    content: "Keyhole arthroscopy has revolutionized knee care. Learn why patients go home the same day and return to desk jobs in under a week."
+  },
+  {
+    slug: "bankart-repair-understanding-the-treatment",
+    title: "Bankart Repair: Understanding Recurrent Shoulder Dislocation Treatment",
+    date: "May 2026",
+    readTime: "6 min read",
+    category: "Shoulder Care",
+    excerpt: "How arthroscopic suture anchors re-attach torn labral cartilage, permanently stopping repeated shoulder slipping and dislocations.",
+    content: "Recurrent shoulder instability can occur during simple sleep or overhead tasks. Arthroscopic Bankart repair restores joint security."
+  },
+  {
+    slug: "living-with-arthritis-tips-and-treatments",
+    title: "Living with Arthritis: Tips and Evidence-Based Treatments",
+    date: "May 2026",
+    readTime: "5 min read",
+    category: "Arthritis Care",
+    excerpt: "Daily lifestyle adjustments, anti-inflammatory nutrition, low-impact exercise, and modern medical therapies for lasting mobility.",
+    content: "Arthritis doesn't have to stop your lifestyle. A combination of low-impact walking, swimming, and targeted therapy keeps joints supple."
   }
 ];
 
@@ -895,55 +985,188 @@ export const allLocations = [
   {
     city: "Gorakhpur",
     isMain: true,
-    title: "Main Clinic — Betiahata, Gorakhpur",
+    title: "Main Surgical Centre — Betiahata, Gorakhpur",
     address: "SK Pandey Complex, Beside Union Bank of India, Betiahata Road, Gorakhpur, UP 273001",
     timings: "Monday - Saturday: 9:00 AM - 1:00 PM | 2:00 PM - 8:00 PM",
     phone: "+91 96623 65917",
-    servicesAvailable: "Full OPD, Robotic Joint Replacement, Keyhole Arthroscopy, Digital X-Rays, Cashless TPA Desk"
+    servicesAvailable: "Full OPD, Robotic Joint Replacement, Keyhole Arthroscopy, Digital X-Rays, Cashless TPA Desk",
+    travelNote: "Primary surgical hospital equipped with dedicated laminar flow modular OTs and high-precision robotic navigation."
   },
   {
     city: "Deoria",
-    title: "Deoria Outreach Consultation Clinic",
-    address: "Centrally located clinic partner, Deoria, UP",
+    title: "Deoria Patient Care & Consultation Centre",
+    distance: "~50 km from Gorakhpur (< 1 hr drive)",
+    address: "Centrally located partner clinic, Deoria, UP",
     timings: "Scheduled OPD Days (Prior booking mandatory)",
     phone: "+91 96623 65917",
-    servicesAvailable: "Orthopedic Evaluation, Pre-Op Consultation, Post-Op Joint Follow-ups"
+    servicesAvailable: "Orthopedic Evaluation, Pre-Op Consultation, Post-Op Joint Follow-ups",
+    catchment: "Deoria, Rudrapur, Salempur, Barhaj",
+    patientStories: [
+      {
+        name: "Ram Prasad Yadav",
+        location: "Deoria",
+        quote: "I suffered from severe knee pain for three years and was advised to travel to Lucknow. A relative recommended Dr. Vatsal Khetan in Gorakhpur. It was the best decision—I walked the very next day after surgery."
+      },
+      {
+        name: "Sharda Devi",
+        location: "Rudrapur, Deoria",
+        quote: "I had both knees replaced simultaneously. Recovery was very fast. The doctor explained everything in simple Hindi. We never imagined such world-class care would be available just 50 km away."
+      },
+      {
+        name: "Mahendra Singh (68 yrs)",
+        location: "Salempur, Deoria",
+        quote: "I was afraid of surgery due to my age. Dr. Vatsal Khetan gave me confidence. Today, after four months, I go for my morning walk every single day."
+      }
+    ]
   },
   {
     city: "Basti",
     title: "Basti Patient Consultation Centre",
+    distance: "~70-80 km from Gorakhpur (1.5 hrs highway / 1 hr direct train)",
     address: "Main Medical Road, Basti, UP",
     timings: "Weekly Outreach Clinics",
     phone: "+91 96623 65917",
-    servicesAvailable: "Joint Pain Diagnostics, Knee & Shoulder Assessment, Surgical Coordination"
+    servicesAvailable: "Joint Pain Diagnostics, Knee & Shoulder Assessment, Surgical Coordination",
+    catchment: "Basti, Khalilabad, Harraiya",
+    patientStories: [
+      {
+        name: "Soni Sharma",
+        location: "Basti",
+        quote: "I had surgery on both my knees, and recovery was much faster than expected. Dr. Vatsal Khetan explained each step clearly and made me feel completely comfortable."
+      },
+      {
+        name: "Jitesh Gupta",
+        location: "Basti",
+        quote: "I put off surgery for years because of fear of recovery. Dr. Khetan guided me through a stress-free process. Today, I am more confident and self-reliant than ever."
+      },
+      {
+        name: "Satya Prakash",
+        location: "Basti",
+        quote: "Climbing stairs was painful for years. After knee surgery, I walk comfortably without constant discomfort. The care was exceptional."
+      }
+    ]
   },
   {
     city: "Kushinagar",
     title: "Kushinagar Outreach OPD",
+    distance: "~50 km from Gorakhpur (under 1 hr via NH27)",
     address: "Kushinagar Medical Hub, UP",
     timings: "Bi-Weekly Specialist OPD",
     phone: "+91 96623 65917",
-    servicesAvailable: "Arthritis Care, ACL Injury Screening, Surgical Second Opinions"
+    servicesAvailable: "Robotic Knee Replacement Consultations, ACL Screening, Arthritis Care",
+    catchment: "Padrauna, Kushinagar, Rudrapur, Hata, Tamkuhi Raj",
+    patientStories: [
+      {
+        name: "Ashok Kumar Patel",
+        location: "Kushinagar",
+        quote: "For nearly six years, severe knee pain affected every aspect of my life. After treatment, I can walk comfortably, attend family events, and enjoy an active lifestyle once again."
+      },
+      {
+        name: "Monica Tripathi",
+        location: "Kushinagar",
+        quote: "I was hesitant about surgery, but the detailed support completely reassured me. Recovery was smooth, with zero of the constant pain that plagued me before."
+      },
+      {
+        name: "Rajiv Gupta",
+        location: "Kushinagar",
+        quote: "As a businessman standing for long hours, knee pain was a major obstacle. Treatment has been very beneficial, allowing me to work comfortably all day."
+      }
+    ]
+  },
+  {
+    city: "Maharajganj",
+    title: "Maharajganj Consultation Outreach",
+    distance: "~50 km from Gorakhpur (under 1 hr drive)",
+    address: "Hospital Road, Maharajganj, UP",
+    timings: "Scheduled Specialist Clinics",
+    phone: "+91 96623 65917",
+    servicesAvailable: "Joint Replacement Evaluations, Sports Injury Screening, Post-Op Reviews",
+    catchment: "Maharajganj, Nautanwa, Nichlaul, Pharenda",
+    patientStories: [
+      {
+        name: "Ramesh Chandra Verma",
+        location: "Maharajganj",
+        quote: "Chronic knee pain limited my mobility for years. Walking to the store became difficult. After treatment, my confidence returned and I enjoy an active lifestyle again."
+      },
+      {
+        name: "Meera Gupta",
+        location: "Maharajganj",
+        quote: "I was looking for reliable treatment for my knee arthritis. The care and expertise I received from Dr. Vatsal Khetan were truly outstanding. I walk comfortably now."
+      },
+      {
+        name: "Harendra Yadav (Farmer)",
+        location: "Maharajganj",
+        quote: "As a farmer, physical activity is crucial. Severe joint pain was impacting my work. After treatment, I can perform all my daily farming tasks with ease."
+      }
+    ]
   },
   {
     city: "Bettiah",
-    title: "Bettiah (West Champaran) Regional Centre",
+    title: "Bettiah (West Champaran, Bihar) Centre",
+    distance: "Direct rail connectivity to Gorakhpur Jn",
     address: "Hospital Road, Bettiah, Bihar",
     timings: "Monthly Specialist Camp & Consultations",
     phone: "+91 96623 65917",
-    servicesAvailable: "Complex Knee & Shoulder Cases, Post-Surgical Rehab Reviews"
+    servicesAvailable: "Complex Knee & Shoulder Cases, Post-Surgical Rehab Reviews",
+    catchment: "Bettiah, Bagaha, Narkatiaganj, Chanpatia, Raxaul",
+    patientStories: [
+      {
+        name: "Ramashankar",
+        location: "Bettiah",
+        quote: "I suffered 4 years from knee pain, and traveling to Patna was exhausting. I took the direct train to Gorakhpur and started walking on the 3rd day. A wonderful experience."
+      },
+      {
+        name: "Rita Gupta",
+        location: "Bettiah",
+        quote: "The doctor explained everything in clear Hindi with zero confusion. I was nervous about surgery, but the outcome was excellent."
+      },
+      {
+        name: "Ram Lal (Farmer)",
+        location: "Bettiah",
+        quote: "I had stopped working in the fields because of my knee. Three months after surgery, I am back working actively. Traveling to Gorakhpur by train was very convenient."
+      }
+    ]
   },
   {
     city: "Siwan",
-    title: "Siwan Consultation Outreach",
+    title: "Siwan (Bihar) Consultation Outreach",
+    distance: "Direct hourly trains to Gorakhpur (~2 hrs journey)",
     address: "Station Road Medical Zone, Siwan, Bihar",
     timings: "Regular Outreach Sessions",
     phone: "+91 96623 65917",
-    servicesAvailable: "Joint Replacement Consultations, Cashless Hospitalization Planning"
+    servicesAvailable: "Joint Replacement Consultations, Cashless Hospitalization Planning",
+    catchment: "Siwan, Mairwa, Maharajganj (Bihar), Goriyakothi, Ziradei",
+    patientStories: [
+      {
+        name: "Shyam Narayan",
+        location: "Siwan",
+        quote: "I had knee pain for 3 years, making sitting or standing difficult. After surgery, I can walk without support and climb stairs with ease."
+      },
+      {
+        name: "Renu Kumari",
+        location: "Siwan",
+        quote: "Pain was so intense I couldn't sleep. Now I sleep peacefully every night and take a morning walk every day."
+      },
+      {
+        name: "Awadhesh Rai (Farmer)",
+        location: "Siwan",
+        quote: "I had stopped working in the fields. Two months after the operation, I am back to working fully with no problems."
+      }
+    ]
+  },
+  {
+    city: "Motihari",
+    title: "Motihari (East Champaran, Bihar) Centre",
+    distance: "Direct road and rail links to Gorakhpur",
+    address: "Main Medical Zone, Motihari, Bihar",
+    timings: "Scheduled Specialist Consultations",
+    phone: "+91 96623 65917",
+    servicesAvailable: "Knee Replacement & Arthroscopy Follow-ups, Pre-Op Evaluations",
+    catchment: "Motihari, Chakia, Dhaka, Areraj"
   },
   {
     city: "Patna",
-    title: "Patna Surgical & Specialist Consultation",
+    title: "Patna Surgical Partner Centre",
     address: "Specialist Surgical Partner Centre, Patna, Bihar",
     timings: "Advanced Surgical Cases by Appointment",
     phone: "+91 96623 65917",
