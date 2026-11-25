@@ -10,16 +10,42 @@ export const HeroSection = ({ onBookClick }) => {
     phone: '',
     date: new Date().toISOString().split('T')[0],
     doctor: 'Dr. Vatsal Khetan (FRCS Edinburgh)',
-    department: 'Robotic Knee Replacement'
+    department: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleNameChange = (e) => {
+    const textOnly = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setFormData(prev => ({ ...prev, name: textOnly }));
+    setErrorMsg('');
+  };
+
+  const handlePhoneChange = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setFormData(prev => ({ ...prev, phone: digitsOnly }));
+    setErrorMsg('');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setErrorMsg('Please enter patient full name.');
+      return;
+    }
+    if (formData.phone.length !== 10) {
+      setErrorMsg('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (!formData.department) {
+      setErrorMsg('Please select a department / treatment.');
+      return;
+    }
+
     const msg = `*Appointment Request - Khetan Hospital*%0A` +
       `👤 *Patient:* ${encodeURIComponent(formData.name)}%0A` +
-      `📞 *Mobile:* ${encodeURIComponent(formData.phone)}%0A` +
+      `📞 *Mobile:* +91 ${encodeURIComponent(formData.phone)}%0A` +
       `📅 *Date:* ${encodeURIComponent(formData.date)}%0A` +
       `👨‍⚕️ *Doctor:* ${encodeURIComponent(formData.doctor)}%0A` +
       `🏥 *Department:* ${encodeURIComponent(formData.department)}`;
@@ -30,11 +56,11 @@ export const HeroSection = ({ onBookClick }) => {
 
   return (
     <div className="relative bg-[#edf1f5] pt-12 pb-20 sm:pb-28 overflow-hidden">
-      
+
       {/* Hero Banner Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
+
           {/* Left Column: Text & CTA */}
           <div className="lg:col-span-6 space-y-6 pt-4 lg:pt-0">
             <div>
@@ -77,9 +103,9 @@ export const HeroSection = ({ onBookClick }) => {
 
             {/* Doctor Image Container */}
             <div className="relative z-10 flex flex-col items-center">
-              <img 
-                src={doctorImages.hero} 
-                alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon" 
+              <img
+                src={doctorImages.hero}
+                alt="Dr. Vatsal Khetan - Senior Consultant Orthopaedic & Joint Replacement Surgeon"
                 className="w-auto max-h-[460px] sm:max-h-[520px] lg:max-h-[560px] object-contain drop-shadow-2xl select-none"
                 loading="eager"
               />
@@ -103,7 +129,7 @@ export const HeroSection = ({ onBookClick }) => {
       {/* Floating "Make an Appointment" Form Card (Exact Oreo Overlap) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 relative z-20">
         <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 sm:p-8">
-          
+
           <h2 className="text-sm sm:text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#00bcd4]"></span>
             Make an Appointment
@@ -115,7 +141,7 @@ export const HeroSection = ({ onBookClick }) => {
                 <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                 <span>Thank you! Your appointment request has been transmitted via WhatsApp.</span>
               </div>
-              <button 
+              <button
                 onClick={() => setSubmitted(false)}
                 className="text-xs underline font-bold"
               >
@@ -124,27 +150,38 @@ export const HeroSection = ({ onBookClick }) => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {errorMsg && (
+                <div className="p-2 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs">
+                  {errorMsg}
+                </div>
+              )}
               {/* Row 1: 3 Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <input 
+                <input
                   type="text"
                   required
-                  placeholder="Enter Name"
+                  placeholder="Enter Name (letters only)"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={handleNameChange}
                   className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
                 />
 
-                <input 
-                  type="tel"
-                  required
-                  placeholder="Enter Mobile"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
-                />
+                <div className="flex rounded-full overflow-hidden border border-slate-200 focus-within:border-[#00bcd4] bg-white">
+                  <span className="inline-flex items-center px-3 bg-slate-100 text-slate-700 font-bold text-xs border-r border-slate-200 select-none">
+                    +91
+                  </span>
+                  <input 
+                    type="tel"
+                    required
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    className="flex-1 text-xs px-3 py-2.5 bg-white focus:outline-hidden text-slate-700"
+                  />
+                </div>
 
-                <input 
+                <input
                   type="date"
                   required
                   min={new Date().toISOString().split('T')[0]}
@@ -167,10 +204,12 @@ export const HeroSection = ({ onBookClick }) => {
                 </select>
 
                 <select
+                  required
                   value={formData.department}
                   onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                  className="w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-slate-700"
+                  className={`w-full text-xs px-4 py-2.5 rounded-full bg-white border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] ${formData.department ? 'text-slate-700' : 'text-slate-400'}`}
                 >
+                  <option value="" disabled className="text-slate-400">Select treatment / department *</option>
                   <option value="Robotic Knee Replacement">Robotic Knee Replacement</option>
                   <option value="Total Knee Replacement (TKR)">Total Knee Replacement (TKR)</option>
                   <option value="Hip Replacement & AVN">Hip Replacement &amp; AVN</option>

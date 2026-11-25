@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import { PerspectiveCarousel3D } from '../3d/PerspectiveCarousel3D';
 
 /**
- * 🏥 SECTION 2 — INTERACTIVE 3D NAVIGATION CAROUSEL
+ * 🏥 SECTION 2 — INTERACTIVE 3D SURGICAL SERVICES CAROUSEL
  * Calibrated viewport section with zero clipping, full breathing room, and bottom scroll indicator.
  */
 export const HomeCarouselSection = ({ onNextClick }) => {
@@ -23,13 +23,13 @@ export const HomeCarouselSection = ({ onNextClick }) => {
       {/* Top Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center shrink-0">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-bold tracking-wider uppercase mb-1.5">
-          <span>Interactive Navigation</span>
+          <span>Specialised Orthopaedic Treatments</span>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
-          Explore Khetan Hospital
+          Featured Surgical Services
         </h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl mx-auto">
-          Drag, swipe, or use arrow keys to navigate our main hospital destinations.
+          Explore advanced robotic joint replacement, arthroscopy, and spine care led by Dr. Vatsal Khetan.
         </p>
       </div>
 

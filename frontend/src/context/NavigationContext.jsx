@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { mainNavigation } from '../data/navigationData';
+import { mainNavigation, servicesNavigation } from '../data/navigationData';
 
 const NavigationContext = createContext(null);
 
 export const NavigationProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const total = mainNavigation.length; // 6 cards
+  const total = servicesNavigation.length; // 6 surgical services cards in carousel
 
-  // Center card index on homepage (0 to 5)
+  // Center card index in services carousel (0 to 5)
   const [activeIndex, setActiveIndexState] = useState(0);
 
   // Robust circular modulo helper: always returns [0, total - 1]
@@ -19,9 +19,10 @@ export const NavigationProvider = ({ children }) => {
     setActiveIndexState(wrapIndex(idx));
   };
 
-  // Derive active section id based on route or carousel position
+  // Check if current route is homepage
   const isHomePage = location.pathname === '/';
 
+  // Active section id strictly derived from URL route
   const getRouteSectionId = (pathname) => {
     if (pathname.startsWith('/services')) return 'services';
     if (pathname.startsWith('/about') || pathname === '/timeline' || pathname === '/published-papers') return 'doctors';
@@ -31,61 +32,39 @@ export const NavigationProvider = ({ children }) => {
     return 'home';
   };
 
-  const activeSectionId = isHomePage
-    ? (mainNavigation[activeIndex]?.id || 'home')
-    : getRouteSectionId(location.pathname);
+  const activeSectionId = getRouteSectionId(location.pathname);
 
-  // Synchronized navigation trigger (circular index support)
+  // Direct Site Navigation Trigger for Navbar links
   const goToSection = (sectionIdOrIndex) => {
-    let targetIndex = -1;
     let targetItem = null;
 
     if (typeof sectionIdOrIndex === 'number') {
-      targetIndex = wrapIndex(sectionIdOrIndex);
-      targetItem = mainNavigation[targetIndex];
+      targetItem = mainNavigation[wrapIndex(sectionIdOrIndex)];
     } else {
-      targetIndex = mainNavigation.findIndex(item => item.id === sectionIdOrIndex);
-      targetItem = mainNavigation[targetIndex];
+      targetItem = mainNavigation.find(item => item.id === sectionIdOrIndex);
     }
 
     if (!targetItem) return;
 
-    if (isHomePage) {
-      // On homepage: Move carousel continuously to target card & highlight in navbar
-      setActiveIndex(targetIndex);
-      if (targetItem.id === 'home') {
+    if (targetItem.id === 'home') {
+      if (isHomePage) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (targetItem.id === 'contact') {
-        const el = document.getElementById('contact-section');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    } else {
-      // On inner page: Navigate to target section
-      if (targetItem.id === 'home') {
-        setActiveIndex(0);
-        navigate('/');
       } else {
-        navigate(targetItem.route);
+        navigate('/');
       }
+    } else if (targetItem.route) {
+      navigate(targetItem.route);
     }
   };
 
-  // When a card is clicked
+  // When a carousel service card is clicked
   const handleCardClick = (index) => {
     const normIndex = wrapIndex(index);
     if (normIndex === activeIndex) {
-      // Center card clicked -> Navigate to section
-      const item = mainNavigation[normIndex];
-      if (item && item.route && item.route !== '/') {
+      // Center service card clicked -> Navigate to that surgical service detail page
+      const item = servicesNavigation[normIndex];
+      if (item && item.route) {
         navigate(item.route);
-      } else if (item && item.id === 'home') {
-        // If center HOME card is clicked -> smoothly scroll to hospital overview
-        const el = document.getElementById('hospital-intro');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
       }
     } else {
       // Side card clicked -> Center it smoothly
@@ -101,6 +80,7 @@ export const NavigationProvider = ({ children }) => {
         activeSectionId,
         isHomePage,
         mainNavigation,
+        servicesNavigation,
         goToSection,
         handleCardClick
       }}
@@ -117,4 +97,3 @@ export const useNavigation = () => {
   }
   return context;
 };
-

@@ -1,22 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigation } from '../../context/NavigationContext';
 
 /**
- * 🏥 Khetan Hospital - Continuous Circular 3D Perspective Card Navigation
+ * 🏥 Khetan Hospital - Continuous Circular 3D Perspective Surgical Services Carousel
  * 
  * Strict Specification:
- * 1. Continuous circular loop arrangement:
- *    HOME → SERVICES → DOCTORS → BLOGS → LOCATIONS → CONTACT → HOME → ...
- * 2. NO VISIBLE ENDPOINTS: infinite circular navigation in both directions.
- * 3. Cards arranged along an imaginary curved/circular 3D track.
- * 4. Strictly NO BLUR on side cards (filter: 'none', opacity: 1, sharp typography).
- * 5. Controls: Mouse wheel / trackpad scroll, drag/swipe, arrow buttons, keyboard.
- * 6. Responsive layout: calibrated card heights to prevent any vertical clipping.
+ * 1. Displays 6 Premier Orthopaedic Surgical Services (Robotic Knee, TKR, Hip, Shoulder, ACL, Spine).
+ * 2. Infinite circular 3D rotation: cards move horizontally left and right.
+ * 3. Side cards remain sharp and readable with NO BLUR (filter: 'none', opacity: 1).
+ * 4. Center card has subtle "Explore Procedure" badge with ArrowUpRight.
+ * 5. Clicking center card navigates directly to that surgical service detail page.
+ * 6. Supports mouse dragging, touch swiping, trackpad horizontal swipe, chevron arrows, and keyboard.
  */
 export const PerspectiveCarousel3D = () => {
-  const { activeIndex, setActiveIndex, mainNavigation, handleCardClick } = useNavigation();
-  const total = mainNavigation.length; // 6 cards
+  const { activeIndex, setActiveIndex, servicesNavigation, handleCardClick } = useNavigation();
+  const total = servicesNavigation.length; // 6 surgical services cards
 
   const [cardSpacing, setCardSpacing] = useState(260);
   const [isMobile, setIsMobile] = useState(false);
@@ -147,7 +146,7 @@ export const PerspectiveCarousel3D = () => {
       onTouchEnd={onPointerUp}
       tabIndex={0}
       role="region"
-      aria-label="Continuous Circular 3D Navigation"
+      aria-label="Continuous Circular 3D Services Navigation"
     >
       {/* 3D CIRCULAR TRACK STAGE */}
       <div
@@ -155,7 +154,7 @@ export const PerspectiveCarousel3D = () => {
         style={{ perspective: '1200px' }}
       >
         <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
-          {mainNavigation.map((card, index) => {
+          {servicesNavigation.map((card, index) => {
             // Shortest circular offset distance [-3, 3]
             let offset = index - activeIndex;
             if (offset > total / 2) offset -= total;
@@ -181,7 +180,7 @@ export const PerspectiveCarousel3D = () => {
                 key={card.id}
                 onClick={() => handleSafeCardClick(index)}
                 className={`absolute w-[240px] sm:w-[270px] lg:w-[290px] h-[275px] sm:h-[305px] lg:h-[325px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-350 ease-out bg-white border ${isCenter
-                  ? 'border-sky-500 shadow-[0_16px_36px_rgba(14,165,233,0.18)] ring-2 ring-sky-500/40'
+                  ? 'border-sky-500 shadow-[0_16px_36px_rgba(14,165,233,0.22)] ring-2 ring-sky-500/40'
                   : 'border-slate-200/90 shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:border-slate-300'
                   }`}
                 style={{
@@ -195,29 +194,23 @@ export const PerspectiveCarousel3D = () => {
               >
                 <div className="relative w-full h-full flex flex-col justify-between bg-white">
 
-                  {/* Card Visual / Photograph (Top 65%) */}
+                  {/* Card Visual / Surgical Photograph (Top 64%) */}
                   <div className="relative w-full h-[64%] bg-slate-50 overflow-hidden border-b border-slate-100 flex items-center justify-center">
                     <img
                       src={card.image}
                       alt={card.heading}
-                      className={`w-full h-full transition-transform duration-500 ${card.isDoctor
-                        ? 'object-contain pt-1.5'
-                        : 'object-cover'
-                        } ${isCenter ? 'scale-105' : 'scale-100'}`}
+                      className={`w-full h-full object-cover transition-transform duration-500 ${isCenter ? 'scale-105' : 'scale-100'}`}
                       loading="eager"
                     />
-
-                    {/* Subtle Click-to-Explore Pill on Center Card */}
-                    {isCenter && (
-                      <div className="absolute top-2.5 right-2.5 bg-white/95 backdrop-blur-xs text-sky-700 font-semibold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs border border-sky-200 flex items-center gap-1">
-                        <span>Explore</span>
-                        <ArrowUpRight className="w-3 h-3 text-sky-600" />
-                      </div>
-                    )}
                   </div>
 
                   {/* Card Content Area (Bottom 36%) */}
                   <div className="p-3.5 sm:p-4 flex flex-col justify-center flex-1 bg-white">
+                    {card.category && (
+                      <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-sky-600 mb-0.5">
+                        {card.category}
+                      </span>
+                    )}
                     <h2 className="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 leading-tight">
                       {card.heading}
                     </h2>
@@ -237,7 +230,7 @@ export const PerspectiveCarousel3D = () => {
       <div className="relative z-20 flex items-center justify-center gap-3 pt-2">
         <button
           onClick={handlePrev}
-          aria-label="Previous Section (Circular)"
+          aria-label="Previous Service"
           className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-sky-400 flex items-center justify-center shadow-xs transition-all active:scale-95 cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -245,11 +238,11 @@ export const PerspectiveCarousel3D = () => {
 
         {/* Minimal 6 Pagination Dots */}
         <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-200">
-          {mainNavigation.map((card, i) => (
+          {servicesNavigation.map((card, i) => (
             <button
               key={card.id}
               onClick={() => setActiveIndex(i)}
-              aria-label={`Go to ${card.label}`}
+              aria-label={`Go to ${card.heading}`}
               className={`transition-all duration-300 rounded-full cursor-pointer ${i === activeIndex
                 ? 'w-5 h-1.5 bg-sky-500'
                 : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
@@ -260,7 +253,7 @@ export const PerspectiveCarousel3D = () => {
 
         <button
           onClick={handleNext}
-          aria-label="Next Section (Circular)"
+          aria-label="Next Service"
           className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-sky-400 flex items-center justify-center shadow-xs transition-all active:scale-95 cursor-pointer"
         >
           <ChevronRight className="w-4 h-4" />

@@ -1,8 +1,8 @@
 /**
  * 🏥 Khetan Hospital - Centralized Navigation & Brand Architecture
  * Single Source of Truth for:
- * 1. Exactly 6 Main Navigation Cards on the 3D Homepage
- * 2. Synchronized Navbar Items (HOME | SERVICES | DOCTORS | BLOGS | LOCATIONS | CONTACT)
+ * 1. Exactly 6 Main Navigation Items in Navbar (HOME | SERVICES | DOCTORS | BLOGS | LOCATIONS | CONTACT)
+ * 2. Dedicated Orthopaedic Services Carousel Cards (Robotic Knee, TKR, Hip, Shoulder, ACL, Spine)
  * 3. Route-to-Section Mapping
  * 4. Verified Hospital Contact & Specialties Metadata
  */
@@ -61,6 +61,66 @@ export const mainNavigation = [
     route: '/contact',
     image: '/images/backgrounds/modular-ot.jpg',
     isDoctor: false
+  }
+];
+
+/**
+ * 🏥 6 Featured Surgical Services for the 3D Perspective Carousel
+ */
+export const servicesNavigation = [
+  {
+    id: 'robotic-knee-surgery',
+    label: 'ROBOTIC KNEE',
+    heading: 'Robotic Knee Replacement',
+    supportingLine: 'Sub-millimeter optical navigation ensuring exact implant alignment and maximal tissue preservation.',
+    route: '/services/robotic-knee-surgery',
+    image: '/images/surgeries/robotic-knee.jpg',
+    category: 'Knee Arthroplasty'
+  },
+  {
+    id: 'knee-replacement',
+    label: 'KNEE REPLACEMENT',
+    heading: 'Total Knee Replacement',
+    supportingLine: 'Advanced kinematic joint reconstruction restoring natural motion and rapid painless mobility.',
+    route: '/services/knee-replacement',
+    image: '/images/surgeries/knee-replacement.jpg',
+    category: 'Joint Reconstruction'
+  },
+  {
+    id: 'hip-replacement',
+    label: 'HIP REPLACEMENT',
+    heading: 'Hip Replacement Surgery',
+    supportingLine: 'Muscle-sparing arthroplasty preserving soft tissues for lasting relief from osteoarthritis.',
+    route: '/services/hip-replacement',
+    image: '/images/surgeries/hip-replacement.jpg',
+    category: 'Hip Arthroplasty'
+  },
+  {
+    id: 'shoulder-replacement',
+    label: 'SHOULDER CARE',
+    heading: 'Shoulder Arthroscopy',
+    supportingLine: 'Minimally invasive keyhole repair for rotator cuff tears and recurring joint instability.',
+    route: '/services/shoulder-replacement',
+    image: '/images/surgeries/shoulder-surgery.jpg',
+    category: 'Shoulder Arthroscopy'
+  },
+  {
+    id: 'acl-surgery',
+    label: 'SPORTS MEDICINE',
+    heading: 'ACL & Sports Medicine',
+    supportingLine: 'High-definition keyhole cruciate restoration designed for active return to sports.',
+    route: '/services/acl-surgery',
+    image: '/images/surgeries/acl-surgery.jpg',
+    category: 'Sports Rehabilitation'
+  },
+  {
+    id: 'spine-surgery',
+    label: 'SPINE CARE',
+    heading: 'Spine & Lumbar Surgery',
+    supportingLine: 'Targeted neurological decompression and motion-preserving conservative disc care.',
+    route: '/services/spine-surgery',
+    image: '/images/surgeries/spine-surgery.jpg',
+    category: 'Spine Care'
   }
 ];
 

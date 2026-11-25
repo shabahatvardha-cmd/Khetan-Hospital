@@ -17,7 +17,7 @@ export const BookingInvitationSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    department: 'Robotic Knee Surgery',
+    department: '',
     date: new Date().toISOString().split('T')[0],
     slot: 'Evening (02:00 PM - 08:00 PM)',
     city: 'Gorakhpur',
@@ -25,15 +25,40 @@ export const BookingInvitationSection = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleNameChange = (e) => {
+    const textOnly = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setFormData(prev => ({ ...prev, name: textOnly }));
+    setErrorMsg('');
+  };
+
+  const handlePhoneChange = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setFormData(prev => ({ ...prev, phone: digitsOnly }));
+    setErrorMsg('');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setErrorMsg('Please enter patient full name.');
+      return;
+    }
+    if (formData.phone.length !== 10) {
+      setErrorMsg('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (!formData.department) {
+      setErrorMsg('Please select a department or treatment.');
+      return;
+    }
     
     // Construct structured WhatsApp message
     const message = `*OPD Appointment Request - Khetan Hospital (Dr. Vatsal Khetan)*%0A` +
       `━━━━━━━━━━━━━━━━━━━━━━%0A` +
       `👤 *Patient Name:* ${encodeURIComponent(formData.name)}%0A` +
-      `📞 *Mobile No:* ${encodeURIComponent(formData.phone)}%0A` +
+      `📞 *Mobile No:* +91 ${encodeURIComponent(formData.phone)}%0A` +
       `🏥 *Department:* ${encodeURIComponent(formData.department)}%0A` +
       `📍 *District / City:* ${encodeURIComponent(formData.city)}%0A` +
       `📅 *Preferred Date:* ${encodeURIComponent(formData.date)}%0A` +
@@ -220,6 +245,12 @@ export const BookingInvitationSection = () => {
                   </p>
                 </div>
 
+                {errorMsg && (
+                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs">
+                    {errorMsg}
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div>
@@ -229,9 +260,9 @@ export const BookingInvitationSection = () => {
                     <input 
                       type="text" 
                       required
-                      placeholder="e.g. Rajesh Kumar"
+                      placeholder="e.g. Rajesh Kumar (letters only)"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={handleNameChange}
                       className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#00b4d8] transition-all"
                     />
                   </div>
@@ -241,14 +272,20 @@ export const BookingInvitationSection = () => {
                     <label className="block text-xs font-bold text-slate-700 mb-1">
                       Mobile / WhatsApp Number *
                     </label>
-                    <input 
-                      type="tel" 
-                      required
-                      placeholder="e.g. 9876543210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#00b4d8] transition-all"
-                    />
+                    <div className="flex rounded-xl overflow-hidden border border-slate-200 bg-slate-50/50 focus-within:bg-white focus-within:ring-2 focus-within:ring-[#00b4d8] transition-all">
+                      <span className="inline-flex items-center px-3.5 bg-slate-100 text-slate-700 font-bold text-xs border-r border-slate-200 select-none">
+                        +91
+                      </span>
+                      <input 
+                        type="tel" 
+                        required
+                        maxLength={10}
+                        placeholder="9876543210"
+                        value={formData.phone}
+                        onChange={handlePhoneChange}
+                        className="flex-1 text-xs p-3 bg-transparent focus:outline-none"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -259,18 +296,24 @@ export const BookingInvitationSection = () => {
                       Department / Concern *
                     </label>
                     <select
+                      required
                       value={formData.department}
                       onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#00b4d8] transition-all"
+                      className={`w-full text-xs p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#00b4d8] transition-all ${
+                        formData.department ? 'text-slate-800' : 'text-slate-400'
+                      }`}
                     >
-                      <option value="Robotic Knee Surgery">Robotic Knee Replacement</option>
-                      <option value="Total Knee Replacement">Total Knee Replacement (TKR)</option>
-                      <option value="Hip Replacement">Hip Replacement &amp; AVN Care</option>
-                      <option value="Shoulder Surgery & Arthroscopy">Shoulder Surgery &amp; Keyhole Repair</option>
-                      <option value="ACL & Sports Injury">ACL &amp; Ligament Sports Injury</option>
-                      <option value="Knee Keyhole Arthroscopy">Knee Arthroscopy (Meniscus/Cartilage)</option>
-                      <option value="Complex Trauma & Fractures">Complex Trauma &amp; Fracture Fixation</option>
-                      <option value="General Orthopedic Consultation">General Orthopedic Consultation / Second Opinion</option>
+                      <option value="" disabled className="text-slate-400">
+                        Select treatment / service needed *
+                      </option>
+                      <option value="Robotic Knee Surgery" className="text-slate-800">Robotic Knee Replacement</option>
+                      <option value="Total Knee Replacement" className="text-slate-800">Total Knee Replacement (TKR)</option>
+                      <option value="Hip Replacement" className="text-slate-800">Hip Replacement &amp; AVN Care</option>
+                      <option value="Shoulder Surgery & Arthroscopy" className="text-slate-800">Shoulder Surgery &amp; Keyhole Repair</option>
+                      <option value="ACL & Sports Injury" className="text-slate-800">ACL &amp; Ligament Sports Injury</option>
+                      <option value="Knee Keyhole Arthroscopy" className="text-slate-800">Knee Arthroscopy (Meniscus/Cartilage)</option>
+                      <option value="Complex Trauma & Fractures" className="text-slate-800">Complex Trauma &amp; Fracture Fixation</option>
+                      <option value="General Orthopedic Consultation" className="text-slate-800">General Orthopedic Consultation / Second Opinion</option>
                     </select>
                   </div>
 
