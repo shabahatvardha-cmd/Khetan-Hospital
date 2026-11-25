@@ -1,109 +1,124 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MessageCircle, ArrowRight, Award } from 'lucide-react';
+import { ShieldCheck, Activity, Bot, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
+import { backgroundTextures, surgeryImages } from '../../data/imageConfig';
 
 export const MeetTeamSection = ({ onBookClick }) => {
-  const team = [
+  const units = [
     {
-      name: "Dr. Vatsal Khetan",
-      role: "Chief Orthopaedic & Robotic Surgeon",
-      qualification: "MBBS, MS (Ortho), MRCS, FRCS (Edinburgh), M.Ch (UK)",
-      image: "/images/dr-vatsal-portrait.webp",
-      link: "/about"
+      title: "Modular Laminar-Flow Robotic OT",
+      tag: "Class-100 Surgical Sterility",
+      image: backgroundTextures.modularOt,
+      desc: "Positive-pressure Class-100 air filtration and HEPA clean-room systems engineered to virtually eliminate implant infection risks during robotic knee and hip replacements.",
+      link: "/services/robotic-knee-surgery",
+      highlight: "Sub-Millimeter 3D Navigation"
     },
     {
-      name: "Robotic Arthroplasty Team",
-      role: "Sub-Millimeter Knee Team",
-      qualification: "Wrightington & Rotherham NHS Protocols",
-      image: "/images/dr-vatsal-robotic.webp",
-      link: "/services/robotic-knee-surgery"
+      title: "Bargadawa Inpatient Surgical Centre",
+      tag: "Comprehensive Care Wing",
+      image: backgroundTextures.hospitalModern,
+      desc: "Modern patient rooms, high-frequency digital weight-bearing radiography, 24/7 nursing oversight, and immediate bedside mobilization following surgery.",
+      link: "/contact",
+      highlight: "Day-1 Walking Recovery"
     },
     {
-      name: "Sports Medicine & Arthroscopy",
-      role: "Ligament & Meniscus Specialists",
-      qualification: "IOC Switzerland Olympic Diploma Standards",
-      image: "/images/dr-vatsal-fellowship.webp",
-      link: "/services/acl-surgery"
+      title: "Sports Medicine & Arthroscopy Suite",
+      tag: "IOC Switzerland Protocols",
+      image: surgeryImages["acl-surgery"]?.image || "/images/surgeries/acl-surgery.jpg",
+      desc: "High-definition fiberoptic endoscopy systems for pinhole meniscus preservation, anatomical ACL ligament repair, and athlete return-to-sport physical therapy.",
+      link: "/services/acl-surgery",
+      highlight: "Keyhole Pinhole Repairs"
     },
     {
-      name: "Trauma & Fracture Salvage",
-      role: "Emergency Pelvic & Complex Trauma",
-      qualification: "24/7 Dedicated Emergency Operation Theatre",
-      image: "/images/dr-vatsal-consult.webp",
-      link: "/services/trauma-surgery"
+      title: "Emergency Trauma & Cashless TPA Desk",
+      tag: "24/7 Rapid Response",
+      image: surgeryImages["trauma-surgery"]?.image || "/images/surgeries/trauma-surgery.jpg",
+      desc: "Round-the-clock emergency surgical mobilization for acute fractures, complex pelvic trauma, and 100% cashless insurance desk across all leading insurers.",
+      link: "/contact",
+      highlight: "Star, Care, HDFC & All TPAs"
     }
   ];
 
   return (
-    <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="infrastructure" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-slate-800">
       <div className="max-w-7xl mx-auto">
         
-        {/* Oreo Section Header with Cyan Vertical Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        {/* Section Top Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 pb-6 border-b border-slate-100">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
-                Meet <span className="font-normal text-slate-600">Our Team</span>
-              </h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-[#00458b] text-[10px] font-bold uppercase tracking-widest mb-3">
+              <Building2 className="w-3.5 h-3.5 text-[#00458b]" />
+              <span>Hospital Facilities &bull; Surgical Infrastructure</span>
             </div>
-            <p className="text-xs text-slate-400 mt-1 pl-3.5">
-              Fellowship-trained surgical consultants and clinical care teams
-            </p>
+            <h2 className="text-3xl sm:text-5xl font-light text-slate-900 tracking-tight">
+              Institutional <span className="font-editorial italic font-normal text-[#00458b]">Surgical Excellence.</span>
+            </h2>
           </div>
 
-          <p className="text-xs text-slate-500 max-w-md leading-relaxed">
-            <strong>Khetan Hospital</strong> brings together UK NHS fellowship qualifications and leading Indian mentor techniques to deliver world-class joint care in Gorakhpur.
+          <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed font-normal">
+            Dr. Vatsal Khetan’s surgical governance is backed by purpose-built modular operating theatres, digital diagnostic suites, and compassionate patient care.
           </p>
         </div>
 
-        {/* 4 Doctor Cards Grid (Exact Oreo Team Layout) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((member, idx) => (
+        {/* 4 Clinical Units Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {units.map((unit, idx) => (
             <div 
               key={idx}
-              className="bg-white rounded-2xl border border-slate-200/80 p-6 text-center shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Photo */}
-                <div className="w-36 h-36 mx-auto rounded-full overflow-hidden bg-slate-100 mb-5 border-2 border-slate-100 shadow-sm">
+                {/* Photo Banner */}
+                <div className="relative h-44 w-full overflow-hidden bg-slate-200">
                   <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    src={unit.image} 
+                    alt={unit.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-black/20"></div>
+
+                  {/* Floating Tag */}
+                  <span className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#08284d] shadow-sm">
+                    {unit.tag}
+                  </span>
+
+                  {/* Highlight bottom */}
+                  <div className="absolute bottom-2.5 left-3 text-[11px] font-bold text-sky-200 drop-shadow-sm flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                    <span>{unit.highlight}</span>
+                  </div>
                 </div>
 
-                <h3 className="text-sm font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-[11px] font-medium text-slate-500 mt-0.5">
-                  {member.role}
-                </p>
-                <p className="text-[10px] text-slate-400 mt-1 line-clamp-1">
-                  {member.qualification}
-                </p>
+                {/* Content */}
+                <div className="p-5">
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#00458b] transition-colors mb-2">
+                    {unit.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    {unit.desc}
+                  </p>
+                </div>
               </div>
 
-              {/* Social / Contact Icons & Outline Button */}
-              <div className="pt-5 mt-4 border-t border-slate-100 space-y-3">
-                <div className="flex items-center justify-center gap-3 text-slate-400">
-                  <a href="tel:9662365917" className="hover:text-[#00bcd4] transition-colors">
-                    <Phone className="w-3.5 h-3.5" />
-                  </a>
-                  <a href="https://wa.me/919662365917" target="_blank" rel="noreferrer" className="hover:text-emerald-500 transition-colors">
-                    <MessageCircle className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-
+              {/* Action Link */}
+              <div className="px-5 pb-5 pt-2 border-t border-slate-200/50 flex items-center justify-between">
                 <Link
-                  to={member.link}
-                  className="w-full py-1.5 px-4 rounded-full text-[11px] font-bold uppercase tracking-wider text-[#ff5722] border border-[#ff5722] hover:bg-[#ff5722] hover:text-white transition-all inline-block"
+                  to={unit.link}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-[#00458b] hover:text-[#08284d] transition-colors group/link"
                 >
-                  View More
+                  <span>Learn More</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                 </Link>
+
+                <button
+                  onClick={onBookClick}
+                  className="text-[11px] font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 cursor-pointer"
+                >
+                  Book OPD
+                </button>
               </div>
+
             </div>
           ))}
         </div>

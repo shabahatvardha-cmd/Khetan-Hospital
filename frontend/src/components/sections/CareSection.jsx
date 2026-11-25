@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Activity, 
@@ -7,130 +7,188 @@ import {
   Stethoscope, 
   Sparkles, 
   Award,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  CheckCircle2
 } from 'lucide-react';
 import { surgeryImages } from '../../data/imageConfig';
 
 export const CareSection = ({ onBookClick }) => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', label: 'All 6 Key Surgeries' },
+    { id: 'robotic', label: 'Robotic Arthroplasty' },
+    { id: 'joints', label: 'Hip & Shoulder' },
+    { id: 'sports', label: 'Sports & Arthroscopy' },
+    { id: 'trauma', label: 'Trauma & Fractures' },
+  ];
+
   const services = [
     {
       slug: "robotic-knee-surgery",
-      title: "Robotic Knee Surgery",
+      category: "robotic",
+      title: "Robotic Knee Replacement",
       icon: Bot,
-      tag: "Robotic 3D Guidance",
-      desc: "Sub-millimeter 3D CT mapping and real-time robotic guidance ensure natural knee alignment, reduced blood loss, and walking within 24 hours."
+      recovery: "Standing & Walking in 24 Hours",
+      technique: "Sub-Millimeter 3D CT Guidance",
+      desc: "Sub-millimeter real-time robotic navigation maps your unique knee anatomy to preserve collateral ligaments, eliminate bone-on-bone friction, and enable natural joint kinematics."
     },
     {
       slug: "knee-replacement",
-      title: "Total Knee Replacement",
+      category: "robotic",
+      title: "Total Knee Replacement (TKR)",
       icon: Activity,
-      tag: "20+ Year Longevity",
-      desc: "Advanced total and partial knee arthroplasty using high-durability implants engineered for 20+ year longevity, eradicating chronic arthritic pain."
+      recovery: "20+ Year Bearing Longevity",
+      technique: "Tissue-Sparing Primary Arthroplasty",
+      desc: "Advanced total and partial knee resurfacing utilizing high-flex ceramic and highly cross-linked bearings engineered to eradicate chronic arthritis and correct leg bowing."
     },
     {
       slug: "hip-replacement",
-      title: "Hip Replacement & AVN",
+      category: "joints",
+      title: "Hip Replacement (THA / MIS)",
       icon: ShieldCheck,
-      tag: "Wrightington UK Technique",
-      desc: "Minimally invasive hip arthroplasty utilizing ceramic bearings and Wrightington UK techniques for severe avascular necrosis and arthritis."
+      recovery: "Day-1 Weight Bearing",
+      technique: "Wrightington UK Arthroplasty",
+      desc: "Minimally invasive hip arthroplasty using ultra-low wear ceramic heads and Wrightington UK techniques to resolve advanced avascular necrosis (AVN) and severe hip arthritis."
     },
     {
       slug: "shoulder-replacement",
-      title: "Shoulder Surgery & Repair",
+      category: "joints",
+      title: "Shoulder Surgery & Cuff Repair",
       icon: Stethoscope,
-      tag: "Keyhole Cuff Repair",
-      desc: "Comprehensive anatomical and reverse shoulder arthroplasty, rotator cuff repair, and frozen shoulder relief with smooth overhead mobility."
+      recovery: "Pain-Free Overhead Reach",
+      technique: "Reverse & Anatomic Arthroplasty",
+      desc: "Anatomic and reverse total shoulder reconstruction utilizing deltoid biomechanics for severe rotator cuff tears, complex fractures, and debilitating arthritis."
     },
     {
       slug: "acl-surgery",
-      title: "ACL & Sports Medicine",
+      category: "sports",
+      title: "ACL & Sports Arthroscopy",
       icon: Sparkles,
-      tag: "Olympic IOC Protocol",
-      desc: "Keyhole arthroscopic ligament reconstruction (ACL/PCL), inside-out meniscus preservation, and cartilage restoration for active athletes."
+      recovery: "Safe Return-to-Sport Protocol",
+      technique: "Olympic IOC Switzerland Standard",
+      desc: "Keyhole arthroscopic ligament reconstruction (ACL/PCL) and inside-out meniscus preservation adhering to Olympic IOC protocols for competitive and recreational athletes."
     },
     {
       slug: "trauma-surgery",
-      title: "Trauma & Fracture Care",
+      category: "trauma",
+      title: "Complex Trauma & Fractures",
       icon: Award,
-      tag: "24/7 Fracture Fixation",
-      desc: "Emergency surgical reconstruction of complex pelvic-acetabular fractures, peri-articular injuries, non-unions, and geriatric fragility."
+      recovery: "24/7 Immediate Operating Suite",
+      technique: "AO/ASIF Biological Fixation",
+      desc: "Emergency surgical reconstruction of high-velocity pelvic fractures, peri-articular injuries, non-unions, and geriatric hip fragility with modular laminar flow OT sterility."
     }
   ];
 
+  const filteredServices = selectedCategory === 'all' 
+    ? services 
+    : services.filter(s => s.category === selectedCategory);
+
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#f8f9fa]">
+    <section id="services" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#f8fafc] text-slate-800">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header with Cyan Vertical Bar */}
-        <div className="mb-14">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
-              Our <span className="font-normal text-slate-600">Best Services</span>
+        {/* Section Top Header with High-Contrast Typography */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-slate-200/80">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200/80 text-[#00458b] text-[10px] font-bold uppercase tracking-widest mb-3">
+              <Activity className="w-3.5 h-3.5 text-[#00458b]" />
+              <span>Surgical Portfolio &bull; Sub-Millimeter Precision</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-light text-slate-900 tracking-tight">
+              Specialized <span className="font-editorial italic font-normal text-[#00458b]">Surgical Procedures.</span>
             </h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1 pl-3.5">
-            World-class orthopedic surgical procedures and joint preservation
+
+          <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed font-normal">
+            Every procedure at Khetan Hospital is designed around joint preservation first, minimal soft-tissue trauma, and rapid 24-hour functional recovery.
           </p>
         </div>
 
-        {/* 6 Services Grid with Rich Procedural Imagery */}
+        {/* Interactive Category Filter Pills */}
+        <div className="flex flex-wrap items-center gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                selectedCategory === cat.id
+                  ? 'bg-[#08284d] text-white shadow-md'
+                  : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200/80 shadow-2xs'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* 6 Services Grid with Rich Procedural Imagery & Refined Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((srv, idx) => {
+          {filteredServices.map((srv, idx) => {
             const Icon = srv.icon;
             const imgData = surgeryImages[srv.slug];
+
             return (
               <div 
-                key={idx} 
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+                key={srv.slug} 
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Procedural Photo Banner */}
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                  {/* Procedural Photo Banner with Rich Gradient */}
+                  <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img 
                       src={imgData?.image} 
                       alt={imgData?.alt || srv.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent"></div>
 
                     {/* Floating Icon Badge */}
-                    <div className="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center text-[#00bcd4] group-hover:bg-[#00bcd4] group-hover:text-white transition-all duration-300">
+                    <div className="absolute top-4 left-4 w-11 h-11 rounded-2xl bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center text-[#08284d] group-hover:bg-[#08284d] group-hover:text-white transition-all duration-300">
                       <Icon className="w-5 h-5 stroke-[2]" />
                     </div>
 
-                    {/* Clinical Feature Tag */}
-                    <span className="absolute top-3.5 right-3.5 text-[10px] font-bold px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-800 shadow-sm border border-slate-100">
-                      {srv.tag}
-                    </span>
+                    {/* Technique Badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-[#08284d]/90 backdrop-blur-md text-white shadow-sm border border-white/20">
+                        {srv.technique}
+                      </span>
+                    </div>
+
+                    {/* Recovery Timeline Floating on Image Bottom */}
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-1.5 text-sky-200 text-xs font-semibold drop-shadow-md">
+                      <Clock className="w-3.5 h-3.5 text-sky-300 shrink-0" />
+                      <span>{srv.recovery}</span>
+                    </div>
                   </div>
 
                   {/* Card Body */}
                   <div className="p-6">
-                    <h3 className="text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors mb-2">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#00458b] transition-colors mb-2.5">
                       {srv.title}
                     </h3>
 
-                    <p className="text-xs text-slate-500 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       {srv.desc}
                     </p>
                   </div>
                 </div>
 
                 {/* Card Footer Actions */}
-                <div className="px-6 pb-6 pt-3 border-t border-slate-100/80 flex items-center justify-between">
+                <div className="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
                   <Link 
                     to={`/services/${srv.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#ff5722] hover:text-[#e64a19] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00458b] hover:text-[#08284d] transition-colors group/link"
                   >
-                    <span>View More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>View Surgical Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
 
                   <button
                     onClick={onBookClick}
-                    className="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#00bcd4] hover:bg-[#00acc1] text-white shadow-xs transition-all cursor-pointer"
+                    className="px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 hover:bg-[#08284d] text-slate-800 hover:text-white transition-all duration-200 cursor-pointer"
                   >
                     Book OPD
                   </button>
@@ -138,6 +196,17 @@ export const CareSection = ({ onBookClick }) => {
               </div>
             );
           })}
+        </div>
+
+        {/* Bottom Portfolio Link */}
+        <div className="mt-14 text-center">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-800 hover:border-[#08284d] hover:text-[#08284d] shadow-sm transition-all"
+          >
+            <span>View Complete 9-Specialty Orthopedic Portfolio</span>
+            <ArrowRight className="w-4 h-4 text-[#00458b]" />
+          </Link>
         </div>
 
       </div>

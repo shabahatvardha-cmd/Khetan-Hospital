@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Search, 
-  X, 
-  Clock, 
-  Trash2, 
-  Activity, 
-  BookOpen, 
-  User, 
-  MapPin, 
+import {
+  Search,
+  X,
+  Clock,
+  Trash2,
+  Activity,
+  BookOpen,
+  User,
+  MapPin,
   ArrowRight,
   TrendingUp,
   Sparkles
@@ -64,7 +64,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     setRecentSearches([]);
     try {
       localStorage.removeItem(RECENT_SEARCHES_KEY);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const removeSingleRecent = (e, item) => {
@@ -73,7 +73,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     setRecentSearches(updated);
     try {
       localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(updated));
-    } catch (e) {}
+    } catch (e) { }
   };
 
   // Close dropdown when clicking outside
@@ -93,14 +93,14 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     const q = query.toLowerCase().trim();
 
     // 1. Matching Surgeries & Specialties
-    const services = allServices.filter(s => 
+    const services = allServices.filter(s =>
       s.title.toLowerCase().includes(q) ||
       s.category.toLowerCase().includes(q) ||
       (s.summary && s.summary.toLowerCase().includes(q))
     ).slice(0, 3);
 
     // 2. Matching Clinical Guides & Blogs
-    const blogs = allBlogs.filter(b => 
+    const blogs = allBlogs.filter(b =>
       b.title.toLowerCase().includes(q) ||
       (b.category && b.category.toLowerCase().includes(q)) ||
       (b.excerpt && b.excerpt.toLowerCase().includes(q))
@@ -158,7 +158,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
     <div ref={containerRef} className={`relative ${isMobile ? 'w-full' : 'w-48 lg:w-60'}`}>
       {/* Search Input Box */}
       <form onSubmit={handleSubmit} className="relative">
-        <input 
+        <input
           ref={inputRef}
           type="text"
           placeholder="Search surgery, blogs, Dr..."
@@ -172,7 +172,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
         />
         <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
         {query && (
-          <button 
+          <button
             type="button"
             onClick={() => {
               setQuery('');
@@ -187,15 +187,14 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
 
       {/* Floating Dropdown: Live Suggestions & Recent Searches */}
       {isOpen && (
-        <div 
-          className={`absolute left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150 ${
-            isMobile ? 'w-full' : 'w-80 lg:w-96 -left-12 lg:-left-20'
-          }`}
+        <div
+          className={`absolute left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150 ${isMobile ? 'w-full' : 'w-80 lg:w-96 -left-12 lg:-left-20'
+            }`}
         >
           {/* A. If Query is empty: Show Recent Searches & Trending */}
           {query.trim().length === 0 ? (
             <div className="p-4 space-y-4 text-xs">
-              
+
               {/* Recent Searches Header */}
               {recentSearches.length > 0 ? (
                 <div>
@@ -204,7 +203,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
                       <Clock className="w-3 h-3 text-[#00bcd4]" />
                       Recent Searches
                     </span>
-                    <button 
+                    <button
                       onClick={clearRecentSearches}
                       className="text-slate-400 hover:text-rose-500 transition-colors flex items-center gap-1 cursor-pointer font-semibold"
                     >
@@ -215,14 +214,14 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
 
                   <div className="flex flex-wrap gap-1.5">
                     {recentSearches.map((term, idx) => (
-                      <div 
+                      <div
                         key={idx}
                         onClick={() => handleSelect(`/blogs?search=${encodeURIComponent(term)}`, term)}
                         className="group flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-[#00bcd4] border border-slate-200/60 transition-all cursor-pointer font-medium text-slate-700"
                       >
                         <Clock className="w-2.5 h-2.5 text-slate-400 group-hover:text-[#00bcd4]" />
                         <span>{term}</span>
-                        <button 
+                        <button
                           onClick={(e) => removeSingleRecent(e, term)}
                           className="hover:text-rose-500 ml-1 text-slate-400"
                         >
@@ -265,13 +264,13 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
           ) : (
             /* B. While typing: Live Autocomplete Results (Strictly 1-Liner items) */
             <div className="max-h-96 overflow-y-auto divide-y divide-slate-100 text-xs">
-              
+
               {!hasResults && (
                 <div className="p-6 text-center text-slate-500">
                   <Search className="w-8 h-8 text-slate-300 mx-auto mb-2 stroke-[1.5]" />
                   <p className="font-bold text-slate-700">No exact matches found for "{query}"</p>
                   <p className="text-[11px] text-slate-400 mt-1">Press Enter to search all 61 medical publications</p>
-                  <button 
+                  <button
                     onClick={handleSubmit}
                     className="mt-3 px-4 py-1.5 rounded-full bg-[#00bcd4] text-white font-bold text-xs hover:bg-[#00acc1] cursor-pointer"
                   >
@@ -365,7 +364,7 @@ export const SearchAutocomplete = ({ isMobile = false, onAfterNavigate }) => {
               )}
 
               {/* View Full Search Link */}
-              <div 
+              <div
                 onClick={handleSubmit}
                 className="p-3 bg-slate-50 hover:bg-[#00bcd4] hover:text-white transition-colors text-center font-bold text-xs text-[#00bcd4] flex items-center justify-center gap-1.5 cursor-pointer"
               >

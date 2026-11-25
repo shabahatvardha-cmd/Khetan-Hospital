@@ -1210,3 +1210,48 @@
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
+/* Premium Healthcare Redesign Custom Utilities */
+.font-editorial {
+  font-family: 'Lora', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+.text-gold-accent {
+  color: #cbb387;
+}
+
+.bg-gold-accent {
+  background-color: #cbb387;
+}
+
+.border-gold-accent {
+  border-color: rgba(203, 179, 135, 0.35);
+}
+
+.glass-dark {
+  background: rgba(7, 24, 46, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.88; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 5s ease-in-out infinite;
+}
+
+
