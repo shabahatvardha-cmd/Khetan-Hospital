@@ -13,8 +13,7 @@ import {
   MessageSquare,
   ChevronLeft,
   Share2,
-  Check,
-  Sparkles
+  Check
 } from 'lucide-react';
 import { allBlogs, clinicInfo } from '../data/clinicContent';
 
@@ -81,6 +80,11 @@ export const BlogsPage = ({ onBookClick }) => {
     }
   };
 
+  const handleCategorySelect = (cat) => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
   const handleSearchChange = (val) => {
     setSearchQuery(val);
     setCurrentPage(1);
@@ -98,29 +102,29 @@ export const BlogsPage = ({ onBookClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
 
-      {/* 1. Cinematic Editorial Header Banner */}
-      <section className="bg-gradient-to-r from-[#06152b] via-[#07182e] to-[#0b2447] text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.15),transparent_60%)] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#cbb387] text-[10px] font-bold uppercase tracking-widest mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#cbb387]" />
-            <span>Clinical Knowledge &bull; Patient Protocols</span>
+      {/* 1. Oreo Interior Breadcrumb Banner */}
+      <section className="bg-[#edf1f5] border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-6 bg-[#00bcd4] inline-block rounded-full"></span>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
+                Orthopedic <span className="font-normal text-slate-600">Health &amp; Recovery Hub</span>
+              </h1>
+            </div>
+            <p className="text-xs text-slate-500 mt-1 pl-3.5">
+              {allBlogs.length} comprehensive medical articles written by Dr. Vatsal Khetan
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-white tracking-tight">
-            Orthopedic Health &amp; <span className="italic font-normal text-slate-300">Recovery Hub</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl font-sans-clean leading-relaxed">
-            {allBlogs.length} comprehensive medical articles and rehabilitation guides authored by Dr. Vatsal Khetan and our surgical team.
-          </p>
         </div>
       </section>
 
       {/* 2. Main Content Area */}
-      <section ref={gridTopRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <section ref={gridTopRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Search Strip */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <p className="text-xs text-slate-500 font-sans-clean">
+          <p className="text-xs text-slate-500">
             Search clinical guides, procedure checklists, and recovery protocols:
           </p>
 
@@ -131,7 +135,7 @@ export const BlogsPage = ({ onBookClick }) => {
               placeholder="Search by topic, e.g. 'Robotic', 'ACL', 'Hip'..."
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-9 pr-8 py-2.5 rounded-full bg-white text-slate-700 placeholder-slate-400 border border-slate-200 focus:outline-hidden focus:border-[#00458b] text-xs shadow-xs"
+              className="w-full pl-9 pr-8 py-2.5 rounded-full bg-white text-slate-700 placeholder-slate-400 border border-slate-200 focus:outline-hidden focus:border-[#00bcd4] text-xs shadow-xs"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             {searchQuery && (
@@ -146,18 +150,18 @@ export const BlogsPage = ({ onBookClick }) => {
         </div>
 
         {/* Results Counter */}
-        <div className="flex items-center justify-between pb-4 mb-8 border-b border-slate-200 text-xs text-slate-500 font-sans-clean">
+        <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-200 text-xs text-slate-500">
           <span>
             Showing <strong>{currentBlogs.length > 0 ? (currentPage - 1) * POSTS_PER_PAGE + 1 : 0}</strong> &ndash; <strong>{Math.min(currentPage * POSTS_PER_PAGE, filteredBlogs.length)}</strong> of <strong>{filteredBlogs.length}</strong> medical articles
           </span>
           {searchQuery && (
-            <span className="text-[#00458b] font-semibold">
+            <span className="text-[#00bcd4] font-semibold">
               Search results for: "{searchQuery}"
             </span>
           )}
         </div>
 
-        {/* Paginated 3-Column Blog Cards Grid */}
+        {/* Paginated 3-Column Blog Cards Grid (Only 6 appear at once!) */}
         {currentBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentBlogs.map((blog, idx) => {
@@ -165,54 +169,43 @@ export const BlogsPage = ({ onBookClick }) => {
                 <article
                   key={blog.id || idx}
                   onClick={() => setSelectedBlog(blog)}
-                  className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                  className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 >
-                  {/* Photo */}
-                  <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-900/5 flex items-center justify-center border-b border-slate-100">
+                  {/* Photo: Ambient blurred fill + 100% uncut foreground image (zero clipping from top) */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 flex items-center justify-center border-b border-slate-100">
                     <img
                       src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
-                      alt="" 
+                      alt=""
                       className="absolute inset-0 w-full h-full object-cover blur-md scale-110 opacity-30 select-none pointer-events-none"
                       aria-hidden="true"
                     />
-                    <img 
-                      src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'} 
+                    <img
+                      src={blog.featuredImage || '/images/dr-vatsal-rehab.webp'}
                       alt={blog.title}
-                      className="relative z-10 max-h-full max-w-full object-contain p-3 group-hover:scale-105 transition-transform duration-500 select-none"
+                      className="relative z-10 max-h-full max-w-full object-contain p-2 group-hover:scale-102 transition-transform duration-300 select-none"
                       loading="lazy"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = '/images/dr-vatsal-rehab.webp';
                       }}
                     />
-                    <div className="absolute top-3 left-3 z-20">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-[#cbb387] border border-white/10 shadow-sm">
-                        {blog.category || 'Clinical Protocol'}
-                      </span>
-                    </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                      <h3 className="font-editorial text-lg sm:text-xl font-bold text-slate-900 group-hover:text-[#00458b] transition-colors leading-snug line-clamp-2">
-                        {blog.title}
-                      </h3>
-                      <p className="mt-2 text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed font-sans-clean">
-                        {blog.excerpt || 'Evidence-based clinical guidelines and recovery protocols.'}
-                      </p>
-                    </div>
+                  {/* Content (Title & Meta only, compact layout) */}
+                  <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#00bcd4] transition-colors leading-snug line-clamp-2">
+                      {blog.title}
+                    </h3>
 
                     {/* Meta Strip */}
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                      <span className="inline-flex items-center gap-1.5 font-medium">
-                        <Calendar className="w-3.5 h-3.5 text-[#0ea5e9]" />
-                        <span>{blog.date || 'Recent Guide'}</span>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-[#ff5722]" />
+                        <span>{blog.date || 'May 2026'}</span>
                       </span>
 
-                      <span className="inline-flex items-center gap-1 font-bold text-[#00458b] group-hover:text-[#0ea5e9] transition-colors">
-                        <span>Read Guide</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <span className="inline-flex items-center gap-1 font-bold text-[#00bcd4] group-hover:underline">
+                        <span>Read Article &rarr;</span>
                       </span>
                     </div>
                   </div>
@@ -221,17 +214,17 @@ export const BlogsPage = ({ onBookClick }) => {
             })}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm">
-            <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-            <h3 className="text-lg font-editorial font-bold text-slate-900">No articles found matching "{searchQuery}"</h3>
-            <p className="text-xs text-slate-500 mt-1">Try another keyword or reset search to view all medical publications.</p>
+          <div className="bg-white rounded-2xl p-12 text-center border border-slate-200">
+            <BookOpen className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+            <h3 className="text-base font-bold text-slate-800">No articles found matching "{searchQuery}"</h3>
+            <p className="text-xs text-slate-500 mt-1">Try another keyword or select "All" categories to view all publications.</p>
             <button
               onClick={() => {
                 setSearchQuery('');
                 setSelectedCategory('All');
                 setCurrentPage(1);
               }}
-              className="mt-5 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#06152b] text-white hover:bg-[#0b2447] transition-all cursor-pointer"
+              className="mt-4 px-5 py-2 rounded-full text-xs font-bold bg-[#00bcd4] text-white hover:bg-[#00acc1]"
             >
               Reset Filters
             </button>
@@ -240,22 +233,23 @@ export const BlogsPage = ({ onBookClick }) => {
 
         {/* Clean Numeric Pagination Bar */}
         {totalPages > 1 && (
-          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-200">
-            <span className="text-xs text-slate-500 font-sans-clean">
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-200">
+            <span className="text-xs text-slate-500">
               Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
             </span>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 aria-label="Previous page"
-                className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                // Show first, last, and pages close to current
                 if (
                   page === 1 ||
                   page === totalPages ||
@@ -266,7 +260,7 @@ export const BlogsPage = ({ onBookClick }) => {
                       key={page}
                       onClick={() => handlePageChange(page)}
                       className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${currentPage === page
-                        ? 'bg-[#06152b] text-white shadow-sm'
+                        ? 'bg-[#00bcd4] text-white shadow-xs'
                         : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
                         }`}
                     >
@@ -283,7 +277,7 @@ export const BlogsPage = ({ onBookClick }) => {
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 aria-label="Next page"
-                className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -293,33 +287,33 @@ export const BlogsPage = ({ onBookClick }) => {
 
       </section>
 
-      {/* 3. Comprehensive Article Modal Reader */}
+      {/* 3. Comprehensive Article Modal Reader (Renders Full Article Content) */}
       {selectedBlog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div
-            className="bg-white rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
+            className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl border border-slate-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Top Header */}
-            <div className="p-6 bg-[#06152b] text-white flex items-center justify-between gap-4 border-b border-white/10">
+            <div className="p-5 bg-[#00bcd4] text-white flex items-center justify-between gap-4">
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#cbb387] block mb-0.5">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-white/80 block mb-0.5">
                   KHETAN HOSPITAL &bull; CLINICAL RECOVERY GUIDE
                 </span>
-                <h2 className="text-base sm:text-xl font-editorial font-bold text-white line-clamp-1">
+                <h2 className="text-base sm:text-xl font-bold text-white line-clamp-1">
                   {selectedBlog.title}
                 </h2>
               </div>
               <button
                 onClick={() => setSelectedBlog(null)}
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer shrink-0"
+                className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors cursor-pointer shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Modal Body */}
+            {/* Modal Body: Complete Medical Guide Article */}
             <div className="p-6 sm:p-10 overflow-y-auto space-y-6 flex-1 text-slate-700 text-xs sm:text-sm leading-relaxed">
               {/* Featured Image */}
               {selectedBlog.featuredImage && (
@@ -336,24 +330,24 @@ export const BlogsPage = ({ onBookClick }) => {
               )}
 
               {/* Author & Meta Line */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200 text-xs text-slate-500 font-sans-clean">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200 text-xs text-slate-500">
                 <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-[#00458b]" />
+                  <User className="w-4 h-4 text-[#00bcd4]" />
                   <span>Author: <strong>Dr. Vatsal Khetan</strong> (MS Ortho, FRCS Edinburgh)</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-[#0ea5e9]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#ff5722]" />
                     <span>{selectedBlog.date || 'Recent Guide'}</span>
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-[#00458b]" />
+                    <Clock className="w-3.5 h-3.5 text-[#00bcd4]" />
                     <span>{selectedBlog.readTime || '5 min read'}</span>
                   </span>
                   <button
                     onClick={handleShare}
-                    className="inline-flex items-center gap-1 text-[#00458b] hover:underline font-bold"
+                    className="inline-flex items-center gap-1 text-[#00bcd4] hover:underline font-bold"
                   >
                     {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
                     <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
@@ -363,7 +357,7 @@ export const BlogsPage = ({ onBookClick }) => {
 
               {/* RENDER FULL HTML ARTICLE */}
               <div
-                className="blog-article-content max-w-none text-slate-700 leading-relaxed font-sans-clean"
+                className="blog-article-content max-w-none text-slate-700 leading-relaxed"
                 dangerouslySetInnerHTML={{
                   __html: selectedBlog.content || selectedBlog.rawHtml || selectedBlog.textContent || selectedBlog.excerpt
                 }}
@@ -371,9 +365,9 @@ export const BlogsPage = ({ onBookClick }) => {
             </div>
 
             {/* Modal Bottom Action Footer */}
-            <div className="p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-slate-500 text-center sm:text-left font-sans-clean">
-                Need individualized surgical evaluation? Consult Chief Surgeon Dr. Vatsal Khetan.
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-slate-500 text-center sm:text-left">
+                Need individualized evaluation for this joint condition? Consult Dr. Vatsal Khetan.
               </span>
               <div className="flex items-center gap-3">
                 <button
@@ -381,13 +375,13 @@ export const BlogsPage = ({ onBookClick }) => {
                     setSelectedBlog(null);
                     onBookClick();
                   }}
-                  className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#06152b] hover:bg-[#0b2447] text-white shadow-md transition-all cursor-pointer"
+                  className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff5722] hover:bg-[#e64a19] text-white shadow-xs transition-all cursor-pointer"
                 >
                   Book OPD Consultation
                 </button>
                 <button
                   onClick={() => setSelectedBlog(null)}
-                  className="px-5 py-2.5 rounded-full text-xs font-bold border border-slate-300 text-slate-600 hover:bg-slate-100 cursor-pointer"
+                  className="px-4 py-2 rounded-full text-xs font-bold border border-slate-300 text-slate-600 hover:bg-slate-100 cursor-pointer"
                 >
                   Close
                 </button>

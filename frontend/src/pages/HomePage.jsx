@@ -1,35 +1,20 @@
 import React from 'react';
-import { HeroSection } from '../components/sections/HeroSection';
-import { DoctorStorySection } from '../components/sections/DoctorStorySection';
-import { CareSection } from '../components/sections/CareSection';
-import { StatsCounterSection } from '../components/sections/StatsCounterSection';
-import { MeetTeamSection } from '../components/sections/MeetTeamSection';
-import { WhyChooseUsSection } from '../components/sections/WhyChooseUsSection';
-import { ResourcesSection } from '../components/sections/ResourcesSection';
+import { PerspectiveCarousel3D } from '../components/3d/PerspectiveCarousel3D';
 
-export const HomePage = ({ onBookClick }) => {
+/**
+ * 🏥 Khetan Hospital - Single-Screen Interactive Landing Page
+ * 
+ * Strict Specification:
+ * - Fits completely within the available viewport (100dvh).
+ * - No forced vertical scrolling.
+ * - No sections extending below the navigation experience.
+ * - The 3D movable cards are the primary navigation mechanism.
+ * - All detailed content (Specialties, Doctor profile, Articles, etc.) lives inside inner pages.
+ */
+export const HomePage = () => {
   return (
-    <>
-      {/* 1. Oreo Hero Banner with Overlapping Appointment Form Card */}
-      <HeroSection onBookClick={onBookClick} />
-
-      {/* 2. | About Us: Doctor Story with Decorative Horizontal Accent Line */}
-      <DoctorStorySection onBookClick={onBookClick} />
-
-      {/* 3. | Our Best Services: Clean 6-Service Grid with Line Art Icons */}
-      <CareSection onBookClick={onBookClick} />
-
-      {/* 4. Lavender / Purple Counter Bar: 4 Milestone Stats */}
-      <StatsCounterSection />
-
-      {/* 5. | Meet Our Team: 4 Specialists Cards */}
-      <MeetTeamSection onBookClick={onBookClick} />
-
-      {/* 6. | Why Choose Us: Dark Technology Banner & 24/7 Support Callout */}
-      <WhyChooseUsSection onBookClick={onBookClick} />
-
-      {/* 7. | Latest From Blog: 3 Blog Cards with Orange Metas + Subscribe Bar */}
-      <ResourcesSection onBookClick={onBookClick} />
-    </>
+    <div className="w-full h-full flex-1 flex flex-col justify-center items-center overflow-hidden bg-white">
+      <PerspectiveCarousel3D />
+    </div>
   );
 };

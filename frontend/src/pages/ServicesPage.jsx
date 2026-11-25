@@ -1,108 +1,193 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, ChevronRight, Activity, Bot, ShieldCheck, Stethoscope, Sparkles } from 'lucide-react';
-import { allServices } from '../data/clinicContent';
-import { surgeryImages } from '../data/imageConfig';
+import { ChevronDown } from 'lucide-react';
 
-export const ServicesPage = ({ onBookClick }) => {
+/**
+ * 🏥 Khetan Hospital - Services Page
+ * 
+ * Strict Specification:
+ * - Exactly 8 services across 2 slides (4 cards per slide).
+ * - Slide 1:
+ *   1. Knee Replacement
+ *   2. Knee Arthroscopy
+ *   3. Shoulder Arthroscopy
+ *   4. Ankle Surgery
+ *   + Pure symbol at bottom to slide up (NOTHING written on it).
+ * - Slide 2:
+ *   5. Hip Replacement
+ *   6. Spine Surgery
+ *   7. Back Pain Management
+ *   8. Rheumatology
+ *   + Slides over Slide 1 (shutter style).
+ * - Card Content:
+ *   Strictly Picture + Name + 1-line detail. Nothing else on the card.
+ *   No numbering, no chapter labels, no badges, no buttons.
+ * - Next: Only the thin single-line footer.
+ */
+
+const slide1Services = [
+  {
+    id: 'knee-replacement',
+    name: 'Knee Replacement',
+    detail: 'Expert knee replacement care for pain-free mobility and improved quality of life.',
+    image: '/images/surgeries/knee-replacement.jpg',
+    route: '/services/knee-replacement'
+  },
+  {
+    id: 'knee-arthroscopy',
+    name: 'Knee Arthroscopy',
+    detail: 'Advanced knee arthroscopy for precise diagnosis and minimally invasive treatment.',
+    image: '/images/surgeries/robotic-knee.jpg',
+    route: '/services/knee-arthroscopy'
+  },
+  {
+    id: 'shoulder-arthroscopy',
+    name: 'Shoulder Arthroscopy',
+    detail: 'Innovative shoulder arthroscopy for accurate diagnosis and effective minimally invasive treatment.',
+    image: '/images/surgeries/shoulder-surgery.jpg',
+    route: '/services/shoulder-replacement'
+  },
+  {
+    id: 'ankle-surgery',
+    name: 'Ankle Surgery',
+    detail: 'Specialized ankle surgery for restoring function and relieving discomfort effectively.',
+    image: '/images/surgeries/ankle-surgery.jpg',
+    route: '/services/ankle-surgery'
+  }
+];
+
+const slide2Services = [
+  {
+    id: 'hip-replacement',
+    name: 'Hip Replacement',
+    detail: 'Comprehensive hip replacement surgery for improved mobility and pain relief.',
+    image: '/images/surgeries/hip-replacement.jpg',
+    route: '/services/hip-replacement'
+  },
+  {
+    id: 'spine-surgery',
+    name: 'Spine Surgery',
+    detail: 'Advanced spine surgery for alleviating pain and restoring spinal function effectively.',
+    image: '/images/surgeries/spine-surgery.jpg',
+    route: '/services/spine-surgery'
+  },
+  {
+    id: 'back-pain',
+    name: 'Back Pain Management',
+    detail: 'Tailored medical management to alleviate back pain and improve overall well-being.',
+    image: '/images/dr-vatsal-consult.webp',
+    route: '/services/spine-surgery'
+  },
+  {
+    id: 'rheumatology',
+    name: 'Rheumatology',
+    detail: 'Comprehensive rheumatology management for relief and improved quality of life.',
+    image: '/images/backgrounds/hospital-interior.jpg',
+    route: '/services/knee-replacement'
+  }
+];
+
+export const ServicesPage = () => {
+  const slide2Ref = useRef(null);
+
+  const scrollToSlide2 = () => {
+    if (slide2Ref.current) {
+      slide2Ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <div className="bg-slate-50 min-h-screen">
-      
-      {/* 1. Cinematic Editorial Header Banner */}
-      <section className="bg-gradient-to-r from-[#06152b] via-[#07182e] to-[#0b2447] text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.15),transparent_60%)] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#cbb387] text-[10px] font-bold uppercase tracking-widest mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#cbb387]" />
-            <span>Surgical Portfolio &bull; Class-100 Modular OT</span>
+    <div className="relative w-full bg-white text-slate-900 select-none">
+
+      {/* SLIDE 1 (First 4 Cards + Pure Symbol at Bottom) */}
+      <section
+        id="slide-1"
+        className="sticky top-[58px] sm:top-[60px] z-10 w-full min-h-[calc(100vh-58px)] sm:min-h-[calc(100vh-60px)] h-auto lg:h-[calc(100vh-60px)] bg-white flex flex-col justify-between items-center py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="w-full" />
+
+        {/* 4 Cards Grid */}
+        <div className="max-w-7xl mx-auto w-full my-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch w-full">
+            {slide1Services.map((card) => (
+              <Link
+                key={card.id}
+                to={card.route}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              >
+                {/* 1. Picture */}
+                <div className="relative h-[180px] sm:h-[200px] lg:h-[220px] w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="eager"
+                  />
+                </div>
+
+                {/* 2. Name & 3. One-Line Detail (Nothing Else on Card) */}
+                <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 bg-white">
+                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors leading-tight">
+                    {card.name}
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1.5 line-clamp-2">
+                    {card.detail}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-white tracking-tight">
-            Orthopedic Specialties &amp; <span className="italic font-normal text-slate-300">Advanced Procedures</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl font-sans-clean leading-relaxed">
-            World-class surgical care by Dr. Vatsal Khetan (FRCS Edinburgh, M.Ch UK). Sub-millimeter robotic precision, muscle-sparing approaches, and rapid 24-hour mobility protocols.
-          </p>
+        </div>
+
+        {/* Pure Symbol at Bottom of Screen (Nothing Written on It) */}
+        <div className="w-full flex justify-center pt-3 pb-1">
+          <button
+            onClick={scrollToSlide2}
+            aria-label="Next slide"
+            className="p-2 text-slate-400 hover:text-sky-600 transition-colors cursor-pointer group"
+          >
+            <ChevronDown className="w-6 h-6 animate-bounce text-slate-400 group-hover:text-sky-600" />
+          </button>
         </div>
       </section>
 
-      {/* 2. Services Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allServices.map((service, idx) => {
-            const imgData = surgeryImages[service.slug];
-            return (
-              <div 
-                key={idx}
-                className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+      {/* SLIDE 2 (Next 4 Cards - Blue Background matching Navbar Border [#0ea5e9], Covers Slide 1 like a Shutter) */}
+      <section 
+        id="slide-2"
+        ref={slide2Ref}
+        className="sticky top-[58px] sm:top-[60px] z-20 w-full min-h-[calc(100vh-58px)] sm:min-h-[calc(100vh-60px)] h-auto lg:h-[calc(100vh-60px)] bg-[#0ea5e9] shadow-[0_-25px_60px_rgba(14,165,233,0.35)] border-t-2 border-sky-400 flex flex-col justify-center items-center py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-7xl mx-auto w-full my-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch w-full">
+            {slide2Services.map((card) => (
+              <Link
+                key={card.id}
+                to={card.route}
+                className="bg-white rounded-2xl overflow-hidden border border-white/60 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
               >
-                <div>
-                  {/* Procedural Photo Banner */}
-                  <div className="relative h-52 w-full overflow-hidden bg-slate-900/5">
-                    <img 
-                      src={imgData?.image} 
-                      alt={imgData?.alt || service.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-black/20"></div>
-
-                    {/* Category & Tag Pills */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center">
-                      <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[#cbb387] border border-white/10 shadow-sm">
-                        {service.category}
-                      </span>
-                      <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#06152b] shadow-sm">
-                        {service.tag}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="font-editorial text-xl font-bold text-slate-900 group-hover:text-[#00458b] transition-colors mb-2.5">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 font-sans-clean">
-                      {service.summary}
-                    </p>
-
-                    <div className="space-y-2 pt-3 border-t border-slate-100 mb-2">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                        CLINICAL HIGHLIGHTS:
-                      </span>
-                      {service.benefits.slice(0, 2).map((b, bIdx) => (
-                        <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{b}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                {/* 1. Picture */}
+                <div className="relative h-[180px] sm:h-[200px] lg:h-[220px] w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Bottom Action Links */}
-                <div className="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <Link
-                    to={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00458b] hover:text-[#0ea5e9] transition-colors"
-                  >
-                    <span>View Surgical Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-
-                  <button
-                    onClick={onBookClick}
-                    className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#06152b] hover:bg-[#0b2447] text-white shadow-xs transition-colors cursor-pointer"
-                  >
-                    Book OPD
-                  </button>
+                {/* 2. Name & 3. One-Line Detail (Nothing Else on Card) */}
+                <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 bg-white">
+                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors leading-tight">
+                    {card.name}
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1.5 line-clamp-2">
+                    {card.detail}
+                  </p>
                 </div>
-              </div>
-            );
-          })}
+              </Link>
+            ))}
+          </div>
         </div>
-
       </section>
 
     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { NavigationProvider } from './context/NavigationContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { AppointmentModal } from './components/common/AppointmentModal';
@@ -70,6 +71,73 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+// AppShell adapts layout: single-screen 100dvh for Homepage, full-scroll for inner pages
+function AppShell({ onBookClick, isAppointmentModalOpen, setIsAppointmentModalOpen }) {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <div 
+      id="top" 
+      className={
+        isHomePage 
+          ? "h-screen h-[100dvh] max-h-[100dvh] flex flex-col justify-between overflow-hidden bg-white font-sans text-slate-800 antialiased selection:bg-sky-900 selection:text-white" 
+          : "min-h-screen flex flex-col bg-slate-50 font-sans text-slate-800 antialiased selection:bg-sky-900 selection:text-white"
+      }
+    >
+      {/* 1. Synchronized Header & Navigation */}
+      <Navbar onBookClick={onBookClick} />
+
+      {/* 2. Main Viewport Area */}
+      <main className={isHomePage ? "flex-1 min-h-0 flex flex-col justify-center overflow-hidden" : "flex-1"}>
+        <Routes>
+          {/* 1. Home Page (Single-screen 3D Navigation) */}
+          <Route path="/" element={<HomePage />} />
+
+          {/* 2. Doctors & About Pages */}
+          <Route path="/about" element={<AboutPage onBookClick={onBookClick} />} />
+          <Route path="/about/dr-vatsal-khetan" element={<AboutPage onBookClick={onBookClick} />} />
+          <Route path="/about/memorable-moments" element={<MemorableMomentsPage onBookClick={onBookClick} />} />
+          <Route path="/timeline" element={<MemorableMomentsPage onBookClick={onBookClick} />} />
+          <Route path="/about/published-papers" element={<PublishedPapersPage onBookClick={onBookClick} />} />
+          <Route path="/published-papers" element={<PublishedPapersPage onBookClick={onBookClick} />} />
+
+          {/* 3. Services & Surgery Detail Pages */}
+          <Route path="/services" element={<ServicesPage onBookClick={onBookClick} />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage onBookClick={onBookClick} />} />
+
+          {/* 4. Outreach Locations */}
+          <Route path="/locations" element={<LocationsPage onBookClick={onBookClick} />} />
+          <Route path="/locations/:city" element={<LocationsPage onBookClick={onBookClick} />} />
+
+          {/* 5. Patient Education & Blogs */}
+          <Route path="/blogs" element={<BlogsPage onBookClick={onBookClick} />} />
+          <Route path="/blogs/:slug" element={<BlogsPage onBookClick={onBookClick} />} />
+
+          {/* 6. Contact & OPD Hours */}
+          <Route path="/contact" element={<ContactPage onBookClick={onBookClick} />} />
+          <Route path="/contact-us" element={<ContactPage onBookClick={onBookClick} />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </main>
+
+      {/* 3. Single-Line Minimalist Footer */}
+      <Footer />
+
+      {/* 4. Global Appointment Booking Modal */}
+      <AppointmentModal 
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+      />
+
+      {/* 5. Global Floating Action Buttons (Hidden on homepage single-screen to avoid overlay clutter) */}
+      {!isHomePage && <FloatingActions onBookClick={onBookClick} />}
+    </div>
+  );
+}
+
 export default function App() {
   const [isAdminView, setIsAdminView] = useState(false);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
@@ -82,68 +150,15 @@ export default function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-      <ScrollToTop />
-      <div id="top" className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800 antialiased selection:bg-[#08284d] selection:text-white">
-        
-        {/* Sticky Header with Navigation Dropdowns */}
-        <Navbar 
-          onBookClick={() => setIsAppointmentModalOpen(true)}
-          isAdminView={isAdminView}
-          onToggleAdmin={() => setIsAdminView(!isAdminView)}
-        />
-
-        {/* Dynamic Multi-Page Router */}
-        <main className="flex-1">
-          <Routes>
-            {/* 1. Home Page */}
-            <Route path="/" element={<HomePage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* 2. About Pages */}
-            <Route path="/about" element={<AboutPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/about/dr-vatsal-khetan" element={<AboutPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/about/memorable-moments" element={<MemorableMomentsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/timeline" element={<MemorableMomentsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/about/published-papers" element={<PublishedPapersPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* 3. Services & Surgery Detail Pages */}
-            <Route path="/services" element={<ServicesPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/services/:slug" element={<ServiceDetailPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* 4. Outreach Locations */}
-            <Route path="/locations" element={<LocationsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/locations/:city" element={<LocationsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* 5. Patient Education & Blogs */}
-            <Route path="/blogs" element={<BlogsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/blogs/:slug" element={<BlogsPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* 6. Contact & OPD Hours */}
-            <Route path="/contact" element={<ContactPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-            <Route path="/contact-us" element={<ContactPage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-
-            {/* Fallback */}
-            <Route path="*" element={<HomePage onBookClick={() => setIsAppointmentModalOpen(true)} />} />
-          </Routes>
-        </main>
-
-        {/* Site Footer */}
-        <Footer 
-          onBookClick={() => setIsAppointmentModalOpen(true)} 
-          onToggleAdmin={() => setIsAdminView(!isAdminView)}
-          isAdminView={isAdminView}
-        />
-
-        {/* Global Appointment Booking Modal */}
-        <AppointmentModal 
-          isOpen={isAppointmentModalOpen}
-          onClose={() => setIsAppointmentModalOpen(false)}
-        />
-
-        {/* Global Floating Action Buttons (WhatsApp, Emergency, Scroll-to-Top) */}
-        <FloatingActions onBookClick={() => setIsAppointmentModalOpen(true)} />
-
-      </div>
-    </BrowserRouter>
-  </ErrorBoundary>
+        <NavigationProvider>
+          <ScrollToTop />
+          <AppShell 
+            onBookClick={() => setIsAppointmentModalOpen(true)}
+            isAppointmentModalOpen={isAppointmentModalOpen}
+            setIsAppointmentModalOpen={setIsAppointmentModalOpen}
+          />
+        </NavigationProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
