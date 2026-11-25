@@ -7,22 +7,18 @@ import { useNavigation } from '../../context/NavigationContext';
  * 
  * Strict Specification:
  * 1. Continuous circular loop arrangement:
- *    HOME → SERVICES → DOCTORS → BLOGS → LOCATIONS → CONTACT → HOME → SERVICES → ...
- * 2. NO VISIBLE ENDPOINTS: scrolling forward from CONTACT smoothly brings HOME;
- *    scrolling backward from HOME smoothly brings CONTACT.
- * 3. Both navigation arrows are always active for infinite circular navigation.
- * 4. Cards arranged along an imaginary curved/circular 3D track.
- * 5. Strictly NO BLUR on side cards (filter: 'none', opacity: 1, sharp typography).
- * 6. Center card occupies main viewing position, side cards follow the curve.
- * 7. Controls: Continuous mouse wheel / trackpad scroll, drag/swipe, arrow buttons, keyboard.
- * 8. Drag vs Click safety: dragging does not trigger accidental card navigation clicks.
- * 9. Responsive layout: 5 cards visible on desktop/laptop, 3 cards on mobile/tablet without horizontal overflow.
+ *    HOME → SERVICES → DOCTORS → BLOGS → LOCATIONS → CONTACT → HOME → ...
+ * 2. NO VISIBLE ENDPOINTS: infinite circular navigation in both directions.
+ * 3. Cards arranged along an imaginary curved/circular 3D track.
+ * 4. Strictly NO BLUR on side cards (filter: 'none', opacity: 1, sharp typography).
+ * 5. Controls: Mouse wheel / trackpad scroll, drag/swipe, arrow buttons, keyboard.
+ * 6. Responsive layout: calibrated card heights to prevent any vertical clipping.
  */
 export const PerspectiveCarousel3D = () => {
   const { activeIndex, setActiveIndex, mainNavigation, handleCardClick } = useNavigation();
   const total = mainNavigation.length; // 6 cards
 
-  const [cardSpacing, setCardSpacing] = useState(270);
+  const [cardSpacing, setCardSpacing] = useState(260);
   const [isMobile, setIsMobile] = useState(false);
   const isDragging = useRef(false);
   const hasDraggedRef = useRef(false);
@@ -40,10 +36,10 @@ export const PerspectiveCarousel3D = () => {
         setCardSpacing(190);
         setIsMobile(true);
       } else if (width < 1024) {
-        setCardSpacing(230);
+        setCardSpacing(225);
         setIsMobile(false);
       } else {
-        setCardSpacing(270);
+        setCardSpacing(260);
         setIsMobile(false);
       }
     };
@@ -61,22 +57,21 @@ export const PerspectiveCarousel3D = () => {
     setActiveIndex((activeIndex + 1) % total);
   };
 
-  // Mouse wheel / Laptop trackpad: continuous circular movement
+  // Trackpad horizontal swipe or shift+wheel: rotates circular track
   const onWheel = (e) => {
     const absY = Math.abs(e.deltaY);
     const absX = Math.abs(e.deltaX);
 
-    if (absY > 18 || absX > 18) {
+    // Only rotate on dominant horizontal movement
+    if (absX > absY && absX > 15) {
       if (wheelTimeout.current) return;
 
-      const delta = absY > absX ? e.deltaY : e.deltaX;
-      if (delta > 0) {
+      if (e.deltaX > 0) {
         handleNext();
       } else {
         handlePrev();
       }
 
-      // Smooth debounce for natural card-by-card transitions
       wheelTimeout.current = setTimeout(() => {
         wheelTimeout.current = null;
       }, 230);
@@ -114,7 +109,6 @@ export const PerspectiveCarousel3D = () => {
       handlePrev();
     }
 
-    // Reset drag flag after short delay so click listener can distinguish
     setTimeout(() => {
       hasDraggedRef.current = false;
     }, 50);
@@ -141,9 +135,9 @@ export const PerspectiveCarousel3D = () => {
   }, [activeIndex, total]);
 
   return (
-    <div 
+    <div
       ref={carouselContainerRef}
-      className="relative w-full h-full flex flex-col justify-center items-center py-2 px-3 sm:px-4 select-none overflow-hidden bg-white"
+      className="relative w-full flex flex-col justify-center items-center py-1 px-3 sm:px-4 select-none bg-white"
       onWheel={onWheel}
       onMouseDown={onPointerDown}
       onMouseMove={onPointerMove}
@@ -156,8 +150,8 @@ export const PerspectiveCarousel3D = () => {
       aria-label="Continuous Circular 3D Navigation"
     >
       {/* 3D CIRCULAR TRACK STAGE */}
-      <div 
-        className="relative w-full h-[340px] sm:h-[380px] lg:h-[400px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+      <div
+        className="relative w-full h-[310px] sm:h-[340px] lg:h-[360px] flex items-center justify-center cursor-grab active:cursor-grabbing"
         style={{ perspective: '1200px' }}
       >
         <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
@@ -177,8 +171,8 @@ export const PerspectiveCarousel3D = () => {
             // Positioning & 3D curvature along circular arc
             const dragShift = dragOffset * 0.35;
             const xTranslate = offset * cardSpacing + dragShift;
-            const rotateY = offset * (isMobile ? -26 : -30); // Inward circular viewing angle
-            const scale = isCenter ? 1.05 : (Math.abs(offset) === 1 ? 0.90 : 0.82);
+            const rotateY = offset * (isMobile ? -26 : -30);
+            const scale = isCenter ? 1.04 : (Math.abs(offset) === 1 ? 0.90 : 0.82);
             const translateZ = isCenter ? 0 : (Math.abs(offset) === 1 ? -80 : -170);
             const zIndex = isCenter ? 30 : 20 - Math.abs(offset);
 
@@ -186,50 +180,48 @@ export const PerspectiveCarousel3D = () => {
               <div
                 key={card.id}
                 onClick={() => handleSafeCardClick(index)}
-                className={`absolute w-[250px] sm:w-[285px] lg:w-[305px] h-[300px] sm:h-[335px] lg:h-[350px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-350 ease-out bg-white border ${
-                  isCenter 
-                    ? 'border-sky-500 shadow-[0_18px_40px_rgba(14,165,233,0.18)] ring-2 ring-sky-500/40' 
-                    : 'border-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.05)] hover:border-slate-300'
-                }`}
+                className={`absolute w-[240px] sm:w-[270px] lg:w-[290px] h-[275px] sm:h-[305px] lg:h-[325px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-350 ease-out bg-white border ${isCenter
+                  ? 'border-sky-500 shadow-[0_16px_36px_rgba(14,165,233,0.18)] ring-2 ring-sky-500/40'
+                  : 'border-slate-200/90 shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:border-slate-300'
+                  }`}
                 style={{
                   transform: `translate3d(${xTranslate}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                  opacity: 1, // Full opacity: NO blur, NO fade
-                  filter: 'none', // Strictly NO blur
+                  opacity: 1,
+                  filter: 'none',
                   zIndex: zIndex,
                   transformStyle: 'preserve-3d',
                   backfaceVisibility: 'hidden'
                 }}
               >
                 <div className="relative w-full h-full flex flex-col justify-between bg-white">
-                  
+
                   {/* Card Visual / Photograph (Top 65%) */}
-                  <div className="relative w-full h-[65%] bg-slate-50 overflow-hidden border-b border-slate-100 flex items-center justify-center">
+                  <div className="relative w-full h-[64%] bg-slate-50 overflow-hidden border-b border-slate-100 flex items-center justify-center">
                     <img
                       src={card.image}
                       alt={card.heading}
-                      className={`w-full h-full transition-transform duration-500 ${
-                        card.isDoctor 
-                          ? 'object-contain pt-2' 
-                          : 'object-cover'
-                      } ${isCenter ? 'scale-105' : 'scale-100'}`}
+                      className={`w-full h-full transition-transform duration-500 ${card.isDoctor
+                        ? 'object-contain pt-1.5'
+                        : 'object-cover'
+                        } ${isCenter ? 'scale-105' : 'scale-100'}`}
                       loading="eager"
                     />
 
                     {/* Subtle Click-to-Explore Pill on Center Card */}
                     {isCenter && (
-                      <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs text-sky-700 font-semibold text-[10px] uppercase tracking-wider px-2 py-1 rounded-full shadow-xs border border-sky-200 flex items-center gap-1">
+                      <div className="absolute top-2.5 right-2.5 bg-white/95 backdrop-blur-xs text-sky-700 font-semibold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs border border-sky-200 flex items-center gap-1">
                         <span>Explore</span>
                         <ArrowUpRight className="w-3 h-3 text-sky-600" />
                       </div>
                     )}
                   </div>
 
-                  {/* Card Content Area (Bottom 35% - ONLY 1 Main Heading + 1 Short Supporting Line) */}
-                  <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 bg-white">
+                  {/* Card Content Area (Bottom 36%) */}
+                  <div className="p-3.5 sm:p-4 flex flex-col justify-center flex-1 bg-white">
                     <h2 className="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 leading-tight">
                       {card.heading}
                     </h2>
-                    <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1 line-clamp-2">
+                    <p className="text-xs text-slate-500 font-normal leading-relaxed mt-0.5 line-clamp-2">
                       {card.supportingLine}
                     </p>
                   </div>
@@ -258,11 +250,10 @@ export const PerspectiveCarousel3D = () => {
               key={card.id}
               onClick={() => setActiveIndex(i)}
               aria-label={`Go to ${card.label}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
-                i === activeIndex
-                  ? 'w-5 h-1.5 bg-sky-500'
-                  : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
-              }`}
+              className={`transition-all duration-300 rounded-full cursor-pointer ${i === activeIndex
+                ? 'w-5 h-1.5 bg-sky-500'
+                : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
+                }`}
             />
           ))}
         </div>
@@ -280,3 +271,4 @@ export const PerspectiveCarousel3D = () => {
   );
 };
 
+export default PerspectiveCarousel3D;

@@ -8,7 +8,7 @@ export const NavigationProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const total = mainNavigation.length; // 6 cards
-  
+
   // Center card index on homepage (0 to 5)
   const [activeIndex, setActiveIndexState] = useState(0);
 
@@ -31,7 +31,7 @@ export const NavigationProvider = ({ children }) => {
     return 'home';
   };
 
-  const activeSectionId = isHomePage 
+  const activeSectionId = isHomePage
     ? (mainNavigation[activeIndex]?.id || 'home')
     : getRouteSectionId(location.pathname);
 
@@ -53,6 +53,14 @@ export const NavigationProvider = ({ children }) => {
     if (isHomePage) {
       // On homepage: Move carousel continuously to target card & highlight in navbar
       setActiveIndex(targetIndex);
+      if (targetItem.id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (targetItem.id === 'contact') {
+        const el = document.getElementById('contact-section');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     } else {
       // On inner page: Navigate to target section
       if (targetItem.id === 'home') {
@@ -72,6 +80,12 @@ export const NavigationProvider = ({ children }) => {
       const item = mainNavigation[normIndex];
       if (item && item.route && item.route !== '/') {
         navigate(item.route);
+      } else if (item && item.id === 'home') {
+        // If center HOME card is clicked -> smoothly scroll to hospital overview
+        const el = document.getElementById('hospital-intro');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     } else {
       // Side card clicked -> Center it smoothly

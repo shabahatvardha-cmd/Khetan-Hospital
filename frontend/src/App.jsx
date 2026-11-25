@@ -71,28 +71,24 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-// AppShell adapts layout: single-screen 100dvh for Homepage, full-scroll for inner pages
+// AppShell provides natural full-page vertical layout for all routes including homepage
 function AppShell({ onBookClick, isAppointmentModalOpen, setIsAppointmentModalOpen }) {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
-    <div 
-      id="top" 
-      className={
-        isHomePage 
-          ? "h-screen h-[100dvh] max-h-[100dvh] flex flex-col justify-between overflow-hidden bg-white font-sans text-slate-800 antialiased selection:bg-sky-900 selection:text-white" 
-          : "min-h-screen flex flex-col bg-slate-50 font-sans text-slate-800 antialiased selection:bg-sky-900 selection:text-white"
-      }
+    <div
+      id="top"
+      className="min-h-screen flex flex-col bg-white font-sans text-slate-800 antialiased selection:bg-sky-900 selection:text-white"
     >
       {/* 1. Synchronized Header & Navigation */}
       <Navbar onBookClick={onBookClick} />
 
-      {/* 2. Main Viewport Area */}
-      <main className={isHomePage ? "flex-1 min-h-0 flex flex-col justify-center overflow-hidden" : "flex-1"}>
+      {/* 2. Main Content Area */}
+      <main className="flex-1 w-full">
         <Routes>
-          {/* 1. Home Page (Single-screen 3D Navigation) */}
-          <Route path="/" element={<HomePage />} />
+          {/* 1. Home Page (Master Redesign with Integrated Shutter Footer) */}
+          <Route path="/" element={<HomePage onBookClick={onBookClick} />} />
 
           {/* 2. Doctors & About Pages */}
           <Route path="/about" element={<AboutPage onBookClick={onBookClick} />} />
@@ -119,21 +115,21 @@ function AppShell({ onBookClick, isAppointmentModalOpen, setIsAppointmentModalOp
           <Route path="/contact-us" element={<ContactPage onBookClick={onBookClick} />} />
 
           {/* Fallback */}
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<HomePage onBookClick={onBookClick} />} />
         </Routes>
       </main>
 
-      {/* 3. Single-Line Minimalist Footer */}
-      <Footer />
+      {/* 3. Global Footer (Suppressed on Homepage to eliminate duplicate footer, since HomePage renders it as the shutter slide) */}
+      {!isHomePage && <Footer />}
 
       {/* 4. Global Appointment Booking Modal */}
-      <AppointmentModal 
+      <AppointmentModal
         isOpen={isAppointmentModalOpen}
         onClose={() => setIsAppointmentModalOpen(false)}
       />
 
-      {/* 5. Global Floating Action Buttons (Hidden on homepage single-screen to avoid overlay clutter) */}
-      {!isHomePage && <FloatingActions onBookClick={onBookClick} />}
+      {/* 5. Global Floating Action Buttons */}
+      <FloatingActions onBookClick={onBookClick} />
     </div>
   );
 }
@@ -152,7 +148,7 @@ export default function App() {
       <BrowserRouter>
         <NavigationProvider>
           <ScrollToTop />
-          <AppShell 
+          <AppShell
             onBookClick={() => setIsAppointmentModalOpen(true)}
             isAppointmentModalOpen={isAppointmentModalOpen}
             setIsAppointmentModalOpen={setIsAppointmentModalOpen}
